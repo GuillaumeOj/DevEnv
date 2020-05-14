@@ -219,3 +219,6 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Add comment higlith for config files in JSON
+autocmd FileType json syntax match Comment +\/\/.\+$+
