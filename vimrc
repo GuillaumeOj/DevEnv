@@ -57,6 +57,7 @@ au BufNew * if (buflisted(buffer_number(""))) | set signcolumn=yes | set number 
 " -- Settings for NERDTree
 au vimenter * NERDTree " -- Start NERDTree at vim start
 au bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+au BufWritePost * :NERDTreeRefreshRoot
 
 " -- Settings for Airline
 if !exists('g:airline_symbols')
