@@ -77,6 +77,9 @@ let g:airline#extensions#tabline#enabled = 1
 au BufNewFile,BufRead *.log set filetype=log
 
 " ============== COC ====================
+" Change coc-settings path
+let g:coc_config_home = "~/VimConfig"
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
