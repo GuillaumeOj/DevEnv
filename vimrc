@@ -24,9 +24,6 @@ set background=dark
 " -- Disable swap files
 set noswapfile
 
-" -- Display lines number
-set number
-
 " -- Allow using backspace
 set backspace=indent,eol,start
 
@@ -41,7 +38,7 @@ highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile,BufEnter *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " -- Color for cursor and max colum
-set cursorline cursorcolumn
+set cursorline
 
 " -- Setting for split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -53,6 +50,9 @@ nnoremap <C-H> <C-W><C-H>
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
+
+" Display signcolumn, numbers and cursorcolumn for edited files
+au BufNew * if (buflisted(buffer_number(""))) | set signcolumn=yes | set number | set cursorcolumn | endif
 
 " -- Settings for NERDTree
 au vimenter * NERDTree " -- Start NERDTree at vim start
@@ -93,10 +93,6 @@ set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
