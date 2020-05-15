@@ -7,8 +7,8 @@ Plug 'altercation/vim-colors-solarized'	" For a beautiful colorscheme
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sensible'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'preservim/nerdcommenter'
 
 call plug#end()
 
