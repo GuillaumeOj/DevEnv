@@ -21,13 +21,13 @@ let g:solarized_italic=1
 colorscheme solarized
 set background=dark
 
-" -- No swap files
+" -- Disable swap files
 set noswapfile
 
 " -- Display lines number
 set number
 
-" -- Allow using backspace as in many software
+" -- Allow using backspace
 set backspace=indent,eol,start
 
 " -- Settings for python
