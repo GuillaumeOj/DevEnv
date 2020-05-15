@@ -31,17 +31,14 @@ set number
 set backspace=indent,eol,start
 
 " -- Settings for python
-au BufNewFile,BufRead *.py set tabstop=4 softtabstop=4 shiftwidth=4 expandtab autoindent fileformat=unix colorcolumn=90
+au BufNewFile,BufRead,BufEnter * if (&filetype == "python") | set colorcolumn=90 | else | set colorcolumn=0 | endif
 
-" -- Settings for pydocstring
-let g:pydocstring_formatter = 'numpy'
-
-au BufNewFile,BufRead *.html set filetype=htmldjango shiftwidth=4
-set shiftwidth=4
+" -- Settings for HTML
+au BufNewFile,BufRead,BufEnter *.html set filetype=htmldjango
 
 " -- Highlight bad white space
 highlight BadWhitespace ctermbg=red guibg=red
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile,BufEnter *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " -- Color for cursor and max colum
 set cursorline cursorcolumn
