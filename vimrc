@@ -79,7 +79,7 @@ au BufNewFile,BufRead *.log set filetype=log
 
 " ============== COC ====================
 " Change coc-settings path
-let g:coc_config_home = "~/VimConfig"
+let g:coc_config_home = "~/DevEnv"
 
 " TextEdit might fail if hidden is not set.
 set hidden
