@@ -52,7 +52,7 @@ set foldlevel=99
 nnoremap <space> za
 
 " Display signcolumn, numbers and cursorcolumn for edited files
-au BufNew * if (buflisted(buffer_number(""))) | set signcolumn=yes | set number | set cursorcolumn | endif
+au BufNew * if (buflisted(buffer_number(""))) | set signcolumn=yes | set number | set cursorcolumn | else | set nonumber | set signcolumn=no | set nocursorcolumn | endif
 
 " -- Settings for NERDTree
 au vimenter * NERDTree " -- Start NERDTree at vim start
