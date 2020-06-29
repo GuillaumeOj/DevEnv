@@ -1,40 +1,35 @@
 {
-	// Python
-	"python.jediEnabled": false,
-	"python.autoComplete.showAdvancedMembers": true,
-	"python.formatting.provider": "black",
-	"python.formatting.blackArgs": [
-		"--line-length",
-		"90"
-	],
-	"python.linting.enabled": true,
-	"python.linting.lintOnSave": true,
-	"python.linting.pylintEnabled": true,
-	"python.linting.pylintArgs": [
-		"--max-line-length",
-		"90"
-	],
-	"python.linting.pylintUseMinimalCheckers": false,
-	"python.analysis.diagnosticEnabled": false,
-	// HTML
-	"html.autoClosingTags": true,
-	"html.format.enable": true,
-	// General settings
-	"coc.preferences.formatOnSaveFiletypes": [
-		"python",
-		"json",
-		"html",
-		"css",
-		"js",
-		"htmldjango"
-	],
-	"coc.preferences.formatOnType": true,
-	// EsLint
-	//"eslint.options": {"configFile": "/Users/Guillaume/VimConfig/eslintrc.json"},
-	//"eslint.trace.server": "verbose"
-	// JavaScript
-	"javascript.format.enabled": true,
-	"javascript.showUnused": true,
-	"javascript.format.insertSpaceAfterConstructor": true,
-	"javascript.format.insertSpaceBeforeFunctionParenthesis": true
+  // Python
+  "python.jediEnabled": false,
+  "python.autoComplete.showAdvancedMembers": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackArgs": ["--line-length", "90"],
+  "python.linting.enabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintArgs": ["--max-line-length", "90"],
+  "python.linting.pylintUseMinimalCheckers": false,
+  "python.analysis.diagnosticEnabled": false,
+  // HTML
+  "html.autoClosingTags": true,
+  "html.format.enable": true,
+  // General settings
+  "coc.preferences.formatOnSaveFiletypes": [
+    "python",
+    "json",
+    "html",
+    "css",
+    "scss",
+    "js",
+    "htmldjango"
+  ],
+  "coc.preferences.formatOnType": true,
+  // EsLint
+  //"eslint.options": {"configFile": "/Users/Guillaume/VimConfig/eslintrc.json"},
+  //"eslint.trace.server": "verbose"
+  // JavaScript
+  "javascript.format.enabled": true,
+  "javascript.showUnused": true,
+  "javascript.format.insertSpaceAfterConstructor": true,
+  "javascript.format.insertSpaceBeforeFunctionParenthesis": true
 }
