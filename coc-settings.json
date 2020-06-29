@@ -24,9 +24,6 @@
     "htmldjango"
   ],
   "coc.preferences.formatOnType": true,
-  // EsLint
-  //"eslint.options": {"configFile": "/Users/Guillaume/VimConfig/eslintrc.json"},
-  //"eslint.trace.server": "verbose"
   // JavaScript
   "javascript.format.enabled": true,
   "javascript.showUnused": true,
