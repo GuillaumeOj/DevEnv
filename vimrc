@@ -1,19 +1,70 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'preservim/nerdtree'			        " For a tree structure on left
-Plug 'vim-airline/vim-airline'		    " For informations on buffers' bottom
-Plug 'vim-airline/vim-airline-themes'		" For airline's themes
-Plug 'altercation/vim-colors-solarized'	" For a beautiful colorscheme
-Plug 'sheerun/vim-polyglot'
+" NERDTree
+Plug 'preservim/nerdtree'                                                              " For a tree structure on left
+Plug 'preservim/nerdcommenter'                                                         " For comment and uncomment your code
+Plug 'Xuyuanp/nerdtree-git-plugin'                                                     " Add git symbol in the NERDTree
+
+" Theme
+Plug 'vim-airline/vim-airline'		                                               " For informations on buffers' bottom
+Plug 'vim-airline/vim-airline-themes'	                                               " For airline's themes
+Plug 'altercation/vim-colors-solarized'                                                " For a beautiful colorscheme
+
+
+" Vim
 Plug 'tpope/vim-sensible'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'preservim/nerdcommenter'
+
+" Language
+Plug 'dense-analysis/ale'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'jaxbot/semantic-highlight.vim'                                                   " semantic highlight (permanent)
+Plug 'numirias/semshi',               {'do': ':UpdateRemotePlugins', 'for': 'python'}  " semantic highlight (selected/python)
+Plug 'vim-python/python-syntax',      {'for': 'python'}
+Plug 'HerringtonDarkholme/yats.vim',  {'for': ['javascript', 'javascriptreact']}
+Plug 'yuezk/vim-js',                  {'for': ['javascript', 'javascriptreact']}
+Plug 'maxmellon/vim-jsx-pretty',      {'for': 'javascriptreact'}
+
+Plug 'elzr/vim-json',                 {'for': 'json'}
+Plug 'tpope/vim-markdown',            {'for': 'markdown'}
+Plug 'vim-scripts/HTML-AutoCloseTag', {'for': ['html', 'xml']}
+Plug 'hail2u/vim-css3-syntax',        {'for': 'css'}
 
 call plug#end()
 
-" =========== MINE ==========
-" -- Settings for colorscheme
+" ======================================
+" ========== GENERAL SETTINGS ==========
+" ======================================
+" Disable swap files
+set noswapfile
+
+" Allow using backspace
+set backspace=indent,eol,start
+
+" Settings for python files
+au BufNewFile,BufRead,BufEnter * if (&filetype == "python") | set colorcolumn=90 | else | set colorcolumn=0 | endif
+
+" Highlight bad white space for python and c files
+highlight BadWhitespace ctermbg=red guibg=red
+au BufRead,BufNewFile,BufEnter *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
+" Setting for split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+nnoremap <space> za
+
+" Settings syntax coloring for log files
+au BufNewFile,BufRead *.log set filetype=log
+
+" ===========================
+" ========== THEME ==========
+" ===========================
 syntax enable
 let g:solarized_bold=1
 let g:solarized_underline=1
@@ -21,45 +72,15 @@ let g:solarized_italic=1
 colorscheme solarized
 set background=dark
 
-" -- Disable swap files
-set noswapfile
-
-" -- Allow using backspace
-set backspace=indent,eol,start
-
-" -- Settings for python
-au BufNewFile,BufRead,BufEnter * if (&filetype == "python") | set colorcolumn=90 | else | set colorcolumn=0 | endif
-
-" -- Settings for HTML
-au BufNewFile,BufRead,BufEnter *.html set filetype=htmldjango
-
-" -- Highlight bad white space
-highlight BadWhitespace ctermbg=red guibg=red
-au BufRead,BufNewFile,BufEnter *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-" -- Color for cursor and max colum
+" Display the cursorline
 set cursorline
-
-" -- Setting for split navigations
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" --- Enable folding
-set foldmethod=indent
-set foldlevel=99
-nnoremap <space> za
 
 " Display signcolumn, numbers and cursorcolumn for edited files
 au BufNew * if (buflisted(buffer_number(""))) | set signcolumn=yes | set number | set cursorcolumn | else | set nonumber | set signcolumn=no | set nocursorcolumn | endif
 
-" -- Settings for NERDTree
-au vimenter * NERDTree " -- Start NERDTree at vim start
-au bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-au BufWritePost * :NERDTreeRefreshRoot
-
-" -- Settings for Airline
+" =============================
+" ========== AIRLINE ==========
+" =============================
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
@@ -74,148 +95,122 @@ let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
 let g:airline#extensions#tabline#enabled = 1
 
-"-- Settings syntax coloring for log files
-au BufNewFile,BufRead *.log set filetype=log
+" ==========================
+" ========== JEDI ==========
+" ==========================
+au FileType python call LoadVirtualEnv()
 
-" ============== COC ====================
-" Change coc-settings path
-let g:coc_config_home = "~/DevEnv"
+" Use system python for neovim itself
+let g:python_host_prog = '~/.pyenv/shims/python'
+let g:python3_host_prog = '~/.pyenv/shims/python'
+let g:python_highlight_all = 1
 
-" TextEdit might fail if hidden is not set.
-set hidden
+" =========================
+" ========== ALE ==========
+" =========================
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
+  \ 'priority': 10,
+  \ }))
 
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
+let g:ale_completion_enabled = 0
+"let g:ale_completion_delay = 5
+"set omnifunc=ale#completion#OmniFunc
+"set completeopt+=menuone
+"set completeopt+=noinsert
 
-" Give more space for displaying messages.
-set cmdheight=3
+let g:ale_sign_column_always = 1  " always show left column
+let g:ale_open_list = 1
+let g:ale_list_window_size = 7
+let g:ale_list_vertical = 0
+let g:ale_keep_list_window_open = 1
+let g:ale_set_highlights = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 0
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
+let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
+let g:ale_linters = {}
+let g:ale_linters.python = ['pyls'] " , 'flake8']
+let g:ale_linters.c = ['clangformat']
+let g:ale_linters.go = ['gometalinter']
+let g:ale_linters.kotlin = ['ktlint', 'languageserver']
+let g:ale_linters.javascript = ['eslint']
+let g:ale_linters.jsx = ['stylelint', 'eslint']
+let g:ale_fixers = {
+  \  'javascript': ['eslint'],
+  \  '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ }
 
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
+let g:ale_c_parse_makefile = 1
+let g:ale_c_parse_compile_commands = 1
+let g:ale_python_pyls_config = {'pyls': {
+  \ 'settings': {"configurationSources": ["flake8"]},
+  \ 'plugins': {
+  \   'jedi': {'environment': ''},
+  \   'pylint': {'enabled': v:false},
+  \   'pycodestyle': {'enabled': v:false},
+  \   'pyls_mypy': { 'enabled': v:true, "live_mode": v:false },
+  \   'pyls_black': { 'enabled': v:true},
+  \ }}}
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+let g:ale_kotlin_languageserver_executable = 'kotlin-language-server'
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+let g:ale_fix_on_save = 1
+"let __ale_c_project_filenames = ['README.md']
 
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
+" for golang
+let g:ale_go_gometalinter_options = '--fast --enable=staticcheck --enable=gosimple --enable=unused'
+" let g:ale_go_gometalinter_options = '--fast --vendored-linters --disable-all --enable=gotype --enable=vet --enable=golint -t'
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+let g:go_fmt_fail_silently = 1
 
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+let g:ale_sign_error = '⛔'
+let g:ale_sign_info = 'ℹ'
+let g:ale_sign_offset = 1000000
+let g:ale_sign_style_error = '⛔'
+let g:ale_sign_style_warning = '⚠'
+let g:ale_sign_warning = '⚠'
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+let g:vim_json_syntax_conceal = 0
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+" ==============================
+" ========== NERDTREE ==========
+" ==============================
+au vimenter * NERDTree " -- Start NERDTree at vim start
+au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+au BufNew,BufRead,BufWritePost * :NERDTreeRefreshRoot
 
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+" =====================================
+" ========== Semshi/ALE KEYS ==========
+" =====================================
+nmap <silent> <leader>j :ALENext<cr>
+nmap <silent> <leader>k :ALEPrevious<cr>
+nmap <silent> <leader>dd <Plug>(ale_go_to_definition)
+nmap <silent> <leader>dr <Plug>(ale_find_references)
+nnoremap <F11> :ALEFix<cr>
 
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+nmap <silent> <leader>rr :Semshi rename<CR>
+nmap <silent> <Tab> :Semshi goto name next<CR>
+nmap <silent> <S-Tab> :Semshi goto name prev<CR>
+nmap <silent> <leader>c :Semshi goto class next<CR>
+nmap <silent> <leader>C :Semshi goto class prev<CR>
+nmap <silent> <leader>f :Semshi goto function next<CR>
+nmap <silent> <leader>F :Semshi goto function prev<CR>
+nmap <silent> <leader>ee :Semshi error<CR>
+nmap <silent> <leader>ge :Semshi goto error<CR>
 
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
+" ==============================
+" ========== SENSIBLE ==========
+" ==============================
+set autoread
 
-" Applying codeAction to the selected region.
-" Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap keys for applying codeAction to the current line.
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Apply AutoFix to problem on the current line.
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-" Introduce function text object
-" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-
-" Use <TAB> for selections ranges.
-" NOTE: Requires 'textDocument/selectionRange' support from the language server.
-" coc-tsserver, coc-python are the examples of servers that support it.
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-
-" Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
-
-" Add `:OR` command for organize imports of the current buffer.
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
-
-" Mappings using CoCList:
-" Show all diagnostics.
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
-" Add comment higlith for config files in JSON
-autocmd FileType json syntax match Comment +\/\/.\+$+
+" ========================================
+" ========== SEMANTIC HIGLIGTHS ==========
+" ========================================
+let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,125,124,19]
+nnoremap <F10> :SemanticHighlightToggle<cr>
