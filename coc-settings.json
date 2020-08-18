@@ -1,14 +1,12 @@
 {
   // Python
+  "python.venvFolders": [".cache/pytpoetry/virtualenvs", ".pyenv", "venv"],
   "python.jediEnabled": false,
   "python.autoComplete.showAdvancedMembers": true,
   "python.formatting.provider": "black",
   "python.formatting.blackArgs": ["--line-length", "90"],
   "python.linting.enabled": true,
   "python.linting.lintOnSave": true,
-  // "python.linting.pylintEnabled": true,
-  // "python.linting.pylintArgs": ["--max-line-length", "90"],
-  // "python.linting.pylintUseMinimalCheckers": false,
   "python.linting.flake8Enabled": true,
   "python.linting.flake8Args": ["--max-line-length", "90"],
   "python.analysis.diagnosticEnabled": false,
