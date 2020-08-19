@@ -1,20 +1,34 @@
+" Add some missing filetype extentions
+au BufNewFile,BufRead *.jsx   set filetype=javascript.jsx
+au BufNewFile,BufRead *.yaml  set filetype=yml
+au BufNewFile,BufRead *.j2    set filetype=jinja
+au BufNewFile,BufRead *mutt-* set filetype=mail
+au BufNewFile,BufRead *.kt    set filetype=kotlin
+
 call plug#begin('~/.vim/plugged')
 
 " NERDTree
-Plug 'preservim/nerdtree'                                                              " For a tree structure on left
-Plug 'preservim/nerdcommenter'                                                         " For comment and uncomment your code
-Plug 'Xuyuanp/nerdtree-git-plugin'                                                     " Add git symbol in the NERDTree
+Plug 'preservim/nerdtree'								" For a tree structure on left
+Plug 'preservim/nerdcommenter'								" For comment and uncomment your code
+Plug 'Xuyuanp/nerdtree-git-plugin'							" Add git symbol in the NERDTree
 
 " Theme
-Plug 'vim-airline/vim-airline'		                                               " For informations on buffers' bottom
-Plug 'vim-airline/vim-airline-themes'	                                               " For airline's themes
-Plug 'altercation/vim-colors-solarized'                                                " For a beautiful colorscheme
+Plug 'vim-airline/vim-airline'								" For informations on buffers' bottom
+Plug 'vim-airline/vim-airline-themes'							" For airline's themes
+Plug 'altercation/vim-colors-solarized'							" For a beautiful colorscheme
+Plug 'liuchengxu/vim-clap'
+Plug 'lilydjwg/colorizer'								" Color hexa code (eg: #0F12AB)
+Plug 'luochen1990/rainbow'								" Special parenthesis colors
+Plug 'inside/vim-search-pulse'								" The cursor line pulse during search
+Plug 'ryanoasis/vim-devicons'								" Add filetype glyphs
 
 
 " Vim
 Plug 'tpope/vim-sensible'
+Plug 'ervandew/supertab'
 
 " Language
+Plug 'Shougo/deoplete.nvim',          { 'do': ':UpdateRemotePlugins' }
 Plug 'dense-analysis/ale'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'editorconfig/editorconfig-vim'
@@ -31,15 +45,43 @@ Plug 'vim-scripts/HTML-AutoCloseTag', {'for': ['html', 'xml']}
 Plug 'hail2u/vim-css3-syntax',        {'for': 'css'}
 
 call plug#end()
+" ==============================
+" ========== NERDTREE ==========
+" ==============================
+" /!\ MUST BE ON THE TOP BEFORE OTHERS SETTINGS /!\
+au VimEnter * NERDTree " -- Start NERDTree at vim start
+au BufEnter *
+	\ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+		\ | q
+	\ | endif
+au BufNew,BufRead,BufWritePost * :NERDTreeRefreshRoot
 
 " ======================================
 " ========== GENERAL SETTINGS ==========
 " ======================================
-" Disable swap files
-set noswapfile
+" Deoplete settings
+let g:deoplete#enable_at_startup = 1
 
-" Allow using backspace
-set backspace=indent,eol,start
+" Display signcolumn, numbers and cursorcolumn for edited files
+au VimEnter,BufAdd,BufNew,BufEnter,BufRead,BufWritePost *
+	\ if (buflisted(buffer_number("")))
+		\ | set signcolumn=yes
+		\ | set number
+		\ | set cursorcolumn
+	\ | else
+		\ | set nonumber
+		\ | set signcolumn=no
+		\ | set nocursorcolumn
+	\ | endif
+
+set showmatch			" Show matching brackets/parenthesis
+set incsearch			" Find as you type search
+set noswapfile			" Disable swap files
+set backspace=indent,eol,start	" Allow using backspace
+set undofile                    " So is persistent undo ...
+set undolevels=1000             " Maximum number of changes that can be undone
+set undoreload=10000            " Maximum number lines to save for undo on a buffer reload
+set cursorline 			" Display the cursoline
 
 " Settings for python files
 au BufNewFile,BufRead,BufEnter * if (&filetype == "python") | set colorcolumn=90 | else | set colorcolumn=0 | endif
@@ -48,19 +90,25 @@ au BufNewFile,BufRead,BufEnter * if (&filetype == "python") | set colorcolumn=90
 highlight BadWhitespace ctermbg=red guibg=red
 au BufRead,BufNewFile,BufEnter *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
+" Settings syntax coloring for log files
+au BufNewFile,BufRead *.log set filetype=log
+
 " Setting for split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Disable search pattern highlighting
+nnoremap <silent> <leader>hh :nohlsearch<CR> :mod<CR>
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 
-" Settings syntax coloring for log files
-au BufNewFile,BufRead *.log set filetype=log
+" Supertab settings
+let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " ===========================
 " ========== THEME ==========
@@ -71,12 +119,6 @@ let g:solarized_underline=1
 let g:solarized_italic=1
 colorscheme solarized
 set background=dark
-
-" Display the cursorline
-set cursorline
-
-" Display signcolumn, numbers and cursorcolumn for edited files
-au BufNew * if (buflisted(buffer_number(""))) | set signcolumn=yes | set number | set cursorcolumn | else | set nonumber | set signcolumn=no | set nocursorcolumn | endif
 
 " =============================
 " ========== AIRLINE ==========
@@ -101,8 +143,8 @@ let g:airline#extensions#tabline#enabled = 1
 au FileType python call LoadVirtualEnv()
 
 " Use system python for neovim itself
-let g:python_host_prog = '~/.pyenv/shims/python'
-let g:python3_host_prog = '~/.pyenv/shims/python'
+let g:python_host_prog = '~/.pyenv/shims/python2'
+let g:python3_host_prog = '~/.pyenv/shims/python3'
 let g:python_highlight_all = 1
 
 " =========================
@@ -113,10 +155,6 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
   \ }))
 
 let g:ale_completion_enabled = 0
-"let g:ale_completion_delay = 5
-"set omnifunc=ale#completion#OmniFunc
-"set completeopt+=menuone
-"set completeopt+=noinsert
 
 let g:ale_sign_column_always = 1  " always show left column
 let g:ale_open_list = 1
@@ -131,9 +169,6 @@ let g:ale_lint_on_enter = 0
 let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
 let g:ale_linters = {}
 let g:ale_linters.python = ['pyls'] " , 'flake8']
-let g:ale_linters.c = ['clangformat']
-let g:ale_linters.go = ['gometalinter']
-let g:ale_linters.kotlin = ['ktlint', 'languageserver']
 let g:ale_linters.javascript = ['eslint']
 let g:ale_linters.jsx = ['stylelint', 'eslint']
 let g:ale_fixers = {
@@ -144,23 +179,16 @@ let g:ale_fixers = {
 let g:ale_c_parse_makefile = 1
 let g:ale_c_parse_compile_commands = 1
 let g:ale_python_pyls_config = {'pyls': {
-  \ 'settings': {"configurationSources": ["flake8"]},
-  \ 'plugins': {
-  \   'jedi': {'environment': ''},
-  \   'pylint': {'enabled': v:false},
-  \   'pycodestyle': {'enabled': v:false},
-  \   'pyls_mypy': { 'enabled': v:true, "live_mode": v:false },
-  \   'pyls_black': { 'enabled': v:true},
-  \ }}}
-
-let g:ale_kotlin_languageserver_executable = 'kotlin-language-server'
+	\ 'settings': {"configurationSources": ["flake8"]},
+	\ 'plugins': {
+		\ 'jedi': {'environment': ''},
+		\ 'pylint': {'enabled': v:false},
+		\ 'pycodestyle': {'enabled': v:false},
+		\ 'pyls_mypy': { 'enabled': v:true, "live_mode": v:false },
+		\ 'pyls_black': { 'enabled': v:true},
+	\ }}}
 
 let g:ale_fix_on_save = 1
-"let __ale_c_project_filenames = ['README.md']
-
-" for golang
-let g:ale_go_gometalinter_options = '--fast --enable=staticcheck --enable=gosimple --enable=unused'
-" let g:ale_go_gometalinter_options = '--fast --vendored-linters --disable-all --enable=gotype --enable=vet --enable=golint -t'
 
 let g:go_fmt_fail_silently = 1
 
@@ -176,13 +204,6 @@ let g:ale_sign_style_warning = '⚠'
 let g:ale_sign_warning = '⚠'
 
 let g:vim_json_syntax_conceal = 0
-
-" ==============================
-" ========== NERDTREE ==========
-" ==============================
-au vimenter * NERDTree " -- Start NERDTree at vim start
-au BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-au BufNew,BufRead,BufWritePost * :NERDTreeRefreshRoot
 
 
 " =====================================
@@ -214,3 +235,46 @@ set autoread
 " ========================================
 let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,125,124,19]
 nnoremap <F10> :SemanticHighlightToggle<cr>
+
+function! LoadVirtualEnv()
+if has('python')
+python << pythoneof
+import vim
+import os
+
+def load_flake8(path):
+    for venv in (".tox/pep8", ".tox/linters", ".tox/lint"):
+        venvdir = os.path.join(path, venv)
+        if os.path.exists(venvdir):
+            vim.command("let g:ale_python_flake8_executable = '%s/bin/flake8'" % venvdir)
+            vim.command("let g:ale_fixers.python = ['black', 'isort']")
+            return
+
+def load_venv(path):
+    for venv in (".tox/py38", ".tox/py37", ".tox/py27", "venv"):
+        venvdir = os.path.join(path, venv)
+        if os.path.exists(venvdir):
+            vim.command("let g:ale_python_pyls_config.pyls.plugins.jedi.environment='%s'" % venvdir)
+            vim.command("let $VIRTUAL_ENV='%s'" % venvdir)
+            return
+
+def is_source_root(path):
+    for f in ("tox.ini", ".tox", "venv", ".git", ".hg"):
+        if os.path.exists(os.path.join(path, f)):
+            return True
+    return False
+
+current_path = os.path.abspath(vim.eval('getcwd()'))
+home = os.path.abspath("~")
+while True:
+    if is_source_root(current_path):
+        load_venv(current_path)
+        load_flake8(current_path)
+        break
+    current_path = os.path.abspath(os.path.join(current_path, ".."))
+    if current_path == home or current_path == "/":
+        break
+
+pythoneof
+endif
+endfunction
