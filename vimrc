@@ -16,33 +16,18 @@ Plug 'Xuyuanp/nerdtree-git-plugin'							" Add git symbol in the NERDTree
 Plug 'vim-airline/vim-airline'								" For informations on buffers' bottom
 Plug 'vim-airline/vim-airline-themes'							" For airline's themes
 Plug 'altercation/vim-colors-solarized'							" For a beautiful colorscheme
-Plug 'liuchengxu/vim-clap'
 Plug 'lilydjwg/colorizer'								" Color hexa code (eg: #0F12AB)
 Plug 'luochen1990/rainbow'								" Special parenthesis colors
 Plug 'inside/vim-search-pulse'								" The cursor line pulse during search
 Plug 'ryanoasis/vim-devicons'								" Add filetype glyphs
 
-
 " Vim
 Plug 'tpope/vim-sensible'
-Plug 'ervandew/supertab'
 
 " Language
-Plug 'Shougo/deoplete.nvim',          { 'do': ':UpdateRemotePlugins' }
-Plug 'dense-analysis/ale'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'jaxbot/semantic-highlight.vim'                                                   " semantic highlight (permanent)
-Plug 'numirias/semshi',               {'do': ':UpdateRemotePlugins', 'for': 'python'}  " semantic highlight (selected/python)
-Plug 'vim-python/python-syntax',      {'for': 'python'}
-Plug 'HerringtonDarkholme/yats.vim',  {'for': ['javascript', 'javascriptreact']}
-Plug 'yuezk/vim-js',                  {'for': ['javascript', 'javascriptreact']}
-Plug 'maxmellon/vim-jsx-pretty',      {'for': 'javascriptreact'}
-
-Plug 'elzr/vim-json',                 {'for': 'json'}
-Plug 'tpope/vim-markdown',            {'for': 'markdown'}
-Plug 'vim-scripts/HTML-AutoCloseTag', {'for': ['html', 'xml']}
-Plug 'hail2u/vim-css3-syntax',        {'for': 'css'}
+Plug 'neoclide/coc.nvim', 	      {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
+Plug 'pangloss/vim-javascript'
 
 call plug#end()
 " ==============================
@@ -59,9 +44,6 @@ au BufNew,BufRead,BufWritePost * :NERDTreeRefreshRoot
 " ======================================
 " ========== GENERAL SETTINGS ==========
 " ======================================
-" Deoplete settings
-let g:deoplete#enable_at_startup = 1
-
 " Display signcolumn, numbers and cursorcolumn for edited files
 au VimEnter,BufAdd,BufNew,BufEnter,BufRead,BufWritePost *
 	\ if (buflisted(buffer_number("")))
@@ -107,9 +89,6 @@ set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 
-" Supertab settings
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
 " ===========================
 " ========== THEME ==========
 " ===========================
@@ -124,7 +103,7 @@ set background=dark
 " ========== AIRLINE ==========
 " =============================
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -137,144 +116,150 @@ let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
 let g:airline#extensions#tabline#enabled = 1
 
-" ==========================
-" ========== JEDI ==========
-" ==========================
-au FileType python call LoadVirtualEnv()
+" ==============================
+" ========== COC.NVIM ==========
+" ==============================
+" au FileType python call LoadVirtualEnv()
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-" Use system python for neovim itself
-let g:python_host_prog = '~/.pyenv/shims/python2'
-let g:python3_host_prog = '~/.pyenv/shims/python3'
-let g:python_highlight_all = 1
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-" =========================
-" ========== ALE ==========
-" =========================
-au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ale#get_source_options({
-  \ 'priority': 10,
-  \ }))
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
 
-let g:ale_completion_enabled = 0
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
 
-let g:ale_sign_column_always = 1  " always show left column
-let g:ale_open_list = 1
-let g:ale_list_window_size = 7
-let g:ale_list_vertical = 0
-let g:ale_keep_list_window_open = 1
-let g:ale_set_highlights = 0
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_enter = 0
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-let g:ale_linter_aliases = {'jsx': ['css', 'javascript']}
-let g:ale_linters = {}
-let g:ale_linters.python = ['pyls'] " , 'flake8']
-let g:ale_linters.javascript = ['eslint']
-let g:ale_linters.jsx = ['stylelint', 'eslint']
-let g:ale_fixers = {
-  \  'javascript': ['eslint'],
-  \  '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \ }
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-let g:ale_c_parse_makefile = 1
-let g:ale_c_parse_compile_commands = 1
-let g:ale_python_pyls_config = {'pyls': {
-	\ 'settings': {"configurationSources": ["flake8"]},
-	\ 'plugins': {
-		\ 'jedi': {'environment': ''},
-		\ 'pylint': {'enabled': v:false},
-		\ 'pycodestyle': {'enabled': v:false},
-		\ 'pyls_mypy': { 'enabled': v:true, "live_mode": v:false },
-		\ 'pyls_black': { 'enabled': v:true},
-	\ }}}
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-let g:ale_fix_on_save = 1
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
-let g:go_fmt_fail_silently = 1
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
-let g:ale_echo_msg_error_str = 'E'
-let g:ale_echo_msg_warning_str = 'W'
-let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
-let g:ale_sign_error = '⛔'
-let g:ale_sign_info = 'ℹ'
-let g:ale_sign_offset = 1000000
-let g:ale_sign_style_error = '⛔'
-let g:ale_sign_style_warning = '⚠'
-let g:ale_sign_warning = '⚠'
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
 
-let g:vim_json_syntax_conceal = 0
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-" =====================================
-" ========== Semshi/ALE KEYS ==========
-" =====================================
-nmap <silent> <leader>j :ALENext<cr>
-nmap <silent> <leader>k :ALEPrevious<cr>
-nmap <silent> <leader>dd <Plug>(ale_go_to_definition)
-nmap <silent> <leader>dr <Plug>(ale_find_references)
-nnoremap <F11> :ALEFix<cr>
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
 
-nmap <silent> <leader>rr :Semshi rename<CR>
-nmap <silent> <Tab> :Semshi goto name next<CR>
-nmap <silent> <S-Tab> :Semshi goto name prev<CR>
-nmap <silent> <leader>c :Semshi goto class next<CR>
-nmap <silent> <leader>C :Semshi goto class prev<CR>
-nmap <silent> <leader>f :Semshi goto function next<CR>
-nmap <silent> <leader>F :Semshi goto function prev<CR>
-nmap <silent> <leader>ee :Semshi error<CR>
-nmap <silent> <leader>ge :Semshi goto error<CR>
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " ==============================
 " ========== SENSIBLE ==========
 " ==============================
 set autoread
 
-" ========================================
-" ========== SEMANTIC HIGLIGTHS ==========
-" ========================================
-let g:semanticTermColors = [28,1,2,3,4,5,6,7,25,9,10,34,12,13,14,15,125,124,19]
-nnoremap <F10> :SemanticHighlightToggle<cr>
-
-function! LoadVirtualEnv()
-if has('python')
-python << pythoneof
-import vim
-import os
-
-def load_flake8(path):
-    for venv in (".tox/pep8", ".tox/linters", ".tox/lint"):
-        venvdir = os.path.join(path, venv)
-        if os.path.exists(venvdir):
-            vim.command("let g:ale_python_flake8_executable = '%s/bin/flake8'" % venvdir)
-            vim.command("let g:ale_fixers.python = ['black', 'isort']")
-            return
-
-def load_venv(path):
-    for venv in (".tox/py38", ".tox/py37", ".tox/py27", "venv"):
-        venvdir = os.path.join(path, venv)
-        if os.path.exists(venvdir):
-            vim.command("let g:ale_python_pyls_config.pyls.plugins.jedi.environment='%s'" % venvdir)
-            vim.command("let $VIRTUAL_ENV='%s'" % venvdir)
-            return
-
-def is_source_root(path):
-    for f in ("tox.ini", ".tox", "venv", ".git", ".hg"):
-        if os.path.exists(os.path.join(path, f)):
-            return True
-    return False
-
-current_path = os.path.abspath(vim.eval('getcwd()'))
-home = os.path.abspath("~")
-while True:
-    if is_source_root(current_path):
-        load_venv(current_path)
-        load_flake8(current_path)
-        break
-    current_path = os.path.abspath(os.path.join(current_path, ".."))
-    if current_path == home or current_path == "/":
-        break
-
-pythoneof
-endif
-endfunction
+" ===========================
+" ========== OTHER ==========
+" ===========================
