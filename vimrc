@@ -27,9 +27,10 @@ Plug 'junegunn/vim-easy-align'
 
 " Language
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Add completion and linting by using language servers
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
+
 " ==============================
 " ========== NERDTREE ==========
 " ==============================
