@@ -8,26 +8,26 @@ au BufNewFile,BufRead *.kt    set filetype=kotlin
 call plug#begin('~/.vim/plugged')
 
 " NERDTree
-Plug 'preservim/nerdtree'								" For a tree structure on left
-Plug 'preservim/nerdcommenter'								" For comment and uncomment your code
-Plug 'Xuyuanp/nerdtree-git-plugin'							" Add git symbol in the NERDTree
+Plug 'preservim/nerdtree'                   " For a tree structure on left
+Plug 'preservim/nerdcommenter'				" For comment and uncomment your code
+Plug 'Xuyuanp/nerdtree-git-plugin'			" Add git symbol in the NERDTree
 
 " Theme
-Plug 'vim-airline/vim-airline'								" For informations on buffers' bottom
-Plug 'vim-airline/vim-airline-themes'							" For airline's themes
-Plug 'altercation/vim-colors-solarized'							" For a beautiful colorscheme
-Plug 'lilydjwg/colorizer'								" Color hexa code (eg: #0F12AB)
-Plug 'luochen1990/rainbow'								" Special parenthesis colors
-Plug 'inside/vim-search-pulse'								" The cursor line pulse during search
-Plug 'ryanoasis/vim-devicons'								" Add filetype glyphs
+Plug 'vim-airline/vim-airline'				" For informations on buffers' bottom
+Plug 'vim-airline/vim-airline-themes'		" For airline's themes
+Plug 'altercation/vim-colors-solarized'		" For a beautiful colorscheme
+Plug 'lilydjwg/colorizer'					" Color hexa code (eg: #0F12AB)
+Plug 'luochen1990/rainbow'					" Special parenthesis colors
+Plug 'inside/vim-search-pulse'				" The cursor line pulse during search
+Plug 'ryanoasis/vim-devicons'				" Add filetype glyphs
 
 " Vim
 Plug 'tpope/vim-sensible'
+Plug 'junegunn/vim-easy-align'
 
 " Language
-Plug 'neoclide/coc.nvim', 	      {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
-Plug 'pangloss/vim-javascript'
+Plug 'neoclide/coc.nvim', {'branch': 'release'} " Add completion and linting by using language servers
+" Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 " ==============================
@@ -40,6 +40,7 @@ au BufEnter *
 		\ | q
 	\ | endif
 au BufNew,BufRead,BufWritePost * :NERDTreeRefreshRoot
+highlight! link NERDTreeFlags NERDTreeDir
 
 " ======================================
 " ========== GENERAL SETTINGS ==========
@@ -64,6 +65,12 @@ set undofile                    " So is persistent undo ...
 set undolevels=1000             " Maximum number of changes that can be undone
 set undoreload=10000            " Maximum number lines to save for undo on a buffer reload
 set cursorline 			" Display the cursoline
+set scrolljump=5                " Lines to scroll when cursor leaves screen
+set scrolloff=3                 " Minimum lines to keep above and below cursor
+set shiftwidth=4                " Use indents of 4 spaces
+set expandtab                   " Tabs are spaces, not tabs
+set tabstop=4                   " An indentation every four columns
+set softtabstop=4               " Let backspace delete indent
 
 " Settings for python files
 au BufNewFile,BufRead,BufEnter * if (&filetype == "python") | set colorcolumn=90 | else | set colorcolumn=0 | endif
@@ -89,10 +96,13 @@ set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 
+" Change tab width for javascript files
+au FileType javascript,javascriptreact set shiftwidth=2 tabstop=4 softtabstop=4
+
 " ===========================
 " ========== THEME ==========
 " ===========================
-syntax enable
+syntax on
 let g:solarized_bold=1
 let g:solarized_underline=1
 let g:solarized_italic=1
@@ -115,6 +125,7 @@ let g:airline_symbols.linenr = '☰'
 let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " ==============================
 " ========== COC.NVIM ==========
@@ -170,11 +181,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+    if (index(['vim','help'], &filetype) >= 0)
+        execute 'h '.expand('<cword>')
+    else
+        call CocAction('doHover')
+    endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
@@ -188,11 +199,11 @@ xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Applying codeAction to the selected region.
@@ -260,6 +271,9 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 " ==============================
 set autoread
 
-" ===========================
-" ========== OTHER ==========
-" ===========================
+" ====================================
+" ========== VIM-EASY-ALIGN ==========
+" ====================================
+
+xmap ga <Plug>(EasyAlign)   " Interactive easy-align in visual mode
+nmap ga <Plug>(EasyAlign)   " Interactive easy-align for a motion/text object
