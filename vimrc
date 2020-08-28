@@ -47,7 +47,7 @@ highlight! link NERDTreeFlags NERDTreeDir
 " ======================================
 " Display signcolumn, numbers and cursorcolumn for edited files
 au VimEnter,BufAdd,BufNew,BufEnter,BufRead,BufWritePost *
-	\ if (buflisted(buffer_number("")))
+	\ if (&filetype != 'nerdtree')
 		\ | set signcolumn=yes
 		\ | set number
 		\ | set cursorcolumn
