@@ -1,5 +1,4 @@
 " Add some missing filetype extentions
-au BufNewFile,BufRead *.jsx   set filetype=javascript.jsx
 au BufNewFile,BufRead *.yaml  set filetype=yml
 au BufNewFile,BufRead *.j2    set filetype=jinja
 au BufNewFile,BufRead *mutt-* set filetype=mail
@@ -8,26 +7,29 @@ au BufNewFile,BufRead *.kt    set filetype=kotlin
 call plug#begin('~/.vim/plugged')
 
 " NERDTree
-Plug 'preservim/nerdtree'                   " For a tree structure on left
-Plug 'preservim/nerdcommenter'				" For comment and uncomment your code
-Plug 'Xuyuanp/nerdtree-git-plugin'			" Add git symbol in the NERDTree
+Plug 'preservim/nerdtree'                       " For a tree structure on left
+Plug 'preservim/nerdcommenter'				    " For comment and uncomment your code
+Plug 'Xuyuanp/nerdtree-git-plugin'			    " Add git symbol in the NERDTree
 
 " Theme
-Plug 'vim-airline/vim-airline'				" For informations on buffers' bottom
-Plug 'vim-airline/vim-airline-themes'		" For airline's themes
-Plug 'altercation/vim-colors-solarized'		" For a beautiful colorscheme
-Plug 'lilydjwg/colorizer'					" Color hexa code (eg: #0F12AB)
-Plug 'luochen1990/rainbow'					" Special parenthesis colors
-Plug 'inside/vim-search-pulse'				" The cursor line pulse during search
-Plug 'ryanoasis/vim-devicons'				" Add filetype glyphs
+Plug 'vim-airline/vim-airline'				    " For informations on buffers' bottom
+Plug 'vim-airline/vim-airline-themes'		    " For airline's themes
+Plug 'altercation/vim-colors-solarized'		    " For a beautiful colorscheme
+Plug 'lilydjwg/colorizer'					    " Color hexa code (eg: #0F12AB)
+Plug 'luochen1990/rainbow'					    " Special parenthesis colors
+Plug 'inside/vim-search-pulse'				    " The cursor line pulse during search
+Plug 'ryanoasis/vim-devicons'				    " Add filetype glyphs
 
 " Vim
 Plug 'tpope/vim-sensible'
 Plug 'junegunn/vim-easy-align'
+Plug 'airblade/vim-gitgutter'                   " Display git diffs in the sign column
+Plug 'tpope/vim-fugitive'                       " Git in vim
 
 " Language
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Add completion and linting by using language servers
 Plug 'sheerun/vim-polyglot'
+Plug 'chemzqm/vim-jsx-improve'
 
 call plug#end()
 
@@ -37,41 +39,41 @@ call plug#end()
 " /!\ MUST BE ON THE TOP BEFORE OTHERS SETTINGS /!\
 au VimEnter * NERDTree " -- Start NERDTree at vim start
 au BufEnter *
-	\ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
-		\ | q
-	\ | endif
+            \ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
+            \ | q
+            \ | endif
 au BufNew,BufRead,BufWritePost * :NERDTreeRefreshRoot
-highlight! link NERDTreeFlags NERDTreeDir
 
 " ======================================
 " ========== GENERAL SETTINGS ==========
 " ======================================
 " Display signcolumn, numbers and cursorcolumn for edited files
 au VimEnter,BufAdd,BufNew,BufEnter,BufRead,BufWritePost *
-	\ if (&filetype != 'nerdtree')
-		\ | set signcolumn=yes
-		\ | set number
-		\ | set cursorcolumn
-	\ | else
-		\ | set nonumber
-		\ | set signcolumn=no
-		\ | set nocursorcolumn
-	\ | endif
+            \ if (&filetype != 'nerdtree')
+            \ | set signcolumn=yes
+            \ | set number
+            \ | set cursorcolumn
+            \ | else
+                \ | set nonumber
+                \ | set signcolumn=no
+                \ | set nocursorcolumn
+                \ | endif
 
-set showmatch			" Show matching brackets/parenthesis
-set incsearch			" Find as you type search
-set noswapfile			" Disable swap files
+set showmatch			        " Show matching brackets/parenthesis
+set incsearch			        " Find as you type search
+set noswapfile			        " Disable swap files
 set backspace=indent,eol,start	" Allow using backspace
 set undofile                    " So is persistent undo ...
 set undolevels=1000             " Maximum number of changes that can be undone
 set undoreload=10000            " Maximum number lines to save for undo on a buffer reload
-set cursorline 			" Display the cursoline
+set cursorline 			        " Display the cursoline
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=3                 " Minimum lines to keep above and below cursor
 set shiftwidth=4                " Use indents of 4 spaces
 set expandtab                   " Tabs are spaces, not tabs
 set tabstop=4                   " An indentation every four columns
 set softtabstop=4               " Let backspace delete indent
+set nohlsearch                  " Disable search highlighting
 
 " Settings for python files
 au BufNewFile,BufRead,BufEnter * if (&filetype == "python") | set colorcolumn=90 | else | set colorcolumn=0 | endif
@@ -89,16 +91,20 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Disable search pattern highlighting
-nnoremap <silent> <leader>hh :nohlsearch<CR> :mod<CR>
-
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
 nnoremap <space> za
 
 " Change tab width for javascript files
-au FileType javascript,javascriptreact set shiftwidth=2 tabstop=4 softtabstop=4
+au FileType html,css,scss,javascript,javascript.jsx,json,javascriptreact,njml set shiftwidth=2 tabstop=4 softtabstop=4
+au BufNewFile,BufRead *.mjml set filetype=html
+
+" Save undofiles in the same directory
+if has('persistent_undo')         "check if your vim version supports
+  set undodir=$HOME/.vim/undo     "directory where the undo files will be stored
+  set undofile                    "turn on the feature
+endif
 
 " ===========================
 " ========== THEME ==========
@@ -114,7 +120,7 @@ set background=dark
 " ========== AIRLINE ==========
 " =============================
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+    let g:airline_symbols = {}
 endif
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -141,30 +147,30 @@ set shortmess+=c
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+            \ pumvisible() ? "\<C-n>" :
+            \ <SID>check_back_space() ? "\<TAB>" :
+            \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+    inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
 if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 " Use `[g` and `]g` to navigate diagnostics
