@@ -1,8 +1,5 @@
 " Add some missing filetype extentions
-au BufNewFile,BufRead *.yaml  set filetype=yml
-au BufNewFile,BufRead *.j2    set filetype=jinja
-au BufNewFile,BufRead *mutt-* set filetype=mail
-au BufNewFile,BufRead *.kt    set filetype=kotlin
+au BufNewFile,BufRead *.yaml  set filetype=yaml
 
 call plug#begin('~/.vim/plugged')
 
@@ -22,14 +19,14 @@ Plug 'ryanoasis/vim-devicons'				    " Add filetype glyphs
 
 " Vim
 Plug 'tpope/vim-sensible'
-Plug 'junegunn/vim-easy-align'
-Plug 'airblade/vim-gitgutter'                   " Display git diffs in the sign column
 Plug 'tpope/vim-fugitive'                       " Git in vim
+Plug 'airblade/vim-gitgutter'                   " Display git diffs in the sign column
 
 " Language
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Add completion and linting by using language servers
-Plug 'sheerun/vim-polyglot'
-Plug 'chemzqm/vim-jsx-improve'
+Plug 'sheerun/vim-polyglot'                     " Improve the syntax higlighting
+Plug 'kevinoid/vim-jsonc'                     " JSON with comments!
+Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-dev -o'} " PHP language server compatible with coc.nvie
 
 call plug#end()
 
@@ -37,11 +34,6 @@ call plug#end()
 " ========== NERDTREE ==========
 " ==============================
 " /!\ MUST BE ON THE TOP BEFORE OTHERS SETTINGS /!\
-au VimEnter * NERDTree " -- Start NERDTree at vim start
-au BufEnter *
-            \ if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree())
-            \ | q
-            \ | endif
 au BufNew,BufRead,BufWritePost * :NERDTreeRefreshRoot
 
 " ======================================
@@ -50,14 +42,14 @@ au BufNew,BufRead,BufWritePost * :NERDTreeRefreshRoot
 " Display signcolumn, numbers and cursorcolumn for edited files
 au VimEnter,BufAdd,BufNew,BufEnter,BufRead,BufWritePost *
             \ if (&filetype != 'nerdtree')
-            \ | set signcolumn=yes
-            \ | set number
-            \ | set cursorcolumn
+              \ | set signcolumn=yes
+              \ | set number
+              \ | set cursorcolumn
             \ | else
-                \ | set nonumber
-                \ | set signcolumn=no
-                \ | set nocursorcolumn
-                \ | endif
+              \ | set nonumber
+              \ | set signcolumn=no
+              \ | set nocursorcolumn
+              \ | endif
 
 set showmatch			        " Show matching brackets/parenthesis
 set incsearch			        " Find as you type search
@@ -74,9 +66,6 @@ set expandtab                   " Tabs are spaces, not tabs
 set tabstop=4                   " An indentation every four columns
 set softtabstop=4               " Let backspace delete indent
 set nohlsearch                  " Disable search highlighting
-
-" Settings for python files
-au BufNewFile,BufRead,BufEnter * if (&filetype == "python") | set colorcolumn=90 | else | set colorcolumn=0 | endif
 
 " Highlight bad white space for python and c files
 highlight BadWhitespace ctermbg=red guibg=red
@@ -97,8 +86,7 @@ set foldlevel=99
 nnoremap <space> za
 
 " Change tab width for javascript files
-au FileType html,css,scss,javascript,javascript.jsx,json,javascriptreact,njml set shiftwidth=2 tabstop=4 softtabstop=4
-au BufNewFile,BufRead *.mjml set filetype=html
+au FileType typescript,typescriptreact,html,css,scss,javascript,javascript.jsx,javascriptreact,njml set shiftwidth=2 tabstop=2 softtabstop=2
 
 " Save undofiles in the same directory
 if has('persistent_undo')         "check if your vim version supports
@@ -137,41 +125,36 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " ==============================
 " ========== COC.NVIM ==========
 " ==============================
-" au FileType python call LoadVirtualEnv()
-set nobackup
-set nowritebackup
-set cmdheight=2
+"set nobackup
+"set nowritebackup
+set cmdheight=3
 set updatetime=300
 set shortmess+=c
+
 " Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
             \ <SID>check_back_space() ? "\<TAB>" :
             \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+
 function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-    inoremap <silent><expr> <c-space> coc#refresh()
+  inoremap <silent><expr> <c-space> coc#refresh()
 else
-    inoremap <silent><expr> <c-@> coc#refresh()
+  inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-if exists('*complete_info')
-    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -184,33 +167,12 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    else
-        call CocAction('doHover')
-    endif
-endfunction
-
-" Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
 augroup mygroup
-    autocmd!
-    " Setup formatexpr specified filetype(s).
-    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-    " Update signature help on jump placeholder.
-    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Applying codeAction to the selected region.
@@ -234,8 +196,18 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
+
 " Use CTRL-S for selections ranges.
-" Requires 'textDocument/selectionRange' support of LS, ex: coc-tsserver
+" Requires 'textDocument/selectionRange' support of language server.
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
@@ -271,16 +243,24 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-autocmd FileType json syntax match Comment +\/\/.\+$+
+" Function for creatinf shortcuts
+function! SetupCommandAbbrs(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfunction
+
+" Use :C to open coc config
+call SetupCommandAbbrs('C', 'CocConfig')
+" Use :CL to open coc local config
+call SetupCommandAbbrs('CL', 'CocLocalConfig')
+" Use :CI to open coc info 
+call SetupCommandAbbrs('CI', 'CocInfo')
+
+" Add @ for coc-css
+autocmd FileType scss setl iskeyword+=@-@
 
 " ==============================
 " ========== SENSIBLE ==========
 " ==============================
 set autoread
-
-" ====================================
-" ========== VIM-EASY-ALIGN ==========
-" ====================================
-
-xmap ga <Plug>(EasyAlign)   " Interactive easy-align in visual mode
-nmap ga <Plug>(EasyAlign)   " Interactive easy-align for a motion/text object
