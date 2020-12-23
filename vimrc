@@ -20,7 +20,6 @@ Plug 'ryanoasis/vim-devicons'				    " Add filetype glyphs
 " Vim
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'                       " Git in vim
-Plug 'airblade/vim-gitgutter'                   " Display git diffs in the sign column
 
 " Language
 Plug 'neoclide/coc.nvim', {'branch': 'release'} " Add completion and linting by using language servers
@@ -259,6 +258,23 @@ call SetupCommandAbbrs('CI', 'CocInfo')
 
 " Add @ for coc-css
 autocmd FileType scss setl iskeyword+=@-@
+
+" Add for coc-git
+" navigate chunks of current buffer
+nmap [h <Plug>(coc-git-prevchunk)
+nmap ]h <Plug>(coc-git-nextchunk)
+" navigate conflicts of current buffer
+nmap [c <Plug>(coc-git-prevconflict)
+nmap ]c <Plug>(coc-git-nextconflict)
+" show chunk diff at current position
+nmap gs <Plug>(coc-git-chunkinfo)
+" show commit contains current position
+nmap gc <Plug>(coc-git-commit)
+" create text object for git chunks
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
 
 " ==============================
 " ========== SENSIBLE ==========
