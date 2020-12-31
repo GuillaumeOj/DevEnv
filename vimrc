@@ -26,6 +26,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} " Add completion and linting by 
 Plug 'sheerun/vim-polyglot'                     " Improve the syntax higlighting
 Plug 'kevinoid/vim-jsonc'                     " JSON with comments!
 Plug 'phpactor/phpactor', {'for': 'php', 'branch': 'master', 'do': 'composer install --no-dev -o'} " PHP language server compatible with coc.nvie
+Plug 'nvie/vim-flake8'
 
 call plug#end()
 
@@ -85,7 +86,7 @@ set foldlevel=99
 nnoremap <space> za
 
 " Change tab width for javascript files
-au FileType typescript,typescriptreact,html,css,scss,javascript,javascript.jsx,javascriptreact,njml set shiftwidth=2 tabstop=2 softtabstop=2
+au FileType typescript,typescriptreact,html,css,scss,javascript,javascriptreact,njml,json,jsonc set shiftwidth=2 tabstop=2 softtabstop=2
 
 " Save undofiles in the same directory
 if has('persistent_undo')         "check if your vim version supports
