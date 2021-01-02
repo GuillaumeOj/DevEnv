@@ -24,7 +24,7 @@ Plug 'LucHermitte/lh-vim-lib'                   " Library used by local_vimrc
 
 " Language
 Plug 'sheerun/vim-polyglot'                     " Improve the syntax higlighting
-Plug 'kevinoid/vim-jsonc'                     " JSON with comments!
+Plug 'kevinoid/vim-jsonc'                       " JSON with comments!
 Plug 'nvie/vim-flake8'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Completion with deoplete
 Plug 'deoplete-plugins/deoplete-jedi'                           " Deoplete's plugin for jedi
@@ -137,7 +137,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 set autoread
 
 " === LOCAL_VIMRC ===
-call lh#local_vimrc#munge('whitelist', $HOME.'/DevData') " Add the DevData dir in the local_vimrc whitelist
+call lh#local_vimrc#munge('whitelist', $HOME.'/DevData')    " Add the DevData dir in the local_vimrc whitelist
 
 " === DEOPLETE ===
-let g:deoplete#enable_at_startup = 1                                    " Enable Deoplete at startup
+let g:deoplete#enable_at_startup = 1                        " Enable Deoplete at startup
