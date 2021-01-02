@@ -26,6 +26,8 @@ Plug 'LucHermitte/lh-vim-lib'                   " Library used by local_vimrc
 Plug 'sheerun/vim-polyglot'                     " Improve the syntax higlighting
 Plug 'kevinoid/vim-jsonc'                     " JSON with comments!
 Plug 'nvie/vim-flake8'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Completion with deoplete
+Plug 'deoplete-plugins/deoplete-jedi'                           " Deoplete's plugin for jedi
 
 call plug#end()
 
@@ -50,22 +52,29 @@ au VimEnter,BufAdd,BufNew,BufEnter,BufRead,BufWritePost *
               \ | set nocursorcolumn
               \ | endif
 
-set showmatch			        " Show matching brackets/parenthesis
-set incsearch			        " Find as you type search
-set noswapfile			        " Disable swap files
-set backspace=indent,eol,start	" Allow using backspace
-set undofile                    " So is persistent undo ...
-set undolevels=1000             " Maximum number of changes that can be undone
-set undoreload=10000            " Maximum number lines to save for undo on a buffer reload
-set cursorline 			        " Display the cursoline
-set scrolljump=5                " Lines to scroll when cursor leaves screen
-set scrolloff=3                 " Minimum lines to keep above and below cursor
-set shiftwidth=4                " Use indents of 4 spaces
-set expandtab                   " Tabs are spaces, not tabs
-set tabstop=4                   " An indentation every four columns
-set softtabstop=4               " Let backspace delete indent
-set nohlsearch                  " Disable search highlighting
-set cmdheight=4                 " Command line height
+set showmatch                                   " Show matching brackets/parenthesis
+set incsearch                                   " Find as you type search
+set noswapfile                                  " Disable swap files
+set backspace=indent,eol,start                  " Allow using backspace
+set undofile                                    " So is persistent undo ...
+set undolevels=1000                             " Maximum number of changes that can be undone
+set undoreload=10000                            " Maximum number lines to save for undo on a buffer reload
+set cursorline                                  " Display the cursoline
+set scrolljump=5                                " Lines to scroll when cursor leaves screen
+set scrolloff=3                                 " Minimum lines to keep above and below cursor
+set shiftwidth=4                                " Use indents of 4 spaces
+set expandtab                                   " Tabs are spaces, not tabs
+set tabstop=4                                   " An indentation every four columns
+set softtabstop=4                               " Let backspace delete indent
+set nohlsearch                                  " Disable search highlighting
+set cmdheight=4                                 " Command line height
+set completeopt=menuone,preview                 " Change the completion options
+autocmd CompleteDone * pclose!                  " Close the preview window when completion is done
+
+" Key settings for completion options
+inoremap <silent><expr><tab> pumvisible() ? '<C-n>' : '<tab>'           " Use tab to go to next deoplete completion
+inoremap <silent><expr><s-tab> pumvisible() ? '<C-p>' : '<s-tab>'       " Use shift + tab to go to previous deoplete completion
+inoremap <expr> <CR> pumvisible() ? '<C-y>' : '<C-g>u<CR>'              " Allow to use enter to use a highlighted option
 
 " Highlight bad white space for python and c files
 highlight BadWhitespace ctermbg=red guibg=red
@@ -129,3 +138,6 @@ set autoread
 
 " === LOCAL_VIMRC ===
 call lh#local_vimrc#munge('whitelist', $HOME.'/DevData') " Add the DevData dir in the local_vimrc whitelist
+
+" === DEOPLETE ===
+let g:deoplete#enable_at_startup = 1                                    " Enable Deoplete at startup
