@@ -65,6 +65,7 @@ set expandtab                   " Tabs are spaces, not tabs
 set tabstop=4                   " An indentation every four columns
 set softtabstop=4               " Let backspace delete indent
 set nohlsearch                  " Disable search highlighting
+set cmdheight=4                 " Command line height
 
 " Highlight bad white space for python and c files
 highlight BadWhitespace ctermbg=red guibg=red
