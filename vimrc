@@ -72,9 +72,12 @@ set completeopt=menuone,preview                 " Change the completion options
 autocmd CompleteDone * pclose!                  " Close the preview window when completion is done
 
 " Key settings for completion options
-inoremap <silent><expr><tab> pumvisible() ? '<C-n>' : '<tab>'           " Use tab to go to next deoplete completion
-inoremap <silent><expr><s-tab> pumvisible() ? '<C-p>' : '<s-tab>'       " Use shift + tab to go to previous deoplete completion
-inoremap <expr> <CR> pumvisible() ? '<C-y>' : '<C-g>u<CR>'              " Allow to use enter to use a highlighted option
+" Use tab to go to next deoplete completion
+inoremap <silent><expr><tab> pumvisible() ? '<C-n>' : '<tab>'
+" Use shift + tab to go to previous deoplete completion
+inoremap <silent><expr><s-tab> pumvisible() ? '<C-p>' : '<s-tab>'
+" Allow to use enter to use a highlighted option
+inoremap <expr> <CR> pumvisible() ? '<C-y>' : '<C-g>u<CR>'
 
 " Highlight bad white space for python and c files
 highlight BadWhitespace ctermbg=red guibg=red
