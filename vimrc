@@ -4,27 +4,27 @@ au BufNewFile,BufRead *.yaml  set filetype=yaml
 call plug#begin('~/.vim/plugged')
 
 " NERDTree
-Plug 'preservim/nerdtree'                       " For a tree structure on left
-Plug 'preservim/nerdcommenter'				    " For comment and uncomment your code
-Plug 'Xuyuanp/nerdtree-git-plugin'			    " Add git symbol in the NERDTree
+Plug 'preservim/nerdtree'                                       " For a tree structure on left
+Plug 'preservim/nerdcommenter'                                  " For comment and uncomment your code
+Plug 'Xuyuanp/nerdtree-git-plugin'                              " Add git symbol in the NERDTree
 
 " Theme
-Plug 'vim-airline/vim-airline'				    " For informations on buffers' bottom
-Plug 'vim-airline/vim-airline-themes'		    " For airline's themes
-Plug 'altercation/vim-colors-solarized'		    " For a beautiful colorscheme
-Plug 'lilydjwg/colorizer'					    " Color hexa code (eg: #0F12AB)
-Plug 'luochen1990/rainbow'					    " Special parenthesis colors
-Plug 'ryanoasis/vim-devicons'				    " Add filetype glyphs
+Plug 'vim-airline/vim-airline'                                  " For informations on buffers' bottom
+Plug 'vim-airline/vim-airline-themes'                           " For airline's themes
+Plug 'altercation/vim-colors-solarized'                         " For a beautiful colorscheme
+Plug 'lilydjwg/colorizer'                                       " Color hexa code (eg: #0F12AB)
+Plug 'luochen1990/rainbow'                                      " Special parenthesis colors
+Plug 'ryanoasis/vim-devicons'                                   " Add filetype glyphs
 
 " Vim
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-fugitive'                       " Git in vim
-Plug 'LucHermitte/local_vimrc'                  " Handdle local vimrc files
-Plug 'LucHermitte/lh-vim-lib'                   " Library used by local_vimrc
+Plug 'tpope/vim-fugitive'                                       " Git in vim
+Plug 'LucHermitte/local_vimrc'                                  " Handdle local vimrc files
+Plug 'LucHermitte/lh-vim-lib'                                   " Library used by local_vimrc
 
 " Language
-Plug 'sheerun/vim-polyglot'                     " Improve the syntax higlighting
-Plug 'kevinoid/vim-jsonc'                       " JSON with comments!
+Plug 'sheerun/vim-polyglot'                                     " Improve the syntax higlighting
+Plug 'kevinoid/vim-jsonc'                                       " JSON with comments!
 Plug 'dense-analysis/ale'                                       " ALE for linting/fixing/etc.
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Completion with deoplete
 Plug 'deoplete-plugins/deoplete-jedi'                           " Deoplete's plugin for jedi
