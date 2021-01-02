@@ -34,18 +34,9 @@ call plug#end()
 " ======================================
 " ========== GENERAL SETTINGS ==========
 " ======================================
-" Display signcolumn, numbers and cursorcolumn for edited files
-au VimEnter,BufAdd,BufNew,BufEnter,BufRead,BufWritePost *
-      \ if (&filetype != 'nerdtree')
-      \ | set signcolumn=yes
-      \ | set number
-      \ | set cursorcolumn
-      \ | else
-        \ | set nonumber
-        \ | set signcolumn=no
-        \ | set nocursorcolumn
-        \ | endif
-
+set signcolumn=yes                              " Always display the sign's column
+set number                                      " Display lines' number
+set cursorcolumn                                " Display the cursor column
 set showmatch                                   " Show matching brackets/parenthesis
 set incsearch                                   " Find as you type search
 set noswapfile                                  " Disable swap files
