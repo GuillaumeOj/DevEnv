@@ -42,15 +42,15 @@ au BufNew,BufRead,BufWritePost * :NERDTreeRefreshRoot
 " ======================================
 " Display signcolumn, numbers and cursorcolumn for edited files
 au VimEnter,BufAdd,BufNew,BufEnter,BufRead,BufWritePost *
-            \ if (&filetype != 'nerdtree')
-              \ | set signcolumn=yes
-              \ | set number
-              \ | set cursorcolumn
-            \ | else
-              \ | set nonumber
-              \ | set signcolumn=no
-              \ | set nocursorcolumn
-              \ | endif
+      \ if (&filetype != 'nerdtree')
+      \ | set signcolumn=yes
+      \ | set number
+      \ | set cursorcolumn
+      \ | else
+        \ | set nonumber
+        \ | set signcolumn=no
+        \ | set nocursorcolumn
+        \ | endif
 
 set showmatch                                   " Show matching brackets/parenthesis
 set incsearch                                   " Find as you type search
@@ -62,10 +62,10 @@ set undoreload=10000                            " Maximum number lines to save f
 set cursorline                                  " Display the cursoline
 set scrolljump=5                                " Lines to scroll when cursor leaves screen
 set scrolloff=3                                 " Minimum lines to keep above and below cursor
-set shiftwidth=4                                " Use indents of 4 spaces
 set expandtab                                   " Tabs are spaces, not tabs
-set tabstop=4                                   " An indentation every four columns
-set softtabstop=4                               " Let backspace delete indent
+set shiftwidth=2                                " Use indents of 2 spaces
+set tabstop=2                                   " An indentation every 2 columns
+set softtabstop=2                               " Let backspace delete indent
 set nohlsearch                                  " Disable search highlighting
 set cmdheight=4                                 " Command line height
 set completeopt=menuone,preview                 " Change the completion options
@@ -89,8 +89,8 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Change tab width for javascript files
-au FileType typescript,typescriptreact,html,css,scss,javascript,javascriptreact,njml,json,jsonc set shiftwidth=2 tabstop=2 softtabstop=2
+" Change tab width for pyhton files
+au FileType pyhton set shiftwidth=4 tabstop=4 softtabstop=4
 
 " Save undofiles in the same directory
 if has('persistent_undo')         "check if your vim version supports
@@ -112,7 +112,7 @@ set background=dark
 " ========== AIRLINE ==========
 " =============================
 if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
+  let g:airline_symbols = {}
 endif
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
