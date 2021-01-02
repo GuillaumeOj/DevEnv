@@ -31,12 +31,6 @@ Plug 'deoplete-plugins/deoplete-jedi'                           " Deoplete's plu
 
 call plug#end()
 
-" ==============================
-" ========== NERDTREE ==========
-" ==============================
-" /!\ MUST BE ON THE TOP BEFORE OTHERS SETTINGS /!\
-au BufNew,BufRead,BufWritePost * :NERDTreeRefreshRoot
-
 " ======================================
 " ========== GENERAL SETTINGS ==========
 " ======================================
