@@ -19,6 +19,8 @@ Plug 'ryanoasis/vim-devicons'				    " Add filetype glyphs
 " Vim
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'                       " Git in vim
+Plug 'LucHermitte/local_vimrc'                  " Handdle local vimrc files
+Plug 'LucHermitte/lh-vim-lib'                   " Library used by local_vimrc
 
 " Language
 Plug 'sheerun/vim-polyglot'                     " Improve the syntax higlighting
@@ -123,3 +125,6 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 " ========== SENSIBLE ==========
 " ==============================
 set autoread
+
+" === LOCAL_VIMRC ===
+call lh#local_vimrc#munge('whitelist', $HOME.'/DevData') " Add the DevData dir in the local_vimrc whitelist
