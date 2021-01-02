@@ -25,7 +25,7 @@ Plug 'LucHermitte/lh-vim-lib'                   " Library used by local_vimrc
 " Language
 Plug 'sheerun/vim-polyglot'                     " Improve the syntax higlighting
 Plug 'kevinoid/vim-jsonc'                       " JSON with comments!
-Plug 'nvie/vim-flake8'
+Plug 'dense-analysis/ale'                                       " ALE for linting/fixing/etc.
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Completion with deoplete
 Plug 'deoplete-plugins/deoplete-jedi'                           " Deoplete's plugin for jedi
 
@@ -89,11 +89,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
-nnoremap <space> za
-
 " Change tab width for javascript files
 au FileType typescript,typescriptreact,html,css,scss,javascript,javascriptreact,njml,json,jsonc set shiftwidth=2 tabstop=2 softtabstop=2
 
@@ -141,3 +136,7 @@ call lh#local_vimrc#munge('whitelist', $HOME.'/DevData')    " Add the DevData di
 
 " === DEOPLETE ===
 let g:deoplete#enable_at_startup = 1                        " Enable Deoplete at startup
+
+" == ALE ===
+nmap <silent> [g <Plug>(ale_previous_wrap)
+nmap <silent> ]g <Plug>(ale_next_wrap)
