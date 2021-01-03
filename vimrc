@@ -11,7 +11,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'                              " Add git symbol
 " Theme
 Plug 'vim-airline/vim-airline'                                  " For informations on buffers' bottom
 Plug 'vim-airline/vim-airline-themes'                           " For airline's themes
-Plug 'altercation/vim-colors-solarized'                         " For a beautiful colorscheme
+Plug 'morhetz/gruvbox'                                          " Nvim theme
 Plug 'lilydjwg/colorizer'                                       " Color hexa code (eg: #0F12AB)
 Plug 'luochen1990/rainbow'                                      " Special parenthesis colors
 Plug 'ryanoasis/vim-devicons'                                   " Add filetype glyphs
@@ -55,6 +55,7 @@ set nohlsearch                                  " Disable search highlighting
 set cmdheight=4                                 " Command line height
 set completeopt=menuone,preview                 " Change the completion options
 autocmd CompleteDone * pclose!                  " Close the preview window when completion is done
+set termguicolors                               " Enables 24-bit RGB color
 
 " Key settings for completion options
 " Use tab to go to next deoplete completion
@@ -90,11 +91,9 @@ endif
 " ========== THEME ==========
 " ===========================
 syntax on
-let g:solarized_bold=1
-let g:solarized_underline=1
-let g:solarized_italic=1
-colorscheme solarized
-set background=dark
+let g:gruvbox_italic = 1
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 
 " =============================
 " ========== AIRLINE ==========
