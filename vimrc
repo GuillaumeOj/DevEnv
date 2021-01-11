@@ -21,6 +21,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'                                       " Git in vim
 Plug 'LucHermitte/local_vimrc'                                  " Handdle local vimrc files
 Plug 'LucHermitte/lh-vim-lib'                                   " Library used by local_vimrc
+Plug 'airblade/vim-gitgutter'                                   " Display git diff signs in the sign's column
 
 " Language
 Plug 'sheerun/vim-polyglot'                                     " Improve the syntax higlighting
@@ -127,3 +128,7 @@ let g:deoplete#enable_at_startup = 1                        " Enable Deoplete at
 " == ALE ===
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
+
+" === GITGUTTER ===
+nmap <silent> [h <Plug>(GitGutterPrevHunk)
+nmap <silent> ]h <Plug>(GitGutterNextHunk)
