@@ -32,9 +32,7 @@ Plug 'deoplete-plugins/deoplete-jedi'                           " Deoplete's plu
 
 call plug#end()
 
-" ======================================
-" ========== GENERAL SETTINGS ==========
-" ======================================
+" === GENERAL SETTINGS ===
 set signcolumn=yes                              " Always display the sign's column
 set number                                      " Display lines' number
 set cursorcolumn                                " Display the cursor column
@@ -88,17 +86,13 @@ if has('persistent_undo')         "check if your vim version supports
   set undofile                    "turn on the feature
 endif
 
-" ===========================
-" ========== THEME ==========
-" ===========================
+" === THEME ===
 syntax on
 let g:gruvbox_italic = 1
 let g:gruvbox_contrast_dark = 'medium'
 colorscheme gruvbox
 
-" =============================
-" ========== AIRLINE ==========
-" =============================
+" === AIRLINE ===
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
@@ -114,9 +108,7 @@ let g:airline_symbols.dirty='⚡'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" ==============================
-" ========== SENSIBLE ==========
-" ==============================
+" === SENSIBLE ===  
 set autoread
 
 " === LOCAL_VIMRC ===
