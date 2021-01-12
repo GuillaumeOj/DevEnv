@@ -121,6 +121,9 @@ call lh#local_vimrc#munge('whitelist', $HOME.'/DevData')    " Add the DevData di
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
 
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+
 " === GITGUTTER ===
 nmap <silent> [h <Plug>(GitGutterPrevHunk)
 nmap <silent> ]h <Plug>(GitGutterNextHunk)
