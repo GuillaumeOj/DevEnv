@@ -32,6 +32,9 @@ Plug 'deoplete-plugins/deoplete-jedi'                           " Deoplete's plu
 
 call plug#end()
 
+" === DEOPLETE ===
+let g:deoplete#enable_at_startup = 1                        " Enable Deoplete at startup
+
 " === GENERAL SETTINGS ===
 set signcolumn=yes                              " Always display the sign's column
 set number                                      " Display lines' number
@@ -113,9 +116,6 @@ set autoread
 
 " === LOCAL_VIMRC ===
 call lh#local_vimrc#munge('whitelist', $HOME.'/DevData')    " Add the DevData dir in the local_vimrc whitelist
-
-" === DEOPLETE ===
-let g:deoplete#enable_at_startup = 1                        " Enable Deoplete at startup
 
 " == ALE ===
 nmap <silent> [g <Plug>(ale_previous_wrap)
