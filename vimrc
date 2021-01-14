@@ -27,13 +27,9 @@ Plug 'airblade/vim-gitgutter'                                   " Display git di
 Plug 'sheerun/vim-polyglot'                                     " Improve the syntax higlighting
 Plug 'kevinoid/vim-jsonc'                                       " JSON with comments!
 Plug 'dense-analysis/ale'                                       " ALE for linting/fixing/etc.
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Completion with deoplete
-Plug 'deoplete-plugins/deoplete-jedi'                           " Deoplete's plugin for jedi
+Plug 'neoclide/coc.nvim', {'branch': 'release'}                 " Used for the LSP
 
 call plug#end()
-
-" === DEOPLETE ===
-let g:deoplete#enable_at_startup = 1                        " Enable Deoplete at startup
 
 " === GENERAL SETTINGS ===
 set signcolumn=yes                              " Always display the sign's column
@@ -116,10 +112,14 @@ set autoread
 
 " === LOCAL_VIMRC ===
 call lh#local_vimrc#munge('whitelist', $HOME.'/DevData')    " Add the DevData dir in the local_vimrc whitelist
+call lh#local_vimrc#munge('whitelist', $HOME.'/DevEnv')    " Add the DevData dir in the local_vimrc whitelist
 
 " == ALE ===
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
+
+" Disale ale for using the one from coc.nvim
+let g:ale_disable_lsp = 1
 
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
