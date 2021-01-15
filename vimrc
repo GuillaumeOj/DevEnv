@@ -81,9 +81,9 @@ nnoremap <C-H> <C-W><C-H>
 au FileType pyhton set shiftwidth=4 tabstop=4 softtabstop=4
 
 " Save undofiles in the same directory
-if has('persistent_undo')         "check if your vim version supports
-  set undodir=$HOME/.vim/undo     "directory where the undo files will be stored
-  set undofile                    "turn on the feature
+if has('persistent_undo')
+  set undodir=$HOME/.vim/undo
+  set undofile
 endif
 
 " === THEME ===
