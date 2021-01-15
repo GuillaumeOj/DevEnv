@@ -1,5 +1,7 @@
 " Add some missing filetype extentions
 au BufNewFile,BufRead *.yaml  set filetype=yaml
+" Disale ale for using the one from coc.nvim
+let g:ale_disable_lsp = 1
 
 call plug#begin('~/.vim/plugged')
 
@@ -118,10 +120,6 @@ call lh#local_vimrc#munge('whitelist', $HOME.'/DevEnv')    " Add the DevData dir
 " == ALE ===
 nmap <silent> [g <Plug>(ale_previous_wrap)
 nmap <silent> ]g <Plug>(ale_next_wrap)
-
-" Disale ale for using the one from coc.nvim
-let g:ale_disable_lsp = 1
-
 let g:ale_lint_on_save = 1
 let g:ale_fix_on_save = 1
 
