@@ -53,7 +53,7 @@ set cmdheight=4                                 " Command line height
 set completeopt=menuone,preview                 " Change the completion options
 autocmd CompleteDone * pclose!                  " Close the preview window when completion is done
 set termguicolors                               " Enables 24-bit RGB color
-set clipboard+=unnamedplus                      " Always use the clipboard 
+set clipboard+=unnamedplus                      " Always use the clipboard
 
 " Key settings for completion options
 " Use tab to go to next deoplete completion
@@ -107,7 +107,7 @@ let g:airline_symbols.dirty='⚡'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
-" === SENSIBLE ===  
+" === SENSIBLE ===
 set autoread
 
 " === LOCAL_VIMRC ===
