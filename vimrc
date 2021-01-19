@@ -13,20 +13,17 @@ Plug 'vim-airline/vim-airline'                                  " For informatio
 Plug 'vim-airline/vim-airline-themes'                           " For airline's themes
 Plug 'morhetz/gruvbox'                                          " Nvim theme
 Plug 'lilydjwg/colorizer'                                       " Color hexa code (eg: #0F12AB)
-Plug 'luochen1990/rainbow'                                      " Special parenthesis colors
 Plug 'ryanoasis/vim-devicons'                                   " Add filetype glyphs
 
 " Vim
 Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-fugitive'                                       " Git in vim
 Plug 'LucHermitte/local_vimrc'                                  " Handdle local vimrc files
 Plug 'LucHermitte/lh-vim-lib'                                   " Library used by local_vimrc
-Plug 'airblade/vim-gitgutter'                                   " Display git diff signs in the sign's column
 
 " Language
 Plug 'sheerun/vim-polyglot'                                     " Improve the syntax higlighting
 Plug 'kevinoid/vim-jsonc'                                       " JSON with comments!
-Plug 'neoclide/coc.nvim', {'branch': 'release'}                 " Used for the LSP
+Plug 'neoclide/coc.nvim'                                        " Used for the LSP
 
 call plug#end()
 
