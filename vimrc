@@ -47,18 +47,8 @@ set tabstop=2                                   " An indentation every 2 columns
 set softtabstop=2                               " Let backspace delete indent
 set nohlsearch                                  " Disable search highlighting
 set cmdheight=4                                 " Command line height
-set completeopt=menuone,preview                 " Change the completion options
-autocmd CompleteDone * pclose!                  " Close the preview window when completion is done
 set termguicolors                               " Enables 24-bit RGB color
 set clipboard+=unnamedplus                      " Always use the clipboard
-
-" Key settings for completion options
-" Use tab to go to next deoplete completion
-inoremap <silent><expr><tab> pumvisible() ? '<C-n>' : '<tab>'
-" Use shift + tab to go to previous deoplete completion
-inoremap <silent><expr><s-tab> pumvisible() ? '<C-p>' : '<s-tab>'
-" Allow to use enter to use a highlighted option
-inoremap <expr> <CR> pumvisible() ? '<C-y>' : '<C-g>u<CR>'
 
 " Highlight bad white space for python and c files
 highlight BadWhitespace ctermbg=red guibg=red
@@ -111,6 +101,103 @@ set autoread
 call lh#local_vimrc#munge('whitelist', $HOME.'/DevData')    " Add the DevData dir in the local_vimrc whitelist
 call lh#local_vimrc#munge('whitelist', $HOME.'/DevEnv')    " Add the DevData dir in the local_vimrc whitelist
 
-" === GITGUTTER ===
-nmap <silent> [h <Plug>(GitGutterPrevHunk)
-nmap <silent> ]h <Plug>(GitGutterNextHunk)
+" === COC-GIT ===
+nmap <silent> [h <Plug>(coc-git-prevchunk)
+nmap <silent> ]h <Plug>(coc-git-nextchunk)
+nmap <silent> [c <Plug>(coc-git-prevconflict)
+nmap <silent> ]c <Plug>(coc-git-nextconflict)
+nmap gs <Plug>(coc-git-chunkinfo)
+
+" === COC.NVIM ===
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set shortmess+=c
+
+" Use <TAB> for trigger completion
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
+" Navigate throw coc.nvim diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+"Renaming symbol
+nmap <leader>rn <Plug>(coc-rename)
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Function for create shortcuts
+function! SetupCommandAbbrs(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfunction
+
+" Use :C to open coc config
+call SetupCommandAbbrs('C', 'CocConfig')
+" Use :CL to open coc local config
+call SetupCommandAbbrs('CL', 'CocLocalConfig')
+" Use :CI to open coc info
+call SetupCommandAbbrs('CI', 'CocInfo')
+"
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
