@@ -133,3 +133,6 @@ export PATH=$(which gem):$PATH
 
 # Settings for poetry
 export PATH="$HOME/.poetry/bin:$PATH"
+
+# Settings for python
+export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
