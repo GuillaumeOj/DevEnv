@@ -1,0 +1,16 @@
+[user]
+	email = 7831777+GuillaumeOj@users.noreply.github.com
+	name = Guillaume
+[alias]
+	nb = !git checkout --track $(git config branch.$(git rev-parse --abbrev-ref HEAD).remote)/$(git rev-parse --abbrev-ref HEAD) -b
+[credential]
+	helper = store --file ~/.config/git/credentials
+[core]
+	editor = nvim
+	excludesFile = ~/DevEnv/default_git_ignore
+[rerere]
+	enabled = true
+[grep]
+	lineNumber = true
+[pull]
+	rebase = true

@@ -1,0 +1,22 @@
+# Vim
+*.vim
+.~lock*
+*.un~
+typings
+
+# Python
+.env*
+htmlcov
+__pycache__
+.tox
+vendor
+*egg-info
+
+# Node
+.eslintcache
+node_modules
+
+# Generic
+*.log
+*.sqlite3
+dist
