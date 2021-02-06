@@ -8,6 +8,7 @@ import subprocess
 
 
 HOME_DIR = "/home/guillaume"
+TITLE_WIDTH = 120
 
 
 def update_requirements_list():
@@ -32,6 +33,9 @@ def update_requirements_list():
 def dependencies_for_all() -> None:
     if versions := _get_pyenv_versions():
         for version in versions:
+            print(
+                f" Update Dependencies For Python {version} ".center(TITLE_WIDTH, "=")
+            )
             install_command = [
                 f"{HOME_DIR}/.pyenv/shims/pip{version}",
                 "install",
@@ -54,7 +58,9 @@ def dependencies_for_all() -> None:
 
             try:
                 subprocess.run(install_command, check=True)
+                print("")
             except subprocess.CalledProcessError:
+                print("")
                 continue
 
 
