@@ -7,9 +7,13 @@ import string
 import subprocess
 
 
+HOME_DIR = "/home/guillaume"
+
+
 def update_requirements_list():
-    requirements_file = "/home/guillaume/DevEnv/requirements.txt"
-    requirements_backup = "/home/guillaume/DevEnv/requirements.bak"
+    requirements_file = f"{HOME_DIR}/DevEnv/requirements.txt"
+    requirements_backup = f"{HOME_DIR}/DevEnv/requirements.bak"
+
     if os.path.exists(requirements_file):
         subprocess.run(["mv", requirements_file, requirements_backup], check=True)
 
