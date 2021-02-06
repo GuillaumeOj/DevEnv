@@ -32,7 +32,12 @@ def update_requirements_list():
 def dependencies_for_all() -> None:
     if versions := _get_pyenv_versions():
         for version in versions:
-            install_command = [f"pip{version}", "install", "-U", "pip"]
+            install_command = [
+                f"{HOME_DIR}/.pyenv/shims/pip{version}",
+                "install",
+                "-U",
+                "pip",
+            ]
             subprocess.run(install_command, check=True)
 
             try:
