@@ -52,7 +52,7 @@ set clipboard+=unnamedplus                      " Always use the clipboard
 
 " Highlight bad white space for python and c files
 highlight BadWhitespace ctermbg=red guibg=red
-au BufRead,BufNewFile,BufEnter *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile,BufEnter match BadWhitespace /\s\+$/
 
 " Settings syntax coloring for log files
 au BufNewFile,BufRead *.log set filetype=log
