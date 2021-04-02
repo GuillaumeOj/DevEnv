@@ -16,6 +16,7 @@ vendor
 # Node
 .eslintcache
 node_modules
+build
 
 # Generic
 *.log
