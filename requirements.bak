@@ -1,38 +1,89 @@
+aiofiles @ file:///home/guillaume/.cache/pypoetry/artifacts/4a/5b/21/3b29233a41329d1821d778114dd0d8340c7dd20919478f0baebf7ceccf/aiofiles-0.5.0-py3-none-any.whl
+alembic @ file:///home/guillaume/.cache/pypoetry/artifacts/d5/65/ce/73132219060dcd95be58f763318c8297d794e5aca9b7ef57e8cf588e45/alembic-1.5.8-py2.py3-none-any.whl
+aniso8601 @ file:///home/guillaume/.cache/pypoetry/artifacts/83/58/b6/15926ced9a18ada68b9b81536cc23609555094a31b444811be36749cdc/aniso8601-7.0.0-py2.py3-none-any.whl
 appdirs==1.4.4
-astroid==2.4.2
+astroid==2.5.2
+async-exit-stack @ file:///home/guillaume/.cache/pypoetry/artifacts/d5/3c/4d/6b7bfb845b501fb6b8dc9ac75abdaddbb150f64c817607418984d6fad8/async_exit_stack-1.0.1-py3-none-any.whl
+async-generator @ file:///home/guillaume/.cache/pypoetry/artifacts/fe/72/db/709736555b02c2d1ae90038b7b05138b15e24edde3aa7556fc2507a90f/async_generator-1.10-py3-none-any.whl
 attrs==20.3.0
+bcrypt @ file:///home/guillaume/.cache/pypoetry/artifacts/e1/8f/44/0adcd01881468523abd64d2c6666d8e74ee78d8ef417abbd7cf7d04287/bcrypt-3.2.0-cp36-abi3-manylinux2010_x86_64.whl
 black==20.8b1
+certifi @ file:///home/guillaume/.cache/pypoetry/artifacts/d8/df/24/ed696681f34f8916b0aef99138db9a94e37d54684b9829af34a7fd4e39/certifi-2020.12.5-py2.py3-none-any.whl
+cffi @ file:///home/guillaume/.cache/pypoetry/artifacts/4f/8f/a0/2aa444364ce297a2ec86aed15a1047f5f5492100318fb1e92c7b2916ff/cffi-1.14.5-cp39-cp39-manylinux1_x86_64.whl
+chardet @ file:///home/guillaume/.cache/pypoetry/artifacts/11/63/f9/797eda27963177a6b75a340f62aa194d462ea69e6b0dbb77a651fa2b62/chardet-4.0.0-py2.py3-none-any.whl
 click==7.1.2
+cryptography @ file:///home/guillaume/.cache/pypoetry/artifacts/0d/0d/38/ef29024622c6551dfe90a30b5e1e693496287944a91646099b9779f9f8/cryptography-3.4.7-cp36-abi3-manylinux2014_x86_64.whl
+daiquiri @ file:///home/guillaume/.cache/pypoetry/artifacts/b4/e7/1e/eea5420366c80b2f6b47b9632198f3548aaf9aae59c82d59f794ace05f/daiquiri-3.0.0-py3-none-any.whl
 distlib==0.3.1
+dnspython @ file:///home/guillaume/.cache/pypoetry/artifacts/f1/c1/44/a2a8abff72fd5ece839f28105bb297c3f5f43855669510fa06b9484ace/dnspython-2.1.0-py3-none-any.whl
+ecdsa @ file:///home/guillaume/.cache/pypoetry/artifacts/14/9c/22/714d68f11858d9284095d52546006a6f51f1000444007476fc89ab1be4/ecdsa-0.14.1-py2.py3-none-any.whl
+email-validator @ file:///home/guillaume/.cache/pypoetry/artifacts/bf/d8/fd/1cc1c670b6755598ce0b230f55e07a594aaedc6c7036fd46ed019f2ffe/email_validator-1.1.2-py2.py3-none-any.whl
+fastapi @ file:///home/guillaume/.cache/pypoetry/artifacts/a9/a1/33/bf986a3433591f4d9956b333a2c4ad9a7643cb7a7e7ea3dd014ac6d3b5/fastapi-0.63.0-py3-none-any.whl
 filelock==3.0.12
-flake8==3.8.4
+flake8==3.9.0
 flake8-black==0.2.1
+graphene @ file:///home/guillaume/.cache/pypoetry/artifacts/0c/6d/32/80b2303303454c937fa02480112db34a7c830ae16db45fa70cfd856408/graphene-2.1.8-py2.py3-none-any.whl
+graphql-core @ file:///home/guillaume/.cache/pypoetry/artifacts/d5/1f/da/a984d8cf1d82c33f9e4fea207924a9f75031d507d657d7404081d284f3/graphql_core-2.3.2-py2.py3-none-any.whl
+graphql-relay @ file:///home/guillaume/.cache/pypoetry/artifacts/f7/52/e4/aa4e6e5eb691280910ecb371e64a97620fc0c4f461954a24eb19893f1c/graphql_relay-2.0.1-py3-none-any.whl
 greenlet==1.0.0
+h11 @ file:///home/guillaume/.cache/pypoetry/artifacts/bc/67/35/dab5a305c7a43c7a517d86674f35006dbb43c6746d19f419698f568164/h11-0.12.0-py3-none-any.whl
+httptools==0.1.1
+idna @ file:///home/guillaume/.cache/pypoetry/artifacts/ef/7f/a9/19cc0b8760bdf6f696290c06532496f8bb29fbdaad044f852fed00ec82/idna-2.10-py2.py3-none-any.whl
 iniconfig==1.1.1
-isort==5.7.0
+isort==5.8.0
+itsdangerous @ file:///home/guillaume/.cache/pypoetry/artifacts/82/e8/60/17593e06004d937316208bbf3859251fdedf80e106b9847181760ee2dd/itsdangerous-1.1.0-py2.py3-none-any.whl
 jedi==0.18.0
-lazy-object-proxy==1.4.3
+Jinja2 @ file:///home/guillaume/.cache/pypoetry/artifacts/c5/c3/19/5cf0bc7ff64d230dd7d23c044479d2b44dabe877ca4165c2d85cbe996d/Jinja2-2.11.3-py2.py3-none-any.whl
+lazy-object-proxy==1.6.0
+Mako @ file:///home/guillaume/.cache/pypoetry/artifacts/36/a0/32/d369940154b6574b58642bb8d75a2f2d2ad9a5f829c31e25e777978b50/Mako-1.1.4-py2.py3-none-any.whl
+MarkupSafe @ file:///home/guillaume/.cache/pypoetry/artifacts/a4/78/86/1bb0a788648c202bcaa2e95a65f75ad0939c3d4fe432ce5b720eb424d3/MarkupSafe-1.1.1-cp39-cp39-manylinux2010_x86_64.whl
 mccabe==0.6.1
 msgpack==1.0.2
-mypy==0.800
+mypy==0.812
 mypy-extensions==0.4.3
 neovim==0.3.1
+orjson @ file:///home/guillaume/.cache/pypoetry/artifacts/91/24/b6/f1db87ec0b8eb621a9f403873c2e51a218728c6330928117b6159095cd/orjson-3.5.1-cp39-cp39-manylinux2014_x86_64.whl
 packaging==20.9
-parso==0.8.1
+parso==0.8.2
+passlib @ file:///home/guillaume/.cache/pypoetry/artifacts/77/4c/ef/ede00a25f152c64431d284f4aefa4fa894ca004c6602e063ca7a521447/passlib-1.7.4-py2.py3-none-any.whl
 pathspec==0.8.1
 pluggy==0.13.1
+promise==2.3
+psycopg2==2.8.6
 py==1.10.0
-pycodestyle==2.6.0
-pyflakes==2.2.0
-pylint==2.6.0
-pynvim==0.4.2
+pyasn1 @ file:///home/guillaume/.cache/pypoetry/artifacts/7b/3a/54/42ce43b579bda01b9d79022fb733811594441e7a32e9f9a5a98f672bdc/pyasn1-0.4.8-py2.py3-none-any.whl
+pycodestyle==2.7.0
+pycparser @ file:///home/guillaume/.cache/pypoetry/artifacts/37/8e/5a/0ea4f84bc7f11e0e3468110efa2c7783241ea7eaa63a92a751de06f78f/pycparser-2.20-py2.py3-none-any.whl
+pydantic @ file:///home/guillaume/.cache/pypoetry/artifacts/27/29/9e/70b8dab589d8a57ea00b92e73ae3f3fc22ff5d3fd47c70084c60597ed4/pydantic-1.8.1-cp39-cp39-manylinux2014_x86_64.whl
+pyflakes==2.3.1
+pylint==2.7.4
+pynvim==0.4.3
 pyparsing==2.4.7
 pytest==6.2.2
-regex==2020.11.13
+python-dateutil @ file:///home/guillaume/.cache/pypoetry/artifacts/93/67/cf/49f56d9e954addcfc50e5ffc9faee013c2eb00c6d77d56c6a22cb33b54/python_dateutil-2.8.1-py2.py3-none-any.whl
+python-dotenv @ file:///home/guillaume/.cache/pypoetry/artifacts/37/69/c7/a0ca0c76db10e4d9cb59b26d67ad3eb036da7146a585b1f75126ca28db/python_dotenv-0.17.0-py2.py3-none-any.whl
+python-editor @ file:///home/guillaume/.cache/pypoetry/artifacts/43/75/a4/c8b6a02020de8bab9f4cb5f17ce34a4ef5e1c422e43f435471549db1ff/python_editor-1.0.4-py3-none-any.whl
+python-jose @ file:///home/guillaume/.cache/pypoetry/artifacts/11/5b/69/2d8d5b78b726c6bca575e426429ccbe7ba32ed58b57868a092d99c7c45/python_jose-3.2.0-py2.py3-none-any.whl
+python-json-logger==2.0.1
+python-multipart==0.0.5
+PyYAML @ file:///home/guillaume/.cache/pypoetry/artifacts/dd/d9/3d/cbc42de28fcde705eb305497d2f3e5679ca7890234c51348b33c0f428f/PyYAML-5.4.1-cp39-cp39-manylinux1_x86_64.whl
+regex==2021.3.17
+requests @ file:///home/guillaume/.cache/pypoetry/artifacts/22/0a/9d/0df883fbffbb406d0cddbb35e881e4ac6bfb8f0dee8733056b6a054bf7/requests-2.25.1-py2.py3-none-any.whl
+rsa @ file:///home/guillaume/.cache/pypoetry/artifacts/27/21/1f/fea99b1c1766c11c2c47dd961d7773ebab5c6acbf730200bd2e021b836/rsa-4.7.2-py3-none-any.whl
+Rx @ file:///home/guillaume/.cache/pypoetry/artifacts/3e/42/fa/57040de3378df2c8d1b596732e6666b9db676fc3e63c77aeb01c912679/Rx-1.6.1-py2.py3-none-any.whl
+sentry-sdk @ file:///home/guillaume/.cache/pypoetry/artifacts/6c/dd/43/684b5495cb8b80e690226edb2486ae270c4f6e15daa091720a28e9bac0/sentry_sdk-1.0.0-py2.py3-none-any.whl
 six==1.15.0
+SQLAlchemy @ file:///home/guillaume/.cache/pypoetry/artifacts/1a/51/1e/d435802f85b8d0578daa0d0cb01780315616aa8606edc727109d8bf874/SQLAlchemy-1.4.6-cp39-cp39-manylinux2014_x86_64.whl
+starlette @ file:///home/guillaume/.cache/pypoetry/artifacts/01/ff/79/e5ca5381f72248b8320e08456cb90fcb8ba4c0eab96cf295d2702e7907/starlette-0.13.6-py3-none-any.whl
 toml==0.10.2
-tox==3.21.4
+tox==3.23.0
 typed-ast==1.4.2
 typing-extensions==3.7.4.3
-virtualenv==20.4.2
+ujson @ file:///home/guillaume/.cache/pypoetry/artifacts/bc/fa/b1/3fba656fdd52a991fbdf597372cfededc12c9d55bcdd6ee7d4c85f792a/ujson-3.2.0.tar.gz
+urllib3 @ file:///home/guillaume/.cache/pypoetry/artifacts/fa/fd/9d/56169af5b3d1505ce8a40dc152136e8733b2df5060a6f86f013a1a9b3d/urllib3-1.26.4-py2.py3-none-any.whl
+uvicorn @ file:///home/guillaume/.cache/pypoetry/artifacts/ff/98/60/497b0419c728bec3cdbf21d3d2a119a9fe59fac4c04e1b28589c68adf0/uvicorn-0.13.4-py3-none-any.whl
+uvloop @ file:///home/guillaume/.cache/pypoetry/artifacts/b7/2a/6a/8bce54b388c414777e8cc6f61491f5299ad6351f9ad27d2824543bf637/uvloop-0.15.2-cp39-cp39-manylinux2010_x86_64.whl
+virtualenv==20.4.3
+watchgod @ file:///home/guillaume/.cache/pypoetry/artifacts/c3/91/37/e272b660df384c56daddbf21d710461aa2249f2c6432ddf2d49e975550/watchgod-0.7-py3-none-any.whl
+websockets==8.1
 wrapt==1.12.1
