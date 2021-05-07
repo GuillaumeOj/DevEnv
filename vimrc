@@ -127,6 +127,10 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" Auto-Import when CR the completion
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 
 " Navigate throw coc.nvim diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
