@@ -199,7 +199,7 @@ call SetupCommandAbbrs('CI', 'CocInfo')
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 " Organize imports before writing the buffer
-autocmd  BufWritePost * :OR
+autocmd  BufWritePost *.py :OR
 
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
