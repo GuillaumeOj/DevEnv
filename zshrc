@@ -28,7 +28,6 @@ autoload -Uz compinit && compinit -i
 
 
 # Settings for pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 
 # Settings for NVM
