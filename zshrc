@@ -11,7 +11,7 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/DevEnv/oh-my-zsh
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git python poetry postgres nvm yarn)
+plugins=(git python poetry postgres nvm yarn zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
