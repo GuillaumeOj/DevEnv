@@ -6,6 +6,7 @@ typings
 
 # Python
 .env*
+*venv
 htmlcov
 __pycache__
 .tox
