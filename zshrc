@@ -9,7 +9,7 @@ fi
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/guillaume/.oh-my-zsh"
+export ZSH=$HOME/DevEnv/oh-my-zsh
 ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git python poetry postgres nvm yarn)
 source $ZSH/oh-my-zsh.sh
