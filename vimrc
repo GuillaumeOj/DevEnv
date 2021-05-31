@@ -19,6 +19,7 @@ Plug 'ryanoasis/vim-devicons'                                   " Add filetype g
 Plug 'tpope/vim-sensible'
 Plug 'LucHermitte/local_vimrc'                                  " Handdle local vimrc files
 Plug 'LucHermitte/lh-vim-lib'                                   " Library used by local_vimrc
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Language
 Plug 'sheerun/vim-polyglot'                                     " Improve the syntax higlighting
@@ -210,3 +211,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
+
+" Setup for ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
