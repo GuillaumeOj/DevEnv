@@ -101,6 +101,7 @@ set autoread
 " === LOCAL_VIMRC ===
 call lh#local_vimrc#munge('whitelist', $HOME.'/DevData')    " Add the DevData dir in the local_vimrc whitelist
 call lh#local_vimrc#munge('whitelist', $HOME.'/DevEnv')    " Add the DevData dir in the local_vimrc whitelist
+call lh#local_vimrc#munge('whitelist', $HOME.'/dev')    " Add the DevData dir in the local_vimrc whitelist
 
 " === COC-GIT ===
 nmap <silent> [h <Plug>(coc-git-prevchunk)
