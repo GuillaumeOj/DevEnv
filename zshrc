@@ -48,3 +48,5 @@ export PATH="$HOME/.poetry/bin:$PATH"
 
 # Settings for python
 export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
