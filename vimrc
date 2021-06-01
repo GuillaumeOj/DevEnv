@@ -20,6 +20,8 @@ Plug 'tpope/vim-sensible'
 Plug 'LucHermitte/local_vimrc'                                  " Handdle local vimrc files
 Plug 'LucHermitte/lh-vim-lib'                                   " Library used by local_vimrc
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Language
 Plug 'sheerun/vim-polyglot'                                     " Improve the syntax higlighting
