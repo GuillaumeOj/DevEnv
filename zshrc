@@ -50,3 +50,9 @@ export PATH="$HOME/.poetry/bin:$PATH"
 export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Aliases for sketchfab
+if [ $USER = 'skfb-data' ] && [ $HOST = 'skfb-local' ]
+then
+  alias pty='/sketchfab/sketchfab/showwebgl/docker.sh manage test -v 2 --keepdb'
+fi
