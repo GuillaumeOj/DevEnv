@@ -54,5 +54,5 @@ export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
 # Aliases for sketchfab
 if [ $USER = 'skfb-data' ] && [ $HOST = 'skfb-local' ]
 then
-  alias pty='/sketchfab/sketchfab/showwebgl/docker.sh manage test -v 2 --keepdb'
+  alias pyt='/sketchfab/sketchfab/showwebgl/docker.sh manage test -v 2 --keepdb'
 fi
