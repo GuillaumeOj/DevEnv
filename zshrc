@@ -58,4 +58,5 @@ export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
 if [ $USER = 'skfb-data' ] && [ $HOST = 'skfb-local' ]
 then
   alias pyt='/sketchfab/sketchfab/showwebgl/docker.sh manage test -v 2 --keepdb'
+  #eval "$(_CLIPY_COMPLETE=zsh_source clipy)"
 fi
