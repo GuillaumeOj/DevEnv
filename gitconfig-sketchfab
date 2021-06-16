@@ -1,0 +1,16 @@
+[user]
+	email = guillaume.ojardias@sketchfab.com
+	name = Guillaume Ojardias
+[alias]
+	nb=!git switch master && git checkout --track origin/master -b
+[core]
+	editor = vi
+	excludesFile = ~/DevEnv/default_git_ignore
+[rerere]
+	enabled = true
+[grep]
+	lineNumber = true
+[pull]
+	rebase = true
+[lfs "https://github.com//sketchfab/sketchfab.git/info/lfs"]
+	locksverify = false
