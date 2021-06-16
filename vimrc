@@ -109,7 +109,10 @@ nmap <silent> [h <Plug>(coc-git-prevchunk)
 nmap <silent> ]h <Plug>(coc-git-nextchunk)
 nmap <silent> [c <Plug>(coc-git-prevconflict)
 nmap <silent> ]c <Plug>(coc-git-nextconflict)
-nmap gs <Plug>(coc-git-chunkinfo)
+nmap <silent> gs <Plug>(coc-git-chunkinfo)
+nmap <silent> gc <Plug>(coc-git-commit)
+nmap <silent> gu :CocCommand git.chunkUndo<CR>
+nmap <silent> gt :CocCommand git.chunkStage<CR>
 
 " === COC.NVIM ===
 set hidden
