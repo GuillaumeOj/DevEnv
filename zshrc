@@ -28,10 +28,7 @@ fpath=(~/.stripe $fpath)
 autoload -Uz compinit && compinit -i
 
 
-# === PYENV ===
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+# Settings for pyenv
 eval "$(pyenv init -)"
 
 # Settings for NVM
