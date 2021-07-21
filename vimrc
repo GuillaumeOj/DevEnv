@@ -21,6 +21,7 @@ Plug 'LucHermitte/local_vimrc'                                  " Handdle local 
 Plug 'LucHermitte/lh-vim-lib'                                   " Library used by local_vimrc
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }             " Add fzf a file explorer
 Plug 'junegunn/fzf.vim'                                         " Add the vim plugin for fzf
+Plug 'ludovicchabant/vim-gutentags'                             " Search by tags
 
 " Language
 Plug 'sheerun/vim-polyglot'                                     " Improve the syntax higlighting
@@ -221,3 +222,61 @@ endif
 nnoremap <silent><nowait><C-p>  :Files<CR>
 nnoremap <silent><nowait><C-t>  :Tags<CR>
 nnoremap <silent><nowait><S-t>  :BTags<CR>
+
+" === GUTENTAGS ===
+" https://www.reddit.com/r/vim/comments/d77t6j/guide_how_to_setup_ctags_with_gutentags_properly/
+let g:gutentags_cache_dir = expand('~/.cache/vim/ctags')
+command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')
+let g:gutentags_add_default_project_roots = 0
+let g:gutentags_project_root = ['.git']
+let g:gutentags_generate_on_new = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_generate_on_empty_buffer = 0
+let g:gutentags_ctags_exclude = [
+      \ '*.git', '*.svg', '*.hg',
+      \ '*/tests/*',
+      \ 'build',
+      \ 'dist',
+      \ '*sites/*/files/*',
+      \ 'bin',
+      \ 'node_modules',
+      \ 'bower_components',
+      \ 'cache',
+      \ 'compiled',
+      \ 'docs',
+      \ 'example',
+      \ 'bundle',
+      \ 'vendor',
+      \ '*.md',
+      \ '*-lock.json',
+      \ '*.lock',
+      \ '*bundle*.js',
+      \ '*build*.js',
+      \ '.*rc*',
+      \ '*.json',
+      \ '*.min.*',
+      \ '*.map',
+      \ '*.bak',
+      \ '*.zip',
+      \ '*.pyc',
+      \ '*.class',
+      \ '*.sln',
+      \ '*.Master',
+      \ '*.csproj',
+      \ '*.tmp',
+      \ '*.csproj.user',
+      \ '*.cache',
+      \ '*.pdb',
+      \ 'tags*',
+      \ 'cscope.*',
+      \ '*.css',
+      \ '*.less',
+      \ '*.scss',
+      \ '*.exe', '*.dll',
+      \ '*.mp3', '*.ogg', '*.flac',
+      \ '*.swp', '*.swo',
+      \ '*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
+      \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
+      \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
+      \ ]
