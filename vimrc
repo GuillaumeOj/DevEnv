@@ -66,6 +66,11 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" Settings for buffer navigation
+nnoremap <silent><TAB> :bnext<CR>
+nnoremap <silent><S-TAB> :bprevious<CR>
+nnoremap <silent><S-x> :bdelete<CR>
+
 " Change tab width for pyhton files
 au FileType pyhton set shiftwidth=4 tabstop=4 softtabstop=4
 
