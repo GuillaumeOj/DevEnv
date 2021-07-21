@@ -223,9 +223,11 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 
 " === FZF === 
-nnoremap <silent><nowait><C-p>  :Files<CR>
-nnoremap <silent><nowait><C-t>  :Tags<CR>
-nnoremap <silent><nowait><S-t>  :BTags<CR>
+nnoremap <silent><nowait><C-p> :Files<CR>
+nnoremap <silent><nowait><C-t> :Tags<CR>
+nnoremap <silent><nowait><S-t> :BTags<CR>
+nnoremap <silent><nowait><S-l> :BLines<CR>
+
 
 " === GUTENTAGS ===
 " https://www.reddit.com/r/vim/comments/d77t6j/guide_how_to_setup_ctags_with_gutentags_properly/
