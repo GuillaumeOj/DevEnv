@@ -19,8 +19,8 @@ Plug 'ryanoasis/vim-devicons'                                   " Add filetype g
 Plug 'tpope/vim-sensible'
 Plug 'LucHermitte/local_vimrc'                                  " Handdle local vimrc files
 Plug 'LucHermitte/lh-vim-lib'                                   " Library used by local_vimrc
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }             " Add fzf a file explorer
+Plug 'junegunn/fzf.vim'                                         " Add the vim plugin for fzf
 
 " Language
 Plug 'sheerun/vim-polyglot'                                     " Improve the syntax higlighting
@@ -217,5 +217,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-" Setup for fzf
-nnoremap <c-p>  :Files<CR>
+" === FZF === 
+nnoremap <silent><nowait><C-p>  :Files<CR>
+nnoremap <silent><nowait><C-t>  :Tags<CR>
+nnoremap <silent><nowait><S-t>  :BTags<CR>
