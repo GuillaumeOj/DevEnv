@@ -63,3 +63,9 @@ then
   alias t='/sketchfab/sketchfab/showwebgl/docker.sh manage test -v 2'
   #eval "$(_CLIPY_COMPLETE=zsh_source clipy)"
 fi
+#
+# Aliases for macOS 
+if [ $OS = 'OSX' ]
+then
+  alias vi='nvim'
+fi
