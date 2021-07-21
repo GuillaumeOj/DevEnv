@@ -82,8 +82,7 @@ endif
 
 " === THEME ===
 syntax on
-let g:gruvbox_italic = 1
-let g:gruvbox_contrast_dark = 'medium'
+let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
 
 " === AIRLINE ===
