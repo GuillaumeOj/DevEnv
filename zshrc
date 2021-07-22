@@ -59,9 +59,7 @@ export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
 # Aliases for sketchfab
 if [ $USER = 'skfb-data' ] && [ $HOST = 'skfb-local' ]
 then
-  alias tk='/sketchfab/sketchfab/showwebgl/docker.sh manage test -v 2 --keepdb'
-  alias t='/sketchfab/sketchfab/showwebgl/docker.sh manage test -v 2'
-  #eval "$(_CLIPY_COMPLETE=zsh_source clipy)"
+  source "$HOME/DevEnv/zshrc_sketchfab"
 fi
 #
 # Aliases for macOS 
