@@ -54,7 +54,10 @@ export BAT_THEME="gruvbox-dark"
 # Settings for python
 export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [ -f ~/.fzf.zsh ]
+then
+  source ~/.fzf.zsh
+fi
 
 # Aliases for sketchfab
 if [ $USER = 'skfb-data' ] && [ $HOST = 'skfb-local' ]
