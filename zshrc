@@ -65,7 +65,7 @@ then
 fi
 #
 # Aliases for macOS 
-if [ $OS = 'OSX' ]
+if [[ $OSTYPE == darwin* ]]
 then
-  alias vi='nvim'
+  alias vi=nvim
 fi
