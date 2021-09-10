@@ -38,6 +38,19 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+# Aliases for NVM
+function update_nvm () {
+  (
+  cd $NVM_DIR
+  git fetch --tags origin
+  git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" $(git rev-list --tags --max-count=1)`
+  ) && \. "$NVM_DIR/nvm.sh"
+}
+if [ -f $NVM_DIR/nvm.sh ]
+then
+  alias unvm=update_nvm
+fi
+
 # Settings for rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="$HOME/.rbenv/shims:$PATH"
