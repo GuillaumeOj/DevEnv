@@ -241,7 +241,6 @@ let g:gutentags_generate_on_write = 1
 let g:gutentags_generate_on_empty_buffer = 0
 let g:gutentags_ctags_exclude = [
       \ '*.git', '*.svg', '*.hg',
-      \ '*/tests/*',
       \ 'build',
       \ 'dist',
       \ '*sites/*/files/*',
