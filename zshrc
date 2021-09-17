@@ -67,6 +67,9 @@ export BAT_THEME="gruvbox-dark"
 # Settings for python
 export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
 
+# Settings for git
+alias open='git diff --name-only --relative | xargs vi'
+
 if [ -f ~/.fzf.zsh ]
 then
   source ~/.fzf.zsh
