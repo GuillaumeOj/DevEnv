@@ -22,6 +22,7 @@ Plug 'LucHermitte/lh-vim-lib'                                   " Library used b
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }             " Add fzf a file explorer
 Plug 'junegunn/fzf.vim'                                         " Add the vim plugin for fzf
 Plug 'ludovicchabant/vim-gutentags'                             " Search by tags
+Plug 'tpope/vim-fugitive'                                       " Git implementation in vim
 
 " Language
 Plug 'sheerun/vim-polyglot'                                     " Improve the syntax higlighting
