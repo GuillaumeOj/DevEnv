@@ -86,3 +86,18 @@ if [[ $OSTYPE == darwin* ]]
 then
   alias vi=nvim
 fi
+
+# Update llvm
+LLVM_DIR='$HOME/dev/llvm-project'
+function update_llvm () {
+  (
+    cd $LLVM_DIR
+    git pull origin master
+  ) && \
+    cmake -S $LLVM_DIR/llvm -B $LLVM_DIR/build -G Ninja -DLLVM_ENABLE_PROJECTS='clang;clang-tools-extra;lldb' && \
+    cmake --build $LLVM_DIR/build
+}
+if [[ -d $LLVM_DIR ]]
+then
+  alias ullvm=update_llvm
+fi

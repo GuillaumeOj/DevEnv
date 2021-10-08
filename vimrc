@@ -23,6 +23,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }             " Add fzf a file
 Plug 'junegunn/fzf.vim'                                         " Add the vim plugin for fzf
 Plug 'ludovicchabant/vim-gutentags'                             " Search by tags
 Plug 'tpope/vim-fugitive'                                       " Git implementation in vim
+Plug 'rhysd/vim-clang-format'                                   " Clang-format implementation for vim
 
 " Language
 Plug 'sheerun/vim-polyglot'                                     " Improve the syntax higlighting
@@ -43,8 +44,8 @@ set undofile                                    " So is persistent undo ...
 set undolevels=1000                             " Maximum number of changes that can be undone
 set undoreload=10000                            " Maximum number lines to save for undo on a buffer reload
 set cursorline                                  " Display the cursoline
-set scrolljump=5                                " Lines to scroll when cursor leaves screen
-set scrolloff=3                                 " Minimum lines to keep above and below cursor
+set scrolljump=10                                " Lines to scroll when cursor leaves screen
+set scrolloff=5                                 " Minimum lines to keep above and below cursor
 set expandtab                                   " Tabs are spaces, not tabs
 set shiftwidth=2                                " Use indents of 2 spaces
 set tabstop=2                                   " An indentation every 2 columns
@@ -223,7 +224,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
   vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
-" === FZF === 
+" === FZF ===
 nnoremap <silent><nowait><C-p> :Files<CR>
 nnoremap <silent><nowait><C-t> :Tags<CR>
 nnoremap <silent><nowait><S-t> :BTags<CR>
@@ -286,3 +287,6 @@ let g:gutentags_ctags_exclude = [
       \ '*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
       \ '*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
       \ ]
+
+" === CLANG-FORMAT ===
+nnoremap <silent><nowait> FC :ClangFormat<CR>
