@@ -76,6 +76,11 @@ nnoremap <silent><S-x> :bdelete<CR>
 " Change tab width for pyhton files
 au FileType pyhton set shiftwidth=4 tabstop=4 softtabstop=4
 
+" Use CV for editing vim's config
+nnoremap <silent>CV   :e ~/.vimrc<CR>
+" Use RC for reloading vim's config
+nnoremap <silent>RC   :so ~/.vimrc<CR>
+
 " Save undofiles in the same directory
 if has('persistent_undo')
   set undodir=$HOME/.vim/undo
