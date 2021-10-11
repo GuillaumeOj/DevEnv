@@ -107,6 +107,11 @@ let g:airline_symbols.maxlinenr = ''
 let g:airline_symbols.dirty='⚡'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_skip_empty_section = 1
+let g:airline#extensions#default#layout = [
+    \ ['a', 'c'],
+    \ ['error', 'warning']
+    \ ]
 
 " === SENSIBLE ===
 set autoread
