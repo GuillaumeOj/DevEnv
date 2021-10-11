@@ -202,8 +202,9 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
+" Add `:FO` command to format current buffer.
+command! -nargs=0 FO :call CocAction('format')
+nnoremap <silent>FO  :FO<CR>
 
 " Function for create shortcuts
 function! SetupCommandAbbrs(from, to)
