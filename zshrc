@@ -81,10 +81,13 @@ then
   source "$HOME/DevEnv/zshrc_sketchfab"
 fi
 #
-# Aliases for macOS 
+# Aliases for macOS
 if [[ $OSTYPE == darwin* ]]
 then
   alias vi=nvim
+  export PATH="/usr/local/opt/llvm/bin:$PATH"
+  export LDFLAGS="-L/usr/local/opt/llvm/lib"
+  export CPPFLAGS="-I/usr/local/opt/llvm/include"
 fi
 
 # Update llvm
