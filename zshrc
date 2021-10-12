@@ -76,7 +76,8 @@ then
 fi
 
 # Aliases for sketchfab
-if [ $USER = 'skfb-data' ] && [ $HOST = 'skfb-local' ]
+zshrc_sketchfab=$HOME/DevEnv/zshrc_sketchfab
+if [ -s $zshrc_sketchfab ]
 then
   source "$HOME/DevEnv/zshrc_sketchfab"
 fi
