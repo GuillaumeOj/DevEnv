@@ -105,3 +105,5 @@ if [[ -d $LLVM_DIR ]]
 then
   alias ullvm=update_llvm
 fi
+
+alias lo='source ~/.zshrc'
