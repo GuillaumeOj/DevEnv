@@ -14,6 +14,7 @@ Plug 'vim-airline/vim-airline-themes'                           " For airline's 
 Plug 'morhetz/gruvbox'                                          " Nvim theme
 Plug 'lilydjwg/colorizer'                                       " Color hexa code (eg: #0F12AB)
 Plug 'ryanoasis/vim-devicons'                                   " Add filetype glyphs
+Plug 'Yggdroot/indentLine'
 
 " Vim
 Plug 'tpope/vim-sensible'
@@ -302,3 +303,6 @@ let g:gutentags_ctags_exclude = [
 
 " === CLANG-FORMAT ===
 nnoremap <silent><nowait> FC :ClangFormat<CR>
+
+" === INDENTLINE ===
+let g:indentLine_char_list = ['┊']
