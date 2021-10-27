@@ -35,6 +35,7 @@ call plug#end()
 " === GENERAL SETTINGS ===
 set signcolumn=yes                              " Always display the sign's column
 set number                                      " Display lines' number
+set relativenumber                              " Display relative numbers around the cursor
 set cursorcolumn                                " Display the cursor column
 set showmatch                                   " Show matching brackets/parenthesis
 set incsearch                                   " Find as you type search
@@ -44,8 +45,8 @@ set undofile                                    " So is persistent undo ...
 set undolevels=1000                             " Maximum number of changes that can be undone
 set undoreload=10000                            " Maximum number lines to save for undo on a buffer reload
 set cursorline                                  " Display the cursoline
-set scrolljump=10                                " Lines to scroll when cursor leaves screen
-set scrolloff=5                                 " Minimum lines to keep above and below cursor
+set scrolljump=10                               " Lines to scroll when cursor leaves screen
+set scrolloff=10                                " Minimum lines to keep above and below cursor
 set expandtab                                   " Tabs are spaces, not tabs
 set shiftwidth=2                                " Use indents of 2 spaces
 set tabstop=2                                   " An indentation every 2 columns
