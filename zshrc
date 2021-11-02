@@ -10,7 +10,6 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export ZSH_CUSTOM=$HOME/DevEnv/oh-my-zsh/custom/
 ZSH_THEME="powerlevel10k/powerlevel10k"
  export UPDATE_ZSH_DAYS=1
  COMPLETION_WAITING_DOTS="true"
