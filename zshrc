@@ -46,7 +46,7 @@ export PATH=$(which gem):$PATH
 export PATH="$HOME/.poetry/bin:$PATH"
 
 # Settings for bat
-export BAT_THEME="dracula"
+export BAT_THEME="Dracula"
 
 # Settings for python
 export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
