@@ -29,7 +29,7 @@ Plug 'rhysd/vim-clang-format'                                   " Clang-format i
 " Language
 Plug 'sheerun/vim-polyglot'                                     " Improve the syntax higlighting
 Plug 'kevinoid/vim-jsonc'                                       " JSON with comments!
-Plug 'neoclide/coc.nvim'                                        " Used for the LSP
+Plug 'neoclide/coc.nvim', {'branch': 'release'}                 " And NVIM is like an IDE
 
 call plug#end()
 
