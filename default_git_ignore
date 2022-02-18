@@ -3,6 +3,7 @@
 .~lock*
 *.un~
 typings
+undo
 
 # Python
 .env*
