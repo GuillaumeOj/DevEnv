@@ -29,3 +29,13 @@ map('n', 'gy', '<Plug>(coc-type-definition)')
 map('n', 'gi', '<Plug>(coc-implementation)')
 map('n', 'gr', '<Plug>(coc-references)')
 map('n', '<leader>n', '<Plug>(coc-rename)')
+
+-- Maps for coc-git
+map('n', '[h', '<Plug>(coc-git-prevchunk)')
+map('n', ']h', '<Plug>(coc-git-nextchunk)')
+map('n', '[c', '<Plug>(coc-git-prevconflict)')
+map('n', ']c', '<Plug>(coc-git-nextconflict)')
+map('n', 'gs', '<Plug>(coc-git-chunkinfo)')
+map('n', 'gc', '<Plug>(coc-git-commit)')
+map('n', 'grs', ':CocCommand git.chunkUndo<CR>')
+map('n', 'gst', ':CocCommand git.chunkStage<CR>')
