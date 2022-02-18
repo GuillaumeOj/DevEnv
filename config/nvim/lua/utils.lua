@@ -9,9 +9,8 @@ function M.map(mode, input, output, options)
 end
 
 function check_back_space()
-	local col = vim.fn.col('.') - 1
-        return not col or vim.fn.getline('.')[col - 1 ] == '\\s'
+	local col = col('.') - 1
+	return not col or vim.fn.getline('.')[col - 1]  == '\\s'
 end
 
 return M
-
