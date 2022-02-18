@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
 
 # Settings for zsh
 export ZSH_DISABLE_COMPFIX=true
@@ -12,9 +13,9 @@ source $ZSH/oh-my-zsh.sh
 PYENV_ROOT="$HOME/.pyenv"
 if [ -d $PYENV_ROOT ]
 then
-  export $PYENV_ROOT
   export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init --path)"
+  #eval "$(pyenv init --path)"
+  eval "$(pyenv init -)"
 fi
 
 # Settings for NVM
@@ -43,8 +44,11 @@ export PATH="$HOME/.rbenv/shims:$PATH"
 export PATH=$(which gem):$PATH
 
 # Settings for poetry
-export PATH="$HOME/.poetry/bin:$PATH"
-
+POETRY_PATH="$HOME/.poetry"
+if [ -d $POETRY_PATH ]
+then
+  export PATH="$POETRY_PATH/bin:$PATH"
+fi
 # Settings for bat
 export BAT_THEME="Dracula"
 
@@ -52,7 +56,7 @@ export BAT_THEME="Dracula"
 export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
 
 # Settings for git
-alias dirt='git diff --name-only --relative | xargs vi'
+alias dirt='git diff --name-only --relative | xargs nvim'
 
 test -f $HOME/.fzf.zsh && source $HOME/.fzf.zsh
 
@@ -66,3 +70,10 @@ then
 fi
 
 alias lo='source $HOME/.zshrc'
+
+# Added by Perl
+PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
+PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
