@@ -238,6 +238,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 
 " === FZF ===
+let $FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
 nnoremap <silent><nowait><C-p> :Files<CR>
 nnoremap <silent><nowait><C-t> :Tags<CR>
 nnoremap <silent><nowait><S-t> :BTags<CR>
