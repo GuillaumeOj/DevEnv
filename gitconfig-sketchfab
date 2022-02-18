@@ -6,6 +6,7 @@
 [core]
 	editor = /usr/local/bin/nvim
 	excludesFile = ~/DevEnv/default_git_ignore
+	trustctime = false
 [rerere]
 	enabled = true
 [grep]
@@ -14,3 +15,8 @@
 	rebase = true
 [lfs "https://github.com//sketchfab/sketchfab.git/info/lfs"]
 	locksverify = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
