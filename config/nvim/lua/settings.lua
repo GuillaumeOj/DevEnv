@@ -67,3 +67,6 @@ vim.g.indentLine_char_list = {'┊'}
 -- Settings for coc.nvim
 cmd[[ au CursorHold * silent call CocActionAsync('highlight') ]]
 cmd(':command! -nargs=0 FO :call CocAction("format")')
+
+-- Settings for FZF
+cmd('let $FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git"')
