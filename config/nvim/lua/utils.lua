@@ -1,7 +1,7 @@
 local M = {}
 
 function M.map(mode, input, output, options)
-	local local_options = { noremap = true }
+	local local_options = { noremap = true, silent = true }
 	if options then
 		local_options = vim.tbl_extend("force", local_options, options)
 	end
