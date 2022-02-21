@@ -6,10 +6,12 @@ local HOME = os.getenv('HOME')
 
 -- Settings for Neovim
 -- global options
-o.clipboard = o.clipboard ..'unnamedplus'
+o.clipboard = 'unnamedplus'
 o.backspace = 'indent,eol,start'
+o.backup = false
 o.cmdheight = 4
 o.completeopt = 'menu,menuone,noselect'
+o.hidden = true
 o.swapfile = false
 o.scrolljump = 10
 o.scrolloff = 10
@@ -35,29 +37,33 @@ bo.expandtab = true
 bo.shiftwidth = 2
 bo.softtabstop = 2
 bo.tabstop = 2
+bo.syntax = 'ON'
 
-cmd('syntax on')
-cmd('colorscheme dracula')
+cmd[[ colorscheme dracula ]]
+
 cmd [[
   augroup YankHighlight
     autocmd!
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]]
-cmd('au FileType pyhton set shiftwidth=4 tabstop=4 softtabstop=4')
 
 -- Settings for lualine
 require('lualine').setup {
   options = {
-    theme = 'dracula',
+    theme = 'dracula-nvim',
+  },
+  sections = {
+    lualine_c = {{
+      'filename',
+      path = 1
+    }}
   },
   tabline = {
-    lualine_a = {'buffers'},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {},
-    lualine_z = {}
+    lualine_a = {{
+        'buffers',
+        show_filename_only = false,
+    }},
   }
 }
 
@@ -66,7 +72,19 @@ vim.g.indentLine_char_list = {'┊'}
 
 -- Settings for coc.nvim
 cmd[[ au CursorHold * silent call CocActionAsync('highlight') ]]
-cmd(':command! -nargs=0 FO :call CocAction("format")')
 
 -- Settings for FZF
 cmd('let $FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --exclude .git"')
+
+-- Settings for Nvim autopairs
+require('nvim-autopairs').setup{}
+
+-- Settings for Treesitter
+require('nvim-treesitter.configs').setup{
+	indent = {
+		enable = true,
+	},
+	highlight = {
+		enable = true,
+	}
+}

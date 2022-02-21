@@ -1,16 +1,12 @@
 local M = {}
 
 function M.map(mode, input, output, options)
-	local local_options = { noremap = true, silent = true }
+	local local_options = { noremap = true, silent = true, nowait = false }
 	if options then
 		local_options = vim.tbl_extend("force", local_options, options)
 	end
 	vim.api.nvim_set_keymap(mode, input, output, local_options)
 end
 
-function check_back_space()
-	local col = col('.') - 1
-	return not col or vim.fn.getline('.')[col - 1]  == '\\s'
-end
 
 return M
