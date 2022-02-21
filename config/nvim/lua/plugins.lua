@@ -2,6 +2,7 @@ require 'paq' {
   'preservim/nerdtree';
   'preservim/nerdcommenter';
   'nvim-lualine/lualine.nvim';
+  'windwp/nvim-autopairs';
   'Mofiqul/dracula.nvim';
   'lilydjwg/colorizer';
   'ryanoasis/vim-devicons';
@@ -14,4 +15,5 @@ require 'paq' {
   'tpope/vim-fugitive';
   'sheerun/vim-polyglot';
   {'neoclide/coc.nvim', branch='master', run='yarn install --frozen-lockfile'};
+  {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'}
 }
