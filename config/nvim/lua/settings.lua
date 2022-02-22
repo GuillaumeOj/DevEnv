@@ -50,21 +50,21 @@ cmd [[
 
 -- Settings for lualine
 require('lualine').setup {
-  options = {
-    theme = 'dracula-nvim',
-  },
-  sections = {
-    lualine_c = {{
-      'filename',
-      path = 1
-    }}
-  },
-  tabline = {
-    lualine_a = {{
-        'buffers',
-        show_filename_only = false,
-    }},
-  }
+	options = {
+		theme = 'dracula-nvim',
+	},
+	sections = {
+		lualine_c = {{
+			'filename',
+			path = 1
+		}}
+	},
+	tabline = {
+		lualine_a = {{
+			'buffers',
+			show_filename_only = false,
+		}},
+	}
 }
 
 -- Settings for Indentline
@@ -86,5 +86,8 @@ require('nvim-treesitter.configs').setup{
 	},
 	highlight = {
 		enable = true,
-	}
+	},
+	incremental_selection = {
+		enable = true,
+	},
 }
