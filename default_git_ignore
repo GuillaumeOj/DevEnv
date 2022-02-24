@@ -15,6 +15,7 @@ vendor
 *egg-info
 .coverage
 .mypy_cache
+coc-settings.json
 
 # Node
 .eslintcache
@@ -26,6 +27,7 @@ build
 *.sqlite3
 dist
 .DS_Store
+tags.*
 tags
 
 # Sketchfab
