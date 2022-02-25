@@ -12,7 +12,6 @@ export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(git python poetry postgres nvm yarn zsh-autosuggestions zsh-syntax-highlighting)
 source $ZSH/oh-my-zsh.sh
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Settings for pyenv
 PYENV_ROOT="$HOME/.pyenv"
@@ -75,6 +74,8 @@ then
 fi
 
 alias lo='source $HOME/.zshrc'
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Added by Perl
 PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
