@@ -1,4 +1,0 @@
-[flake8]
-exclude = .tox,frontend
-max-line-length = 88
-extend-ignore = E203, E231, W503, D100
