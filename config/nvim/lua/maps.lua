@@ -65,10 +65,10 @@ map('n', ']d', '<Plug>(coc-diagnostic-next)', { noremap = false })
 map('n', 'gd', '<Plug>(coc-definition)', { noremap = false })
 map('n', 'gy', '<Plug>(coc-type-definition)', { noremap = false })
 map('n', 'gi', '<Plug>(coc-implementation)', { noremap = false })
-map('n', 'gr', '<Plug>(coc-references)', { noremap = false, nowait = false })
+map('n', 'gr', '<Plug>(coc-references)', { noremap = false })
 map('n', '<leader>rn', '<Plug>(coc-rename)', { noremap = false })
-map('c', 'FO', ':call CocAction("format")<CR>')
-map('c', 'OR', ':call CocAction("runCommand", "editor.action.organizeImport")<CR>')
+map('n', 'FO', ':FO<CR>')
+map('n', 'RO', ':OR<CR>')
 
 -- Maps for coc-git
 map('n', '[h', '<Plug>(coc-git-prevchunk)', { noremap = false })
