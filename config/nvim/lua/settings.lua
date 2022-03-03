@@ -62,8 +62,9 @@ require('lualine').setup {
 	},
 	tabline = {
 		lualine_a = {{
-			'buffers',
-			show_filename_only = false,
+			'filename'
+			--'buffers',
+			--show_filename_only = false,
 		}},
 	}
 }
