@@ -99,63 +99,63 @@ require('nvim-treesitter.configs').setup{
 }
 
 -- Settings for vim-gutentags
-g.gutentags_cache_dir = '~/.cache/vim/ctags'
+g.gutentags_enabled = true
+g.gutentags_cache_dir = '~/.cache/nvim/ctags'
 nvim_command("command! -nargs=0 GutentagsClearCache call system('rm ' . g:gutentags_cache_dir . '/*')")
-g.gutentags_add_default_project_roots = 0
+g.gutentags_add_default_project_roots = false
 -- g.gutentags_trace = 1
-g.gutentags_project_root = {'.git'}
-g.gutentags_generate_on_new = 1
-g.gutentags_generate_on_missing = 1
-g.gutentags_generate_on_write = 1
-g.gutentags_generate_on_empty_buffer = 1
+--g.gutentags_project_root = {'.git'}
+g.gutentags_generate_on_new = true
+g.gutentags_generate_on_missing = true
+g.gutentags_generate_on_write = true
+g.gutentags_generate_on_empty_buffer = true
 g.gutentags_ctags_exclude = {
-	'*.git', '*.svg', '*.hg',
+	'*.git',
+	'*.svg',
 	'build',
 	'dist',
 	'*sites/*/files/*',
 	'bin',
 	'node_modules',
 	'__pycache__', 'venv',
-	'bower_components',
-	'cache',
-	'compiled',
-	'docs',
-	'example',
 	'bundle',
 	'vendor',
-	'*.md',
 	'*-lock.json',
 	'*.lock',
 	'*bundle*.js',
 	'*build*.js',
 	'.*rc*',
 	'*.json',
-	'*.min.*',
-	'*.map',
 	'*.bak',
 	'*.zip',
 	'*.pyc',
-	'*.class',
-	'*.sln',
-	'*.Master',
-	'*.csproj',
 	'*.tmp',
-	'*.csproj.user',
-	'*.cache',
 	'*.pdb',
 	'tags*',
-	'cscope.*',
 	'*.css',
 	'*.less',
 	'*.scss',
-	'*.exe', '*.dll',
-	'*.mp3', '*.ogg', '*.flac',
-	'*.swp', '*.swo',
-	'*.bmp', '*.gif', '*.ico', '*.jpg', '*.png',
-	'*.rar', '*.zip', '*.tar', '*.tar.gz', '*.tar.xz', '*.tar.bz2',
-	'*.pdf', '*.doc', '*.docx', '*.ppt', '*.pptx',
-	'*.pyc',
+	'*.swp',
+	'undo/*',
+	'*.swo',
+	'*.bmp',
+	'*.gif',
+	'*.ico',
+	'*.jpg',
+	'*.png',
+	'*.rar',
+	'*.zip',
+	'*.tar',
+	'*.tar.gz',
+	'*.tar.xz',
+	'*.tar.bz2',
+	'*.pdf',
+	'*.doc',
+	'*.docx',
+	'*.ppt',
+	'*.pptx'
 }
 g.gutentags_ctags_extra_args = {
-	'--fields=+ailmnS',
+	--'--fields=+ailmnS',
+	'--tag-relative=yes'
 }
