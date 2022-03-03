@@ -1,7 +1,6 @@
 require 'paq' {
 	'junegunn/fzf';
 	'junegunn/fzf.vim';
-	'lewis6991/gitsigns.nvim';
 	'lilydjwg/colorizer';
 	'LucHermitte/lh-vim-lib';
 	'ludovicchabant/vim-gutentags';
@@ -14,6 +13,7 @@ require 'paq' {
 	'preservim/nerdcommenter';
 	'ryanoasis/vim-devicons';
 	'sheerun/vim-polyglot';
+	'tanvirtin/vgit.nvim',
 	'tpope/vim-sensible';
 	'windwp/nvim-autopairs';
 	'Yggdroot/indentLine';

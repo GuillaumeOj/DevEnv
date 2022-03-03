@@ -158,6 +158,3 @@ g.gutentags_ctags_extra_args = {
 	--'--fields=+ailmnS',
 	'--tag-relative=yes'
 }
-
--- Settings for gitsigns.nvim
-require('gitsigns').setup()
