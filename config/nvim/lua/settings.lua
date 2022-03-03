@@ -4,7 +4,6 @@ local bo = vim.bo
 local cmd = vim.cmd
 local g = vim.g
 local nvim_command = vim.api.nvim_command
-local HOME = os.getenv('HOME')
 
 -- Settings for Neovim
 -- global options
@@ -20,7 +19,7 @@ o.scrolloff = 10
 o.shortmess = 'filnxtToOFc'
 o.showmatch = true
 o.termguicolors = true
-o.undodir = HOME .. '/.config/nvim/undo'
+o.undodir = vim.fn.stdpath('config') .. '/undo'
 o.undofile = true
 o.undolevels = 1000
 o.undoreload = 10000
