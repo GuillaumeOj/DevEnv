@@ -1,19 +1,20 @@
 require 'paq' {
-  'preservim/nerdtree';
-  'preservim/nerdcommenter';
-  'nvim-lualine/lualine.nvim';
-  'windwp/nvim-autopairs';
-  'Mofiqul/dracula.nvim';
-  'lilydjwg/colorizer';
-  'ryanoasis/vim-devicons';
-  'Yggdroot/indentLine';
-  'tpope/vim-sensible';
-  'LucHermitte/lh-vim-lib';
-  'junegunn/fzf';
-  'junegunn/fzf.vim';
-  'ludovicchabant/vim-gutentags';
-  'tpope/vim-fugitive';
-  'sheerun/vim-polyglot';
-  {'neoclide/coc.nvim', branch='master', run='yarn install --frozen-lockfile'};
-  {'nvim-treesitter/nvim-treesitter', run=':TSUpdate'}
+	'junegunn/fzf';
+	'junegunn/fzf.vim';
+	'lewis6991/gitsigns.nvim';
+	'lilydjwg/colorizer';
+	'LucHermitte/lh-vim-lib';
+	'ludovicchabant/vim-gutentags';
+	'Mofiqul/dracula.nvim';
+	{'neoclide/coc.nvim', branch='master', run='yarn install --frozen-lockfile'};
+	'nvim-lua/plenary.nvim';
+	'nvim-lualine/lualine.nvim';
+	{'nvim-treesitter/nvim-treesitter', run=':TSUpdate'};
+	'preservim/nerdtree';
+	'preservim/nerdcommenter';
+	'ryanoasis/vim-devicons';
+	'sheerun/vim-polyglot';
+	'tpope/vim-sensible';
+	'windwp/nvim-autopairs';
+	'Yggdroot/indentLine';
 }
