@@ -17,11 +17,13 @@ map('n', '<Tab>', ':bnext<CR>')
 map('n', '<S-Tab>', ':bprevious<CR>')
 map('n', '<S-x>', ':bdelete<CR>')
 
--- Maps for FZF
-map('n', '<C-p>', ':Files<CR>')
-map('n', '<C-t>', ':Tags<CR>')
-map('n', '<S-t>', ':BTags<CR>')
-map('n', '<S-l>', ':BLines<CR>')
+-- Maps for Telescope
+map('n', '<leader>ff', '<cmd>lua require"telescope.builtin".find_files{}<CR>')
+map('n', '<leader>fg', '<cmd>lua require"telescope.builtin".live_grep{}<CR>')
+map('n', '<leader>fb', '<cmd>lua require"telescope.builtin".buffers{}<CR>')
+map('n', '<leader>ft', '<cmd>lua require"telescope.builtin".tags{}<CR>')
+map('n', '<leader>bl', '<cmd>lua require"telescope.builtin".current_buffer_fuzzy_find{}<CR>')
+map('n', '<leader>bt', '<cmd>lua require"telescope.builtin".current_buffer_tags{}<CR>')
 
 -- Maps for coc.nvim
 local function check_back_space()
@@ -69,15 +71,5 @@ map('n', 'gr', '<Plug>(coc-references)', { noremap = false })
 map('n', '<leader>rn', '<Plug>(coc-rename)', { noremap = false })
 map('n', 'FO', ':FO<CR>')
 map('n', 'RO', ':OR<CR>')
-
--- Maps for coc-git
-map('n', '[h', '<Plug>(coc-git-prevchunk)', { noremap = false })
-map('n', ']h', '<Plug>(coc-git-nextchunk)', { noremap = false })
-map('n', '[c', '<Plug>(coc-git-prevconflict)', { noremap = false })
-map('n', ']c', '<Plug>(coc-git-nextconflict)', { noremap = false })
-map('n', 'gs', '<Plug>(coc-git-chunkinfo)', { noremap = false })
-map('n', 'gc', '<Plug>(coc-git-commit)', { noremap = false })
-map('n', 'gu', ':CocCommand git.chunkUndo<CR>', { noremap = false })
-map('n', 'gt', ':CocCommand git.chunkStage<CR>', { noremap = false })
 
 _G.guigui.maps = maps
