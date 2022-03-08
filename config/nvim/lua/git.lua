@@ -70,9 +70,6 @@ require('vgit').setup({
 		live_gutter = {
 			enabled = true,
 		},
-		authorship_code_lens = {
-			enabled = true,
-		},
 		screen = {
 			diff_preference = 'unified',
 		},
