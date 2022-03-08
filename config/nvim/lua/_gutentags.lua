@@ -17,6 +17,7 @@ g.gutentags_ctags_exclude = {
 	'*sites/*/files/*',
 	'bin',
 	'node_modules',
+	'*/migrations/',
 	'__pycache__', 'venv',
 	'bower_components',
 	'cache',
