@@ -49,25 +49,6 @@ cmd [[
   augroup end
 ]]
 
--- Settings for lualine
-require('lualine').setup {
-	options = {
-		theme = 'dracula',
-	},
-	sections = {
-		lualine_c = {{
-			'filename',
-			path = 1
-		}}
-	},
-	tabline = {
-		lualine_a = {{
-			'buffers',
-			show_filename_only = false,
-		}},
-	}
-}
-
 -- Settings for Indentline
 g.indentLine_char_list = {'┊'}
 
@@ -79,16 +60,3 @@ cmd[[ au  BufWritePost *.py :OR ]]
 
 -- Settings for Nvim autopairs
 require('nvim-autopairs').setup{}
-
--- Settings for Treesitter
-require('nvim-treesitter.configs').setup{
-	indent = {
-		enable = true,
-	},
-	highlight = {
-		enable = true,
-	},
-	incremental_selection = {
-		enable = true,
-	},
-}
