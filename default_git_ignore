@@ -16,6 +16,7 @@ vendor
 .coverage
 .mypy_cache
 coc-settings.json
+.editorconfig
 
 # Node
 .eslintcache
