@@ -25,6 +25,7 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 
 snippet dbg_settings "set settings.DEBUG" A
+from django.conf import settings
 settings.DEBUG = True
 endsnippet
 
@@ -35,6 +36,7 @@ ipdb.set_trace()
 endsnippet
 
 snippet dbg_conditionnal_import "import and set ipdb only if DEBUG is True" A
+from django.conf import settings
 if settings.DEBUG:
     import ipdb
 
