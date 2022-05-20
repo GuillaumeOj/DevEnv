@@ -59,3 +59,4 @@ nvim_command("command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.
 
 -- Settings for Nvim autopairs
 require('nvim-autopairs').setup{}
+require('mini.surround').setup{}

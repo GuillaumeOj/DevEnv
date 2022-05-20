@@ -1,4 +1,5 @@
 require 'paq' {
+	'echasnovski/mini.nvim';
 	'lilydjwg/colorizer';
 	'LucHermitte/lh-vim-lib';
 	'ludovicchabant/vim-gutentags';
