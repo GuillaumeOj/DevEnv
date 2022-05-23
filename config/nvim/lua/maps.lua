@@ -59,6 +59,14 @@ function maps.handle_cr()
 	return esc('<CR>')
 end
 
+function maps.show_documentation()
+	if fn.CocAction('hasProvider', 'hover') then
+		fn.CocActionAsync('doHover')
+	else
+		fn.feedkeys('K', 'in')
+	end
+end
+
 map('i', '<Tab>', 'v:lua.guigui.maps.tab_completion()', { noremap = false, expr = true })
 map('i', '<S-Tab>', 'v:lua.guigui.maps.handle_stab()', { noremap = false, expr = true })
 map('i', '<CR>', 'v:lua.guigui.maps.handle_cr()', { noremap = false, expr = true })
@@ -71,5 +79,6 @@ map('n', 'gr', '<Plug>(coc-references)', { noremap = false })
 map('n', '<leader>rn', '<Plug>(coc-rename)', { noremap = false })
 map('n', 'FO', ':FO<CR>')
 map('n', 'RO', ':OR<CR>')
+map('n', 'K', ':call v:lua.guigui.maps.show_documentation()<CR>')
 
 _G.guigui.maps = maps
