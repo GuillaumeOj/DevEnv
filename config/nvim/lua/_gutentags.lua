@@ -1,7 +1,7 @@
 local g = vim.g
 
 g.gutentags_enabled = true
-g.gutentags_project_root = {'.git'}
+g.gutentags_project_root = { '.git' }
 g.gutentags_add_default_project_roots = false
 g.gutentags_generate_on_missing = true
 g.gutentags_generate_on_write = true

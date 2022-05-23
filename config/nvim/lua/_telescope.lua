@@ -1,6 +1,6 @@
 local b = vim.b
 
-require('telescope').setup{
+require('telescope').setup {
 	pickers = {
 		tags = {
 			only_sort_tags = true,

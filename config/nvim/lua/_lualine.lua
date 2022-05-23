@@ -3,16 +3,15 @@ require('lualine').setup {
 		theme = 'dracula',
 	},
 	sections = {
-		lualine_c = {{
+		lualine_c = { {
 			'filename',
 			path = 1
-		}}
+		} }
 	},
 	tabline = {
-		lualine_a = {{
+		lualine_a = { {
 			'buffers',
 			show_filename_only = false,
-		}},
+		} },
 	}
 }
-

@@ -25,7 +25,7 @@ require('vgit').setup({
 					author = 'You'
 				end
 				local time = os.difftime(os.time(), blame.author_time)
-				/ (60 * 60 * 24 * 30 * 12)
+				    / (60 * 60 * 24 * 30 * 12)
 				local time_divisions = {
 					{ 1, 'years' },
 					{ 12, 'months' },
@@ -53,7 +53,7 @@ require('vgit').setup({
 				end
 				local max_commit_message_length = 255
 				if #commit_message > max_commit_message_length then
-				commit_message = commit_message:sub(1, max_commit_message_length) .. '...'
+					commit_message = commit_message:sub(1, max_commit_message_length) .. '...'
 				end
 				return string.format(
 					' %s, %s ¥ %s',

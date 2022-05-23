@@ -61,7 +61,7 @@ end
 
 map('i', '<Tab>', 'v:lua.guigui.maps.tab_completion()', { noremap = false, expr = true })
 map('i', '<S-Tab>', 'v:lua.guigui.maps.handle_stab()', { noremap = false, expr = true })
-map('i', '<CR>', 'v:lua.guigui.maps.handle_cr()', { noremap = false, expr =true })
+map('i', '<CR>', 'v:lua.guigui.maps.handle_cr()', { noremap = false, expr = true })
 map('n', '[d', '<Plug>(coc-diagnostic-prev)', { noremap = false })
 map('n', ']d', '<Plug>(coc-diagnostic-next)', { noremap = false })
 map('n', 'gd', '<Plug>(coc-definition)', { noremap = false })

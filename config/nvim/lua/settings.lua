@@ -40,7 +40,7 @@ bo.softtabstop = 2
 bo.tabstop = 2
 bo.syntax = 'ON'
 
-cmd[[ colorscheme dracula ]]
+cmd [[ colorscheme dracula ]]
 
 cmd [[
   augroup YankHighlight
@@ -50,13 +50,13 @@ cmd [[
 ]]
 
 -- Settings for Indentline
-g.indentLine_char_list = {'┊'}
+g.indentLine_char_list = { '┊' }
 
 -- Settings for coc.nvim
-cmd[[ au CursorHold * silent call CocActionAsync('highlight') ]]
+cmd [[ au CursorHold * silent call CocActionAsync('highlight') ]]
 nvim_command("command! -nargs=0 FO :call CocAction('format')<CR>")
 nvim_command("command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')<CR>")
 
 -- Settings for mini.nvim.
-require('mini.surround').setup{}
+require('mini.surround').setup {}
 require('mini.pairs').setup {}
