@@ -8,7 +8,6 @@ g.gutentags_generate_on_write = true
 g.gutentags_generate_on_empty_buffer = true
 g.gutentags_cache_dir = vim.fn.stdpath('cache') .. '/ctags'
 g.gutentags_ctags_exclude = {
-	'venv',
 	'tools3d',
 	'mesh-ui',
 	'*.git', '*.svg', '*.hg',
