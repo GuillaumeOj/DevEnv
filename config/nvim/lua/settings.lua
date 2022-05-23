@@ -57,6 +57,5 @@ cmd[[ au CursorHold * silent call CocActionAsync('highlight') ]]
 nvim_command("command! -nargs=0 FO :call CocAction('format')<CR>")
 nvim_command("command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')<CR>")
 
--- Settings for Nvim autopairs
-require('nvim-autopairs').setup{}
+-- Settings for mini.nvim.
 require('mini.surround').setup{}

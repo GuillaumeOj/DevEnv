@@ -16,6 +16,5 @@ require 'paq' {
 	'sheerun/vim-polyglot';
 	'tanvirtin/vgit.nvim',
 	'tpope/vim-sensible';
-	'windwp/nvim-autopairs';
 	'Yggdroot/indentLine';
 }
