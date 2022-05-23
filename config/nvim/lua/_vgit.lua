@@ -67,6 +67,9 @@ require('vgit').setup({
 				)
 			end,
 		},
+		authorship_code_lens = {
+			enabled = false,
+		},
 		live_gutter = {
 			enabled = true,
 		},
