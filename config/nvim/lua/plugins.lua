@@ -1,6 +1,7 @@
 require 'paq' {
 	'echasnovski/mini.nvim';
 	'gpanders/editorconfig.nvim';
+	'kyazdani42/nvim-web-devicons';
 	'lilydjwg/colorizer';
 	'LucHermitte/lh-vim-lib';
 	'ludovicchabant/vim-gutentags';
@@ -13,7 +14,6 @@ require 'paq' {
 	{ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' };
 	'preservim/nerdtree';
 	'preservim/nerdcommenter';
-	'ryanoasis/vim-devicons';
 	'sheerun/vim-polyglot';
 	'tanvirtin/vgit.nvim',
 	'tpope/vim-sensible';
