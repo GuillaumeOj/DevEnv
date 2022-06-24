@@ -30,6 +30,7 @@ dist
 .DS_Store
 tags.*
 tags
+.rgignore
 
 # Sketchfab
 zshrc_sketchfab
