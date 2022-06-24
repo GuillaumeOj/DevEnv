@@ -12,6 +12,11 @@ require('telescope').setup {
 			override_generic_sorter = false,
 			override_file_sorter = true,
 		}
+	},
+	defaults = {
+		preview = {
+			treesitter = false,
+		}
 	}
 }
 
