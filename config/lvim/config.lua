@@ -1,6 +1,5 @@
 -- Load custom settings files here
 require("plugins")
-require("_gutentags")
 require("_telescope")
 require("_treestitter")
 require("settings")

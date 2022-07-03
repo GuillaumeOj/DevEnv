@@ -1,12 +1,4 @@
-local b = vim.b
-
 lvim.builtin.telescope.setup = {
-  pickers = {
-    tags = {
-      only_sort_tags = true,
-      cwd = b.gutentags_root,
-    },
-  },
   extensions = {
     fzy_native = {
       override_generic_sorter = false,
@@ -14,8 +6,11 @@ lvim.builtin.telescope.setup = {
     }
   },
   defaults = {
-    preview = {
-      treesitter = false,
+    path_display = "absolute",
+    file_ignore_patterns = {
+      "^%pgit/",
+      "^node_modules/",
+      "^__pycache__/",
     }
   }
 }

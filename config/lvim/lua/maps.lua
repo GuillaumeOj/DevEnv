@@ -5,7 +5,7 @@ lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 -- Maps for navigation between buffers
 lvim.keys.normal_mode["<Tab>"] = ":bnext<CR>"
 lvim.keys.normal_mode["<S-Tab>"] = ":bprevious<CR>"
-lvim.keys.normal_mode["<S-x"] = ":bdelete<CR>"
+lvim.keys.normal_mode["<S-x>"] = ":bdelete<CR>"
 
 -- Maps for Telescope
 lvim.builtin.which_key.mappings["t"] = {
@@ -13,8 +13,6 @@ lvim.builtin.which_key.mappings["t"] = {
   P    = { "<cmd>Telescope projects<CR>", "Projects" },
   f    = { "<cmd>Telescope find_files<CR>", "Find files" },
   g    = { "<cmd>Telescope live_grep<CR>", "Live grep" },
-  T    = { "<cmd>Telescope tags<CR>", "Tags" },
-  t    = { "<cmd>Telescope current_buffer_tags<CR>", "Current buffer tags" },
   b    = { "<cmd>Telescope current_buffer_fuzzy_find<CR>", "Find current buffer" },
   B    = { "<cmd>Telescope buffers<CR>", "Find open buffers" },
 }
