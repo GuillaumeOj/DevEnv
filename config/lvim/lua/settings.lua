@@ -1,7 +1,6 @@
 lvim.log.level = "warn"
 lvim.leader = "space"
 lvim.format_on_save = true
-lvim.colorscheme = "onedarker"
 vim.opt.cursorcolumn = true
 vim.opt.relativenumber = true
 

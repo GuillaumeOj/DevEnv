@@ -2,5 +2,6 @@ lvim.plugins = {
   { "echasnovski/mini.nvim" },
   { "nvim-telescope/telescope-fzy-native.nvim" },
   { "folke/trouble.nvim", cmd = "TroubleToggle", },
-  { "Yggdroot/indentLine" }
+  { "Yggdroot/indentLine" },
+  { "windwp/nvim-projectconfig" }
 }
