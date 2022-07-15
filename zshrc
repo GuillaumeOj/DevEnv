@@ -10,7 +10,7 @@ export PATH=/usr/local/sbin:$PATH
 export ZSH_DISABLE_COMPFIX=true
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="powerlevel10k/powerlevel10k"
-plugins=(git python poetry postgres nvm yarn zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git python poetry postgres nvm yarn zsh-autosuggestions zsh-syntax-highlighting docker docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # Settings for pyenv
