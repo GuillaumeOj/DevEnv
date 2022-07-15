@@ -10,3 +10,8 @@ vim.opt.relativenumber = true
 -- Settings for mini.nvim.
 require("mini.surround").setup {}
 require("mini.pairs").setup {}
+
+-- Settings for nvim-projectconfig
+require("nvim-projectconfig").setup {
+  project_dir = "~/.config/lvim/projects/"
+}
