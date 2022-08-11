@@ -3,5 +3,6 @@ lvim.plugins = {
   { "nvim-telescope/telescope-fzy-native.nvim" },
   { "folke/trouble.nvim", cmd = "TroubleToggle", },
   { "Yggdroot/indentLine" },
-  { "windwp/nvim-projectconfig" }
+  { "windwp/nvim-projectconfig" },
+  { "Mofiqul/dracula.nvim" }
 }
