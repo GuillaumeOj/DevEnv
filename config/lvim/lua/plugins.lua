@@ -4,5 +4,6 @@ lvim.plugins = {
   { "folke/trouble.nvim", cmd = "TroubleToggle", },
   { "Yggdroot/indentLine" },
   { "windwp/nvim-projectconfig" },
-  { "Mofiqul/dracula.nvim" }
+  { "Mofiqul/dracula.nvim" },
+  { "NvChad/nvim-colorizer.lua" }
 }
