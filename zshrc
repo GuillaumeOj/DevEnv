@@ -58,6 +58,12 @@ export BAT_THEME="Dracula"
 
 # Settings for python
 export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
+PYENV_ROOT="$HOME/.pyenv"
+if [ -d $PYENV_ROOT ]
+then
+  eval "$(pyenv init --path)"
+fi
+
 
 # Settings for git
 alias dirt='git diff --name-only --relative | xargs nvim'

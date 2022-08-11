@@ -1,5 +1,5 @@
-PYENV_ROOT="$HOME/.pyenv"
-if [ -d $PYENV_ROOT ]
+if [[ $OSTYPE == darwin* ]]
 then
-  eval "$(pyenv init --path)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
+
