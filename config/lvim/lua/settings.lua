@@ -12,6 +12,7 @@ vim.opt.conceallevel = 0
 -- Settings for mini.nvim.
 require("mini.surround").setup {}
 require("mini.pairs").setup {}
+require("mini.cursorword").setup {}
 
 -- Settings for nvim-projectconfig
 require("nvim-projectconfig").setup {
