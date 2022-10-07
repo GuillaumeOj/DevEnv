@@ -4,6 +4,7 @@
 *.un~
 typings
 undo
+.null-ls-root
 
 # Python
 .env*
