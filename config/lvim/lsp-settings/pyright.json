@@ -1,4 +1,5 @@
 {
-  "pyright.disableOrganizeImports": true,
+  "pyright.disableOrganizeImports": false,
+  "python.analysis.autoImportCompletions": true,
   "python.analysis.typeCheckingMode": " off"
 }
