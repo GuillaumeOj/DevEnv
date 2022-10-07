@@ -11,7 +11,7 @@ formatters.setup {
     {
       command = "isort",
       args = {
-        "--settings", "~/dev/sketchfab/pyproject.toml",
+        "--settings-path", "~/dev/sketchfab/pyproject.toml",
       },
       filetype = { "python" }
     }
