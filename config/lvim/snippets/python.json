@@ -1,0 +1,23 @@
+{
+  "set_debug": {
+    "prefix": "set_debug",
+    "body": [
+      "from django.conf import settings",
+      "",
+      "settings.debug = True",
+    ],
+    "description": "Enable DEBUG for Django projects"
+  },
+  "conditionnal_debug": {
+    "prefix": "conditionnal_debug",
+    "body": [
+      "from django.conf import settings",
+      "",
+      "if settings.DEBUG:",
+      "    import ipdb",
+      "",
+      "    ipdb.set_trace()",
+    ],
+    "description": "Enable DEBUG for Django projects"
+  }
+}
