@@ -65,21 +65,15 @@ then
 fi
 
 
-# Settings for git
-alias dirt='git diff --name-only --relative | xargs nvim'
+# Aliases
+alias dirt='git diff --name-only --relative | xargs lvim'
+alias lo='source $HOME/.zshrc'
+alias s='kitty +kitten ssh'
 
 test -f $HOME/.fzf.zsh && source $HOME/.fzf.zsh
 
 # Aliases for sketchfab
 ZSHRC_SKETCHFAB=$HOME/DevEnv/zshrc_sketchfab && test -f $ZSHRC_SKETCHFAB && source $ZSHRC_SKETCHFAB
-
-# Aliases for macOS
-if [[ $OSTYPE == darwin* ]]
-then
-  alias vi=nvim
-fi
-
-alias lo='source $HOME/.zshrc'
 
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
