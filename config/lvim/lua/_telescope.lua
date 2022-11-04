@@ -6,13 +6,15 @@ lvim.builtin.telescope.setup = {
     }
   },
   defaults = {
-    path_display = "absolute",
+    path_display = {
+      shorten = { len = 10 }
+    },
     file_ignore_patterns = {
-      "^%pgit/",
-      "^node_modules/",
-      "^__pycache__/",
+      "%.git",
+      "node_modules",
+      "__pycache__",
     }
-  }
+  },
 }
 
 lvim.builtin.telescope.on_config_done = function(telescope)
