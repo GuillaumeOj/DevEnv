@@ -18,6 +18,7 @@ PYENV_ROOT="$HOME/.pyenv"
 if [ -d $PYENV_ROOT ]
 then
   export PATH="$PYENV_ROOT/bin:$PATH"
+  export PATH=$(pyenv root)/shims:$PATH
   #eval "$(pyenv init --path)"
   eval "$(pyenv init -)"
 fi
