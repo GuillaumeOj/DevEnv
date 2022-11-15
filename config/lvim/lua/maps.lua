@@ -1,6 +1,5 @@
 -- Maps for Neovim
 lvim.keys.normal_mode["<esc>"] = ":nohlsearch<CR>"
-lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 
 -- Maps for navigation between buffers
 lvim.keys.normal_mode["<Tab>"] = ":bnext<CR>"
