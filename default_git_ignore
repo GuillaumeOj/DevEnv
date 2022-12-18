@@ -21,6 +21,7 @@ coc-settings.json
 
 # Node
 .eslintcache
+.yarn
 node_modules
 build
 
