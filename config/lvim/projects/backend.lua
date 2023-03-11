@@ -4,14 +4,14 @@ formatters.setup {
     command = "black",
     {
       args = {
-        "--config", "~/dev/emporium-fab/pyproject.toml",
+        "--config", "~/dev/sketchfab/pyproject.toml",
       },
       filetype = { "python" }
     },
     {
       command = "isort",
       args = {
-        "--settings-path", "~/dev/emporium-fab/pyproject.toml",
+        "--settings-path", "~/dev/sketchfab/pyproject.toml",
       },
       filetype = { "python" }
     }
@@ -24,7 +24,7 @@ linters.setup {
   {
     command = "flake8",
     args = {
-      "--config", "~/dev/emporium-fab/tox.ini",
+      "--config", "~/dev/sketchfab/tox.ini",
     },
     filetype = { "python" }
   }
