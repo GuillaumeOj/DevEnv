@@ -33,7 +33,7 @@ dist
 tags.*
 tags
 .rgignore
-/static/static
+static
 
 # Sketchfab
 zshrc_sketchfab
