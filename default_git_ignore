@@ -5,6 +5,7 @@
 typings
 undo
 .null-ls-root
+*config/lvim/projects/
 
 # Python
 .env*
