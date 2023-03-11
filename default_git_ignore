@@ -6,6 +6,7 @@ typings
 undo
 .null-ls-root
 *config/lvim/projects/
+lazy-lock.json
 
 # Python
 .env*
