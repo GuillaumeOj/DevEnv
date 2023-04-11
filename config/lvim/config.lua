@@ -1,5 +1,12 @@
 lvim.plugins = {
   { "alexaandru/nvim-lspupdate" },
+  {
+    'akinsho/flutter-tools.nvim',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+  },
   { "echasnovski/mini.nvim" },
   { "nvim-telescope/telescope-fzy-native.nvim" },
   { "lukas-reineke/indent-blankline.nvim" },
@@ -80,15 +87,15 @@ require("nvim-projectconfig").setup {
 }
 
 -- Settings for Telescope
-lvim.builtin.telescope.pickers.find_files.preview   = true
-lvim.builtin.telescope.pickers.find_files.previewer = nil
-lvim.builtin.telescope.pickers.find_files.hidden    = true
+lvim.builtin.telescope.pickers.find_files.preview    = true
+lvim.builtin.telescope.pickers.find_files.previewer  = nil
+lvim.builtin.telescope.pickers.find_files.hidden     = true
 
-lvim.builtin.telescope.pickers.buffers.preview      = true
-lvim.builtin.telescope.pickers.buffers.previewer    = nil
-lvim.builtin.telescope.pickers.buffers.initial_mode = "insert"
+lvim.builtin.telescope.pickers.buffers.preview       = true
+lvim.builtin.telescope.pickers.buffers.previewer     = nil
+lvim.builtin.telescope.pickers.buffers.initial_mode  = "insert"
 
-lvim.builtin.telescope.defaults.path_display = { shorten = { len = 10, exclude = { 1, -1 } } }
+lvim.builtin.telescope.defaults.path_display         = { shorten = { len = 10, exclude = { 1, -1 } } }
 lvim.builtin.telescope.defaults.file_ignore_patterns = {
   "vendor/*",
   "%.lock",
@@ -108,17 +115,17 @@ lvim.builtin.telescope.defaults.file_ignore_patterns = {
   "%.pdf",
 }
 
-lvim.builtin.telescope.extensions = {
+lvim.builtin.telescope.extensions                    = {
   override_generic_sorter = true,
   override_file_sorter = true,
 }
 
-lvim.builtin.telescope.on_config_done = function(telescope)
+lvim.builtin.telescope.on_config_done                = function(telescope)
   pcall(telescope.load_extension, "fzy_native")
 end
 
 -- Settings for Treesitter
-lvim.builtin.treesitter.ensure_installed = {
+lvim.builtin.treesitter.ensure_installed             = {
   "bash",
   "c",
   "javascript",
@@ -132,9 +139,9 @@ lvim.builtin.treesitter.ensure_installed = {
   "java",
   "yaml",
 }
-lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.ignore_install               = { "haskell" }
 
-lvim.autocommands = {
+lvim.autocommands                                    = {
   {
     { "BufEnter", "BufWinEnter" },
     {
@@ -144,3 +151,6 @@ lvim.autocommands = {
     }
   }
 }
+
+-- Settings for flutter-tools
+require("flutter-tools").setup {}
