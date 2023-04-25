@@ -9,3 +9,6 @@ for _, name in ipairs(core_conf_files) do
   local source_cmd = "source " .. path
   vim.cmd(source_cmd)
 end
+
+-- Load plugins config
+require("_which-key")
