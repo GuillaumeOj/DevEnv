@@ -1,5 +1,6 @@
 local core_conf_files = {
-  "plugins.lua"
+  "plugins.lua",
+  "globals.lua"
 }
 
 -- source all the core config files
