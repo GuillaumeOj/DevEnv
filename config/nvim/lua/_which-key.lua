@@ -13,6 +13,13 @@ wk.register({
     name = "Configuration",
     r = { "<cmd>source %<CR>", "Reload current config file" },
   },
+  b = {
+    name = "Buffers",
+    n = { "<cmd>BufferLineCycleNext<CR>", "Next" },
+    p = { "<cmd>BufferLineCyclePrev<CR>", "Previous" },
+    h = { "<cmd>BufferLineCloseLeft<CR>", "Close all to the left" },
+    k = { "<cmd>BufferLineCloseRight<CR>", "Close all to the right" },
+  },
   g = {
     name = "Git",
     j = { "<cmd>Gitsigns next_hunk<CR>", "Next hunk" },

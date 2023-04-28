@@ -6,8 +6,6 @@ require("settings")
 require("plugins")
 
 -- Load plugins settings
-require("_lualine")
-require("_mini-nvim")
 require("_which-key")
 
 -- Load key mapping
