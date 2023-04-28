@@ -19,7 +19,6 @@ local lazy_settings = {
 }
 
 local plugins = {
-  'wbthomason/packer.nvim',
   {
     'folke/tokyonight.nvim',
     lazy = false,
