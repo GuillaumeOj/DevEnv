@@ -5,9 +5,6 @@ local wo = vim.wo
 vim.g.mapleader = " "
 
 -- Neovim UI
--- Colorsheme
-vim.cmd("colorscheme tokyonight")
-
 -- Global options
 o.cmdheight = 4
 
