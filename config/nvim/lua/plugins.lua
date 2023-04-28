@@ -29,9 +29,15 @@ local plugins = {
     end,
   },
   {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end,
+  },
+  {
     'nvim-telescope/telescope.nvim',
     version = '0.1.1',
-    dependencies = { {'nvim-lua/plenary.nvim'} },
+    dependencies = { 'nvim-lua/plenary.nvim', "nvim-telescope/telescope-fzf-native.nvim" },
     lazy = false,
   },
   {
@@ -40,7 +46,7 @@ local plugins = {
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      require("which-key").setup {}
+      require("config.whichkey").setup {}
     end
   },
   {
@@ -70,12 +76,6 @@ local plugins = {
 
   },
   "ojroques/nvim-bufdel",
-  {
-    "lewis6991/gitsigns.nvim",
-    config = function()
-      require("gitsigns").setup()
-    end,
-  },
 }
 
 require('lazy').setup(plugins,lazy_settings)
