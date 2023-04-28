@@ -69,6 +69,7 @@ local plugins = {
     end,
 
   },
+  "ojroques/nvim-bufdel",
   {
     "lewis6991/gitsigns.nvim",
     config = function()
