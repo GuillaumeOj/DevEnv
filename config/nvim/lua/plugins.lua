@@ -43,12 +43,31 @@ local plugins = {
       require("which-key").setup {}
     end
   },
-  "echasnovski/mini.nvim",
+  {
+    "echasnovski/mini.nvim",
+    config = function ()
+      require("mini.surround").setup()
+      require("mini.pairs").setup()
+    end,
+  },
   {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "nvim-tree/nvim-web-devicons"
-    }
+    },
+    config = function()
+      require("lualine").setup()
+    end,
+  },
+  {
+    "akinsho/bufferline.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons"
+    },
+    config = function()
+      require("bufferline").setup()
+    end,
+
   },
   {
     "lewis6991/gitsigns.nvim",
