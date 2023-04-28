@@ -74,6 +74,11 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  ["mini.nvim"] = {
+    loaded = true,
+    path = "/home/guillaume/.local/share/nvim/site/pack/packer/start/mini.nvim",
+    url = "https://github.com/echasnovski/mini.nvim"
+  },
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/guillaume/.local/share/nvim/site/pack/packer/start/packer.nvim",
