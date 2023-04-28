@@ -1,5 +1,6 @@
-local map = _G.guigui.utils.map
-local buff_map = _G.guigui.utils.buf_map
+local utils = require("utils")
+local map = utils.map
+local buff_map = utils.buf_map
 
 -- Mappings for Neovim
 map('n', '<esc>', ':nohlsearch<CR>')

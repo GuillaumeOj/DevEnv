@@ -1,6 +1,9 @@
 local M = {}
 local api = vim.api
+local notify = vim.notify
+local log_levels = vim.log.levels
 
+-- KeyMapping
 function M.map(mode, lhs, rhs, extra_options)
   local default_options = { noremap = true, silent = true, nowait = false }
   options = vim.tbl_extend('keep', extra_options or {}, default_options)
@@ -13,6 +16,12 @@ function M.buf_map(buffnr, mode, lhs, rhs, extra_options)
   return api.nvim_buf_set_keymap(buffnbr, mode, lhs, rhs, options)
 end
 
-_G.guigui.utils = M
+-- Notifications
+function M.error(message, name)
+  notify(message, log_levels.ERROR, { title = name })
+end
+function M.info(message, name)
+  notify(message, log_levels.INFO, { title = name })
+end
 
 return M
