@@ -2,8 +2,8 @@ _G.guigui = {}
 
 -- Load general settings
 require("utils")
-require("plugins")
 require("settings")
+require("plugins")
 
 -- Load plugins settings
 require("_lualine")

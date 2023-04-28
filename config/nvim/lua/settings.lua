@@ -7,10 +7,8 @@ vim.g.mapleader = " "
 -- Neovim UI
 -- Global options
 o.cmdheight = 4
-
--- Window-local options
-wo.cursorcolumn = true
-wo.cursorline = true
-wo.number = true
-wo.relativenumber = true
-wo.signcolumn = 'yes'
+o.cursorcolumn = true
+o.cursorline = true
+o.number = true
+o.relativenumber = true
+o.signcolumn = 'yes'
