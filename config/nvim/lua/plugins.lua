@@ -1,3 +1,4 @@
+-- Bottstrap Lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -11,7 +12,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
+local lazy_settings = {
+  ui = {
+    border = "rounded",
+  }
+}
+
+local plugins = {
   'wbthomason/packer.nvim',
   {
     'folke/tokyonight.nvim',
@@ -49,9 +56,6 @@ require('lazy').setup({
       require("gitsigns").setup()
     end,
   },
-},
-{
-  ui = {
-    border = "rounded",
-  }
-})
+}
+
+require('lazy').setup(plugins,lazy_settings)
