@@ -19,6 +19,7 @@ wk.register({
     p = { "<cmd>BufferLineCyclePrev<CR>", "Previous" },
     h = { "<cmd>BufferLineCloseLeft<CR>", "Close all to the left" },
     k = { "<cmd>BufferLineCloseRight<CR>", "Close all to the right" },
+    c = { "<cmd>BufDel<CR>", "Close current buffer" },
   },
   g = {
     name = "Git",
