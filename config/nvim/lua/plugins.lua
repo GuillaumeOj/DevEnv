@@ -90,6 +90,26 @@ local plugins = {
     'williamboman/mason.nvim',
     build = ':MasonUpdate',
   },
+  { 'hrsh7th/cmp-nvim-lsp', lazy = true, },
+  { 'hrsh7th/cmp-buffer',   lazy = true, },
+  { 'hrsh7th/cmp-path',     lazy = true, },
+  { 'hrsh7th/cmp-cmdline',  lazy = true, },
+  {
+    'hrsh7th/nvim-cmp',
+    dependencies = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'saadparwaiz1/cmp_luasnip',
+    },
+    event = { 'InsertEnter', 'CmdLineEnter' },
+    config = function()
+      require('config.cmp').setup()
+    end,
+  },
+  { 'L3MON4D3/LuaSnip',         lazy = true },
+  { 'saadparwaiz1/cmp_luasnip', lazy = true },
 }
 
 require('lazy').setup(plugins, lazy_settings)
