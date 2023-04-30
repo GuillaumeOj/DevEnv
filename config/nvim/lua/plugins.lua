@@ -92,7 +92,7 @@ local plugins = {
   },
   {
     'williamboman/mason-lspconfig.nvim',
-    dependencies = { 'williamboman/mason.nvim' },
+    dependencies = { 'williamboman/mason.nvim', 'lukas-reineke/lsp-format.nvim' },
     config = function()
       require('config.lsp').setup()
     end,
@@ -101,10 +101,11 @@ local plugins = {
     'williamboman/mason.nvim',
     build = ':MasonUpdate',
   },
-  { 'hrsh7th/cmp-nvim-lsp', lazy = true, },
-  { 'hrsh7th/cmp-buffer',   lazy = true, },
-  { 'hrsh7th/cmp-path',     lazy = true, },
-  { 'hrsh7th/cmp-cmdline',  lazy = true, },
+  { 'lukas-reineke/lsp-format.nvim' },
+  { 'hrsh7th/cmp-nvim-lsp',         lazy = true, },
+  { 'hrsh7th/cmp-buffer',           lazy = true, },
+  { 'hrsh7th/cmp-path',             lazy = true, },
+  { 'hrsh7th/cmp-cmdline',          lazy = true, },
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -129,16 +130,16 @@ local plugins = {
   },
   {
     'yamatsum/nvim-cursorline',
-    config = function ()
+    config = function()
       require('config.cursorline').setup()
     end
   },
   {
     'phaazon/hop.nvim',
-    config = function ()
+    config = function()
       require('config.hop').setup()
-    end
-  }
+    end,
+  },
 }
 
 require('lazy').setup(plugins, lazy_settings)
