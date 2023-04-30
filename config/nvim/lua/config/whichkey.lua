@@ -1,14 +1,23 @@
 local M = {}
-local api = vim.api
 local wich_key = require('which-key')
 
 function M.setup()
   local leader_keymap = {
     f = {
       name = 'File',
-      b = { '<cmd>Telescope buffers<CR>', 'List open buffers' },
       f = { '<cmd>Telescope find_files<CR>', 'Find file' },
       g = { '<cmd>Telescope git_files<CR>', 'Find file within git dir' },
+      s = { '<cmd>Telescope grep_string<CR>', 'Search current string' },
+      G = { '<cmd>Telescope live_grep<CR>', 'Search string in workspace' },
+      b = { '<cmd>Telescope current_buffer_fuzzy_find<CR>', 'Find in current buffer' },
+      l = {
+        name = 'Find in code',
+        s = { '<cmd>Telescope lsp_document_symbols<CR>', 'Find symbols in current buffer' },
+        S = { '<cmd>Telescope lsp_workspace_symbols<CR>', 'Find symbols in current workspace' },
+        r = { '<cmd>Telescope lsp_references<CR>', 'References for current word' },
+        i = { '<cmd>Telescope lsp_incoming_calls<CR>', 'Incoming calls for current word' },
+        o = { '<cmd>Telescope lsp_outgoing_calls<CR>', 'Outgoing calls for current word' },
+      }
     },
     ['w'] = { '<cmd>w<CR>', 'Save current buffer' },
     ['q'] = { '<cmd>q<CR>', 'Close current window' },
@@ -21,6 +30,7 @@ function M.setup()
       h = { '<cmd>BufferLineCloseLeft<CR>', 'Close all to the left' },
       k = { '<cmd>BufferLineCloseRight<CR>', 'Close all to the right' },
       c = { '<cmd>BufDel<CR>', 'Close current buffer' },
+      f = { '<cmd>Telescope buffers<CR>', 'List open buffers' },
     },
     g = {
       name = 'Git',
@@ -48,6 +58,7 @@ function M.setup()
       u = { '<cmd>Lazy update<CR>', 'Update' },
       p = { '<cmd>Lazy profile<CR>', 'Profile' },
     },
+    m = { '<cmd>Mason<CR>', 'Mason' },
   }
   wich_key.register(leader_keymap, { prefix = '<leader>' })
 

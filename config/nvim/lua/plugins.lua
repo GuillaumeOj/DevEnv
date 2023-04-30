@@ -1,12 +1,16 @@
+local o = vim.o
+local cmd = vim.cmd
+local fn = vim.fn
+
 -- Bottstrap Lazy.nvim
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+local lazypath = fn.stdpath('data') .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
+  fn.system({
     'git',
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
+    '--branch=stable',
     lazypath,
   })
 end
@@ -24,7 +28,7 @@ local plugins = {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd([[colorscheme tokyonight]])
+      cmd([[colorscheme tokyonight]])
     end,
   },
   {
@@ -34,17 +38,24 @@ local plugins = {
     end,
   },
   {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+  },
+  {
     'nvim-telescope/telescope.nvim',
     version = '0.1.1',
     dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-fzf-native.nvim' },
     lazy = false,
+    config = function()
+      require('config.telescope').setup()
+    end
   },
   {
     'folke/which-key.nvim',
     lazy = false,
     config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
+      o.timeout = true
+      o.timeoutlen = 300
       require('config.whichkey').setup()
     end
   },
