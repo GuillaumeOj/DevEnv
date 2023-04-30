@@ -1,6 +1,5 @@
 local cmd = vim.cmd
 local o = vim.o
-local wo = vim.wo
 
 -- Change default <leader> by <space>
 vim.g.mapleader = " "
@@ -13,6 +12,9 @@ o.cursorline = true
 o.number = true
 o.relativenumber = true
 o.signcolumn = 'yes'
+o.scrolljump = 10
+o.scrolloff = 10
+o.swapfile = false
 o.undodir = vim.fn.stdpath('config') .. '/undo'
 o.undofile = true
 o.undolevels = 1000
