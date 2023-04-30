@@ -20,6 +20,7 @@ end
 function M.error(message, name)
   notify(message, log_levels.ERROR, { title = name })
 end
+
 function M.info(message, name)
   notify(message, log_levels.INFO, { title = name })
 end
