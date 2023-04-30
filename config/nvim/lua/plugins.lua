@@ -132,6 +132,12 @@ local plugins = {
     config = function ()
       require('config.cursorline').setup()
     end
+  },
+  {
+    'phaazon/hop.nvim',
+    config = function ()
+      require('config.hop').setup()
+    end
   }
 }
 
