@@ -45,7 +45,7 @@ local plugins = {
     config = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      require("config.whichkey").setup {}
+      require("config.whichkey").setup()
     end
   },
   {
@@ -74,7 +74,7 @@ local plugins = {
     end,
 
   },
-  "ojroques/nvim-bufdel",
+  { "ojroques/nvim-bufdel" },
 }
 
 require('lazy').setup(plugins,lazy_settings)
