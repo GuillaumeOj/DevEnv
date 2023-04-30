@@ -2,7 +2,7 @@ local cmd = vim.cmd
 local o = vim.o
 
 -- Change default <leader> by <space>
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 
 -- Global options
 o.clipboard = 'unnamedplus'
