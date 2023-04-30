@@ -2,6 +2,7 @@ local M = {}
 local wich_key = require('which-key')
 
 local function on_attach(client, bufnr)
+  require('lsp-format').on_attach(client)
   local code_keymap = {
     l = {
       name = 'Code',
@@ -35,6 +36,7 @@ function M.setup()
   require('mason-lspconfig').setup({
     ensure_installed = { 'lua_ls' },
   })
+  require('lsp-format').setup()
 
   require('mason-lspconfig').setup_handlers({
     function(server_name)
