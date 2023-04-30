@@ -1,18 +1,9 @@
 local M = {}
-
+local api = vim.api
+local wich_key = require("which-key")
 
 function M.setup()
-  local wk = require("which-key")
-
-  local options = {
-    mode = "n", -- Normal mode
-    prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = false, -- use `nowait` when creating keymaps
-  }
-  local mappings = {
+  local leader_keymap = {
     f = {
       name = "File",
       b = { "<cmd>Telescope buffers<CR>", "List open buffers" },
@@ -27,8 +18,6 @@ function M.setup()
     },
     b = {
       name = "Buffers",
-      n = { "<cmd>BufferLineCycleNext<CR>", "Next" },
-      p = { "<cmd>BufferLineCyclePrev<CR>", "Previous" },
       h = { "<cmd>BufferLineCloseLeft<CR>", "Close all to the left" },
       k = { "<cmd>BufferLineCloseRight<CR>", "Close all to the right" },
       c = { "<cmd>BufDel<CR>", "Close current buffer" },
@@ -60,8 +49,21 @@ function M.setup()
       p = { "<cmd>Lazy profile<CR>", "Profile" },
     },
   }
+  wich_key.register(leader_keymap, { prefix = "<leader>" })
 
-  wk.register(mappings, options)
+  local root_keymap = {
+    ["["] = {
+      d = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Goto previous diagnostic" },
+      e = { "<cmd>lua vim.diagnostic.goto_prev({severity = vim.diagnostic.severity.ERROR})<CR>", "Goto previous error" },
+    },
+    ["]"] = {
+      d = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Goto next diagnostic" },
+      e = { "<cmd>lua vim.diagnostic.goto_next({severity = vim.diagnostic.severity.ERROR})<CR>", "Goto next error" },
+    },
+    ["<Tab>"] = { "<cmd>BufferLineCycleNext<CR>", "Next" },
+    ["<S-Tab>"] = { "<cmd>BufferLineCyclePrev<CR>", "Previous" },
+  }
+  wich_key.register(root_keymap, { prefix = "" })
 end
 
 return M

@@ -75,6 +75,21 @@ local plugins = {
 
   },
   { "ojroques/nvim-bufdel" },
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = { "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim" },
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    config = function()
+      require("config.lsp").setup()
+    end,
+  },
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+  },
 }
 
 require('lazy').setup(plugins,lazy_settings)
