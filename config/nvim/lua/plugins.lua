@@ -126,6 +126,12 @@ local plugins = {
     config = function()
       require('config.indent_blankline').setup()
     end,
+  },
+  {
+    'yamatsum/nvim-cursorline',
+    config = function ()
+      require('config.cursorline').setup()
+    end
   }
 }
 
