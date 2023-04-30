@@ -121,6 +121,12 @@ local plugins = {
   },
   { 'L3MON4D3/LuaSnip',         lazy = true },
   { 'saadparwaiz1/cmp_luasnip', lazy = true },
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+      require('config.indent_blankline').setup()
+    end,
+  }
 }
 
 require('lazy').setup(plugins, lazy_settings)
