@@ -148,6 +148,13 @@ local plugins = {
       require('config.projectconfig').setup()
     end,
   },
+  {
+    'jose-elias-alvarez/null-ls.nvim',
+    config = function()
+      require('config.nullls').setup()
+    end,
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
 }
 
 require('lazy').setup(plugins, lazy_settings)
