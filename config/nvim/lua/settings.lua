@@ -1,11 +1,12 @@
 local cmd = vim.cmd
 local o = vim.o
+local api = vim.api
 
 -- Change default <leader> by <space>
 vim.g.mapleader = ' '
 
 -- Global options
-o.clipboard = 'unnamedplus'
+api.nvim_set_option('clipboard', 'unnamedplus')
 o.cmdheight = 4
 o.cursorcolumn = true
 o.cursorline = true
