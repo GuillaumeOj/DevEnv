@@ -155,6 +155,13 @@ local plugins = {
     end,
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    config = function ()
+      require('config.treesitter').setup()
+    end,
+    build = ':TSUpdate'
+  }
 }
 
 require('lazy').setup(plugins, lazy_settings)
