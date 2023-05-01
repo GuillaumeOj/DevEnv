@@ -1,12 +1,13 @@
 local cmd = vim.cmd
 local o = vim.o
-local api = vim.api
+local g = vim.g
+local fn = vim.fn
 
 -- Change default <leader> by <space>
-vim.g.mapleader = ' '
+g.mapleader = ' '
 
 -- Global options
-api.nvim_set_option('clipboard', 'unnamedplus')
+o.clipboard = 'unnamedplus'
 o.cmdheight = 4
 o.cursorcolumn = true
 o.cursorline = true
@@ -16,7 +17,7 @@ o.signcolumn = 'yes'
 o.scrolljump = 10
 o.scrolloff = 10
 o.swapfile = false
-o.undodir = vim.fn.stdpath('config') .. '/undo'
+o.undodir = fn.stdpath('config') .. '/undo'
 o.undofile = true
 o.undolevels = 1000
 o.undoreload = 10000
