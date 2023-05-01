@@ -140,6 +140,14 @@ local plugins = {
       require('config.hop').setup()
     end,
   },
+  {
+    'windwp/nvim-projectconfig',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('config.projectconfig').setup()
+    end,
+  },
 }
 
 require('lazy').setup(plugins, lazy_settings)

@@ -38,25 +38,18 @@ function M.setup()
   })
   require('lsp-format').setup()
 
+  local extra_config = require('config.lsp.utils').config_loader()
   require('mason-lspconfig').setup_handlers({
     function(server_name)
-      require('lspconfig')[server_name].setup(
-        {
-          on_attach = on_attach,
-          capabilities = capabilities,
-        }
-      )
-    end,
-    ['lua_ls'] = function()
-      require('lspconfig').lua_ls.setup {
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { 'vim' },
-            },
-          },
-        },
+      local default_config = {
+        on_attach = on_attach,
+        capabilities = capabilities,
       }
+      local config = {}
+      if extra_config[server_name] then
+        config = vim.tbl_extend('keep', { settings = extra_config[server_name] }, default_config)
+      end
+      require('lspconfig')[server_name].setup(config)
     end,
   })
 end
