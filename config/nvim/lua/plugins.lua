@@ -28,7 +28,7 @@ local plugins = {
     lazy = false,
     priority = 1000,
     config = function()
-      cmd([[colorscheme tokyonight]])
+      cmd([[colorscheme tokyonight-moon]])
     end,
   },
   {

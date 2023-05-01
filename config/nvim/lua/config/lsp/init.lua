@@ -14,12 +14,12 @@ local function on_attach(client, bufnr)
   }
 
   local goto_settings = {
-      name = 'Goto',
-      d = { '<Cmd>lua vim.lsp.buf.definition()<CR>', 'Definition' },
-      D = { '<Cmd>lua vim.lsp.buf.declaration()<CR>', 'Declaration' },
-      s = { '<cmd>lua vim.lsp.buf.signature_help()<CR>', 'Signature Help' },
-      I = { '<cmd>lua vim.lsp.buf.implementation()<CR>', 'Goto Implementation' },
-      t = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'Goto Type Definition' },
+    name = 'Goto',
+    d = { '<Cmd>lua vim.lsp.buf.definition()<CR>', 'Definition' },
+    D = { '<Cmd>lua vim.lsp.buf.declaration()<CR>', 'Declaration' },
+    s = { '<cmd>lua vim.lsp.buf.signature_help()<CR>', 'Signature Help' },
+    I = { '<cmd>lua vim.lsp.buf.implementation()<CR>', 'Goto Implementation' },
+    t = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'Goto Type Definition' },
   }
 
   code_keymap.l.g = goto_settings
