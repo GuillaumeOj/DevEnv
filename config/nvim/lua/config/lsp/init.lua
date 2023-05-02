@@ -45,10 +45,14 @@ function M.setup()
 				on_attach = on_attach,
 				capabilities = capabilities,
 			}
+
 			local config = {}
 			if extra_config[server_name] then
 				config = vim.tbl_extend('keep', { settings = extra_config[server_name] }, default_config)
+			else
+				config = default_config
 			end
+
 			require('lspconfig')[server_name].setup(config)
 		end,
 	})
