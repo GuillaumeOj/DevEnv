@@ -3,8 +3,8 @@ local map = utils.map
 local M = {}
 
 function M.setup()
-  require('hop').setup()
-  map('n', 's', '<cmd>HopWord<CR>')
+	require('hop').setup()
+	map('n', 's', '<cmd>HopWord<CR>')
 end
 
 return M
