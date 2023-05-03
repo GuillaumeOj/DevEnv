@@ -20,6 +20,7 @@ vendor
 .mypy_cache
 coc-settings.json
 .editorconfig
+pyrightconfig.json
 
 # Node
 .eslintcache
