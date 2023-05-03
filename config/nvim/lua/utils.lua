@@ -25,4 +25,10 @@ function M.info(message, name)
 	notify(message, log_levels.INFO, { title = name })
 end
 
+function M.debug(message, name)
+	notify(message, log_levels.DEBUG, { title = name })
+end
+
+_G.guigui.utils = M
+
 return M

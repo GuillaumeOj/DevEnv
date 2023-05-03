@@ -68,11 +68,9 @@ local plugins = {
 	},
 	{
 		'nvim-lualine/lualine.nvim',
-		dependencies = {
-			'nvim-tree/nvim-web-devicons'
-		},
+		dependencies = { 'nvim-tree/nvim-web-devicons', 'SmiteshP/nvim-navic' },
 		config = function()
-			require('lualine').setup()
+			require('config.lualine').setup()
 		end,
 	},
 	{
@@ -88,14 +86,17 @@ local plugins = {
 	{ 'ojroques/nvim-bufdel' },
 	{
 		'neovim/nvim-lspconfig',
-		dependencies = { 'williamboman/mason.nvim', 'williamboman/mason-lspconfig.nvim' },
+		dependencies = {
+			'williamboman/mason.nvim',
+			'williamboman/mason-lspconfig.nvim',
+		},
+		config = function()
+			require('config.lsp').setup()
+		end,
 	},
 	{
 		'williamboman/mason-lspconfig.nvim',
 		dependencies = { 'williamboman/mason.nvim', 'lukas-reineke/lsp-format.nvim' },
-		config = function()
-			require('config.lsp').setup()
-		end,
 	},
 	{
 		'williamboman/mason.nvim',
@@ -161,7 +162,13 @@ local plugins = {
 			require('config.treesitter').setup()
 		end,
 		build = ':TSUpdate'
-	}
+	},
+	{
+		'SmiteshP/nvim-navic',
+		config = function()
+			require('config.navic').setup()
+		end,
+	},
 }
 
 require('lazy').setup(plugins, lazy_settings)

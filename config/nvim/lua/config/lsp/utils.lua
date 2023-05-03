@@ -1,6 +1,5 @@
 local M = {}
 
-
 function M.config_loader()
 	local default_settings = {
 		lua_ls = {
@@ -20,6 +19,17 @@ function M.config_loader()
 	return config
 end
 
-_G.guigui.lsp = M
+function M.setup_document_symbols(client, bufnr)
+	vim.g.navic_silence = false
+	local symbols_supported = client.supports_method "textDocument/documentSymbol"
+	if not symbols_supported then
+		_G.guigui.utils.debug("skipping setup for document_symbols, method not supported by " .. client.name)
+		return
+	end
+	local status_ok, navic = pcall(require, 'nvim-navic')
+	if status_ok then
+		navic.attach(client, bufnr)
+	end
+end
 
 return M
