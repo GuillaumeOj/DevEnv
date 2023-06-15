@@ -4,7 +4,7 @@
     "body": [
       "from django.conf import settings",
       "",
-      "settings.debug = True",
+      "settings.DEBUG = True",
     ],
     "description": "Enable DEBUG for Django projects"
   },
@@ -14,9 +14,9 @@
       "from django.conf import settings",
       "",
       "if settings.DEBUG:",
-      "    import ipdb",
+      "    import pdb",
       "",
-      "    ipdb.set_trace()",
+      "    pdb.set_trace()",
     ],
     "description": "Enable DEBUG for Django projects"
   }

@@ -1,6 +1,6 @@
 {
   "name": "nvim-snippets",
-  "author": "authorname",
+  "author": "guigui",
   "engines": {
     "vscode": "^1.11.0"
   },
