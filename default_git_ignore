@@ -21,6 +21,7 @@ vendor
 coc-settings.json
 .editorconfig
 pyrightconfig.json
+.nlsp-settings/
 
 # Node
 .eslintcache
@@ -33,8 +34,6 @@ build
 *.sqlite3
 dist
 .DS_Store
-tags.*
-tags
 .rgignore
 static
 
