@@ -4,7 +4,20 @@ show_always = true
 [shell]
 disabled = false
 
+[git_branch]
+always_show_remote = true
+
 [git_status]
-ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-behind = "⇣${count}"
+format= '([\[]($style) $all_status$ahead_behind[\]]($style) )'
+style = 'bold white'
+diverged = '😵[⇡${ahead_count}](bold green)[⇣${behind_count}](bold red) '
+conflicted = '🚩 '
+ahead = '[⇡${count}](bold green) '
+behind = '[⇣${count}](bold red) '
+up_to_date = '✓ '
+untracked = '🤷[${count}](bold yellow) '
+stashed = '📦[${count}](bold grey) '
+modified = '📝[${count}](bold orange) '
+staged = '[++${count}](green) '
+renamed = '👅[${count}](grey) '
+deleted = '🗑[${count}](red) '
