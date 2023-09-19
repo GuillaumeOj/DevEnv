@@ -37,6 +37,8 @@ lvim.builtin.gitsigns.opts.current_line_blame = true
 lvim.colorscheme = "tokyonight-storm"
 lvim.format_on_save.enabled = true
 lvim.builtin.bufferline.options = { always_show_bufferline = true }
+vim.g.python3_host_prog = "~/.pyenv/shims/python"
+vim.g.loaded_perl_provider = 0
 vim.opt.cursorcolumn = true
 vim.opt.relativenumber = true
 vim.opt.cmdheight = 4
