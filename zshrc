@@ -2,10 +2,16 @@
 export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 
+# Settings for rustup
+export PATH=$HOME/.cargo/env:$PATH
+
+# Settings for bob
+export PATH=$HOME/.local/share/bob/nvim-bin:$PATH
+
 # Settings for zsh
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME=""
-plugins=(git python poetry postgres nvm yarn zsh-autosuggestions zsh-syntax-highlighting docker docker-compose)
+plugins=(git python postgres nvm yarn zsh-autosuggestions zsh-syntax-highlighting docker docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # Settings for pyenv
@@ -62,3 +68,7 @@ PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
 # Should stay at the end of this file
 eval "$(starship init zsh)"
+
+autoload -Uz compinit
+zstyle ':completion:*' menu select
+fpath+=~/.zfunc
