@@ -95,3 +95,11 @@ lvim.builtin.treesitter.ensure_installed             = {
 }
 lvim.builtin.treesitter.ignore_install               = { "haskell" }
 
+-- setup formatting
+local formatters                                     = require "lvim.lsp.null-ls.formatters"
+formatters.setup { { name = "black" }, { name = "isort" }, { name = "docformatter" }, { name = "luaformatter" } }
+lvim.format_on_save.enabled = true
+
+-- setup linting
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup { { command = "flake8", filetypes = { "python" } } }
