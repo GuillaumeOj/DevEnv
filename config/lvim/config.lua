@@ -3,7 +3,8 @@ lvim.plugins = {
   { "nvim-telescope/telescope-fzy-native.nvim" },
   { "lukas-reineke/indent-blankline.nvim" },
   {
-    "phaazon/hop.nvim",
+    "smoka7/hop.nvim",
+    tag = "*",
     event = "BufRead",
     config = function()
       require("hop").setup()
