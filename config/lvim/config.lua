@@ -1,11 +1,4 @@
 lvim.plugins = {
-  {
-    'akinsho/flutter-tools.nvim',
-    lazy = false,
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-    },
-  },
   { "echasnovski/mini.nvim" },
   { "nvim-telescope/telescope-fzy-native.nvim" },
   { "lukas-reineke/indent-blankline.nvim" },
@@ -54,9 +47,7 @@ require("mini.surround").setup {}
 
 -- Settings for Telescope
 lvim.builtin.telescope.pickers.find_files.hidden     = true
-
 lvim.builtin.telescope.pickers.buffers.initial_mode  = "insert"
-
 lvim.builtin.telescope.defaults.path_display         = { shorten = { len = 10, exclude = { 1, -1 } } }
 lvim.builtin.telescope.defaults.file_ignore_patterns = {
   "vendor/*",
@@ -76,12 +67,10 @@ lvim.builtin.telescope.defaults.file_ignore_patterns = {
   "node_modules/",
   "%.pdf",
 }
-
 lvim.builtin.telescope.extensions                    = {
   override_generic_sorter = true,
   override_file_sorter = true,
 }
-
 lvim.builtin.telescope.on_config_done                = function(telescope)
   pcall(telescope.load_extension, "fzy_native")
 end
@@ -103,5 +92,3 @@ lvim.builtin.treesitter.ensure_installed             = {
 }
 lvim.builtin.treesitter.ignore_install               = { "haskell" }
 
--- Settings for flutter-tools
-require("flutter-tools").setup {}
