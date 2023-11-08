@@ -4,7 +4,7 @@ lvim.plugins = {
   { "lukas-reineke/indent-blankline.nvim" },
   {
     "smoka7/hop.nvim",
-    tag = "*",
+    versions = "*",
     event = "BufRead",
     config = function()
       require("hop").setup()
