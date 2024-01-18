@@ -1,6 +1,7 @@
 vim.cmd([[colorscheme tokyonight-moon]])
 
 vim.o.backup = false
+vim.o.clipboard = "unnamedplus"
 vim.o.cmdheight = _G.cmdheight_value
 vim.o.cursorline = true
 vim.o.number = true

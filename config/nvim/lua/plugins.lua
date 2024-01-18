@@ -16,7 +16,15 @@ require("lazy").setup({
 	-- Plugins for make easier navigation
 	"folke/which-key.nvim",
 	"lewis6991/gitsigns.nvim",
-	{ "echasnovski/mini.nvim", version = "*" },
+	{
+		"echasnovski/mini.nvim",
+		version = "*",
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+	},
+	"ojroques/nvim-bufdel",
 	-- Neovim theme
 	{
 		"folke/tokyonight.nvim",
@@ -69,29 +77,6 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		config = function()
-			local configs = require("nvim-treesitter.configs")
-			configs.setup({
-				auto_install = true,
-				ensure_installed = {
-					"lua",
-					"vim",
-					"vimdoc",
-					"javascript",
-					"typescript",
-					"html",
-					"python",
-					"yaml",
-					"json",
-					"jsonc",
-				},
-				modules = {},
-				ignore_install = {},
-				sync_install = true,
-				highlight = { enable = true },
-				indent = { enable = true },
-			})
-		end,
 	},
 	-- Plugins for completion
 	"hrsh7th/cmp-nvim-lsp",

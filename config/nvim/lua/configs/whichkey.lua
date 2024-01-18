@@ -5,6 +5,8 @@ whichkey.register({
 		w = { "<cmd>w!<CR>", "Save" },
 		q = { "<cmd>confirm q<CR>", "Quit current window" },
 		Q = { "<cmd>confirm qa<CR>", "Quit Neovim" },
+		c = { "<cmd>BufDel<CR>", "Close current buffer" },
+		h = { "<cmd>checkhealth<CR>", "Run health check" },
 		t = {
 			name = "+Telescope",
 			f = { "<cmd>Telescope find_files<CR>", "Find files" },
