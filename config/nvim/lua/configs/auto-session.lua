@@ -3,9 +3,6 @@ require("auto-session").setup({
 	auto_session_enable_last_session = false,
 	auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/",
 	auto_session_enabled = true,
-	post_restore_cmds = {
-		"set cmdheight=" .. tostring(_G.cmdheight_value),
-	},
 	-- This should be deleted in the future
 	auto_session_last_session_dir = "",
 })

@@ -1,6 +1,5 @@
-require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls" },
-})
+require("mason").setup()
+require("mason-lspconfig").setup()
 
 -- Settings for autocompletion
 local cmp = require("cmp")
@@ -58,21 +57,13 @@ cmp.setup.cmdline(":", {
 	}),
 })
 
-
-
 -- Settings for each lsp servers
 require("neodev").setup({})
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-require("lspconfig").lua_ls.setup({
-	capabilities = capabilities,
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { "vim" },
-			},
-		},
-	},
-})
-require("lspconfig").vimls.setup({
-	capabilities = capabilities,
+require("mason-lspconfig").setup_handlers({
+	function(server_name)
+		require("lspconfig")[server_name].setup({
+			capabilities = capabilities,
+		})
+	end,
 })

@@ -15,7 +15,19 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	-- Plugins for make easier navigation
 	"folke/which-key.nvim",
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
 	"lewis6991/gitsigns.nvim",
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+	},
 	{
 		"echasnovski/mini.nvim",
 		version = "*",
@@ -42,7 +54,15 @@ require("lazy").setup({
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",
-		dependencies = "nvim-tree/nvim-web-devicons",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
+	{
+		"goolord/alpha-nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
 	},
 	-- Plugins for exploring files
 	{
@@ -54,8 +74,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
-		build =
-		"cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	},
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
@@ -78,6 +97,13 @@ require("lazy").setup({
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 	},
+	"numToStr/Comment.nvim",
+	{
+		"folke/trouble.nvim",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
 	-- Plugins for completion
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
@@ -88,4 +114,5 @@ require("lazy").setup({
 	"saadparwaiz1/cmp_luasnip",
 	-- Other plugins
 	"rmagatti/auto-session",
+	"Tastyep/structlog.nvim",
 })

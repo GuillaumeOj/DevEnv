@@ -72,3 +72,10 @@ eval "$(starship init zsh)"
 autoload -Uz compinit
 zstyle ':completion:*' menu select
 fpath+=~/.zfunc
+
+# bun completions
+[ -s "/Users/guillaume/.bun/_bun" ] && source "/Users/guillaume/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

@@ -16,7 +16,8 @@ whichkey.register({
 			S = { "<cmd>Telescope lsp_workspace_symbols<CR>", "Workspace symbols" },
 			d = { "<cmd>Telescope lsp_definitions<CR>", "Goto word's definition" },
 			a = { "<cmd>Telescope session-lens<CR>", "List existing sessions" },
-			e = { "<cmd>Telescope file_browser<CR>", "Browese files" },
+			e = { "<cmd>Telescope file_browser<CR>", "Browse files" },
+			h = { "<cmd>Telescope help_tags<CR>", "Browse help tags" },
 		},
 		m = {
 			name = "+Mason",
@@ -34,6 +35,9 @@ whichkey.register({
 			j = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Next diagnostic" },
 			k = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Previous diagnostic" },
 			r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+			i = { "<cmd>LspInfo<CR>", "Info" },
+			R = { "<cmd>lua vim.diagnostic.reset()<CR>", "Reset diagnostics" },
+			t = { "<cmd>Trouble<CR>", "List all current diagnostcis" },
 		},
 		g = {
 			name = "+Gitsigns",
@@ -54,14 +58,19 @@ whichkey.register({
 			k = { "<cmd>BufferLinePrev<CR>", "Previous buffer" },
 			c = {
 				name = "+Close",
-				j = { "<cmd>BufferlineCloseRightCR>", "Close buffers to the right" },
-				k = { "<cmd>BufferLineCloseLeft>", "Close buffers to the left" },
+				j = { "<cmd>BufferlineCloseRight<CR>", "Close buffers to the right" },
+				k = { "<cmd>BufferLineCloseLeft<CR>", "Close buffers to the left" },
 			},
 			s = {
 				name = "+Split",
 				v = { "<cmd>vs<CR>", "Vertical split" },
 				h = { "<cmd>split<CR>", "Horizontal split" },
 			},
+		},
+		n = {
+			name = "+Noice",
+			a = { "<cmd>Noice<CR>", "Display all message history" },
+			l = { "<cmd>Noice last<CR>", "Display last message in a popup" },
 		},
 	},
 })
