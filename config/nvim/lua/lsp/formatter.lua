@@ -1,5 +1,4 @@
 local util = require("formatter.util")
-local buf_filetype = vim.bo.filetype
 require("formatter").setup({
 	logging = true,
 	log_level = vim.log.levels.WARN,
