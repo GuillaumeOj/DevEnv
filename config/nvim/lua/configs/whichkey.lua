@@ -1,6 +1,7 @@
 local whichkey = require("which-key")
 
 whichkey.register({
+	K = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Show hover" },
 	["<leader>"] = {
 		w = { "<cmd>w!<CR>", "Save" },
 		q = { "<cmd>confirm q<CR>", "Quit current window" },
@@ -18,6 +19,7 @@ whichkey.register({
 			a = { "<cmd>Telescope session-lens<CR>", "List existing sessions" },
 			e = { "<cmd>Telescope file_browser<CR>", "Browse files" },
 			h = { "<cmd>Telescope help_tags<CR>", "Browse help tags" },
+			g = { "<cmd>Telescope live_grep<CR>", "Search words in project" },
 		},
 		m = {
 			name = "+Mason",
@@ -38,6 +40,9 @@ whichkey.register({
 			i = { "<cmd>LspInfo<CR>", "Info" },
 			R = { "<cmd>lua vim.diagnostic.reset()<CR>", "Reset diagnostics" },
 			t = { "<cmd>Trouble<CR>", "List all current diagnostcis" },
+			a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code actions" },
+			d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto definition" },
+			D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
 		},
 		g = {
 			name = "+Gitsigns",
@@ -66,6 +71,7 @@ whichkey.register({
 				v = { "<cmd>vs<CR>", "Vertical split" },
 				h = { "<cmd>split<CR>", "Horizontal split" },
 			},
+			f = { "<cmd>Telescope buffers<CR>", "List buffers" },
 		},
 		n = {
 			name = "+Noice",
