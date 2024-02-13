@@ -63,9 +63,24 @@ require("neodev").setup({})
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
-		require("lspconfig")[server_name].setup({
-			capabilities = capabilities,
-		})
+		if server_name == "pyright" then
+			require("lspconfig").pyright.setup({
+				capabilities = capabilities,
+				settings = {
+					python = {
+						analysis = {
+							diagnosticMode = "workspace",
+							autoSearchPaths = true,
+							logLevel = "Warning",
+						},
+					},
+				},
+			})
+		else
+			require("lspconfig")[server_name].setup({
+				capabilities = capabilities,
+			})
+		end
 	end,
 })
 
