@@ -4,8 +4,6 @@
 *.un~
 typings
 undo
-.null-ls-root
-*config/lvim/projects/
 lazy-lock.json
 
 # Python
@@ -18,10 +16,7 @@ vendor
 *egg-info
 .coverage
 .mypy_cache
-coc-settings.json
-.editorconfig
 pyrightconfig.json
-.nlsp-settings/
 
 # Node
 .eslintcache
@@ -36,6 +31,3 @@ dist
 .DS_Store
 .rgignore
 static
-
-# Sketchfab
-zshrc_sketchfab
