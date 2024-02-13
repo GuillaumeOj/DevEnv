@@ -55,9 +55,6 @@ alias s='kitty +kitten ssh'
 
 test -f $HOME/.fzf.zsh && source $HOME/.fzf.zsh
 
-# Aliases for sketchfab
-ZSHRC_SKETCHFAB=$HOME/DevEnv/zshrc_sketchfab && test -f $ZSHRC_SKETCHFAB && source $ZSHRC_SKETCHFAB
-
 # Settings for Perl
 PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;
 PERL5LIB="$HOME/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
