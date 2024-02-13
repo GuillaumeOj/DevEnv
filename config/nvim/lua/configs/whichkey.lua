@@ -43,6 +43,13 @@ whichkey.register({
 			a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code actions" },
 			d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto definition" },
 			D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
+			c = {
+				name = "+Copilot",
+				e = { "<cmd>CopilotChatExplain<CR>", "CopilotChat - Explain code" },
+				t = { "<cmd>CopilotChatTests<CR>", "CopilotChat - Generate tests" },
+				v = { "<cmd>CopilotChatVisual x<CR>", "CopilotChat - Open in vertical split" },
+				x = { "<cmd>CopilotChatInPlace x<CR>", "CopilotChat - Run in-place code" },
+			},
 			v = {
 				name = "+VenvSelect",
 				s = { "<cmd>VenvSelect<CR>", "Pick an env" },
