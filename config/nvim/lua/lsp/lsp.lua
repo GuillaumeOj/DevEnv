@@ -4,10 +4,11 @@ require("mason-lspconfig").setup()
 -- Settings for autocompletion
 local cmp = require("cmp")
 local luasnip = require("luasnip")
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body)
+			luasnip.lsp_expand(args.body)
 		end,
 	},
 	window = {

@@ -84,6 +84,15 @@ require("lazy").setup({
 		},
 	},
 	-- Plugins for LSP features
+	{
+		"linux-cultist/venv-selector.nvim",
+		event = "VeryLazy",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+			"nvim-telescope/telescope.nvim",
+			"mfussenegger/nvim-dap-python",
+		},
+	},
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"neovim/nvim-lspconfig",

@@ -43,6 +43,11 @@ whichkey.register({
 			a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code actions" },
 			d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Goto definition" },
 			D = { "<cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
+			v = {
+				name = "+VenvSelect",
+				s = { "<cmd>VenvSelect<CR>", "Pick an env" },
+				c = { "<cmd>VenvSelectCached<CR>", "Pick previously used env" },
+			},
 		},
 		g = {
 			name = "+Gitsigns",
