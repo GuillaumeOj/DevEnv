@@ -43,7 +43,6 @@ then
 fi
 
 # Settings for python
-export PYTHONSTARTUP="$HOME/DevEnv/.pythonrc"
 PYENV_ROOT="$HOME/.pyenv"
 if [ -d $PYENV_ROOT ]
 then
