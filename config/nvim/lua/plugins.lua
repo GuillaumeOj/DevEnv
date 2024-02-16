@@ -134,16 +134,16 @@ require("lazy").setup({
 			})
 		end,
 	},
-	{
-		"CopilotC-Nvim/CopilotChat.nvim",
-		event = "VeryLazy",
-		build = function()
-			vim.defer_fn(function()
-				vim.cmd("UpdateRemotePlugins")
-				vim.notify("CopilotChat - Updated remote plugins. Please restart Neovim.")
-			end, 3000)
-		end,
-	},
+	-- {
+	-- 	"CopilotC-Nvim/CopilotChat.nvim",
+	-- 	event = "VeryLazy",
+	-- 	build = function()
+	-- 		vim.defer_fn(function()
+	-- 			vim.cmd("UpdateRemotePlugins")
+	-- 			vim.notify("CopilotChat - Updated remote plugins. Please restart Neovim.")
+	-- 		end, 3000)
+	-- 	end,
+	-- },
 	-- Plugins for completion
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",

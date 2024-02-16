@@ -14,14 +14,14 @@ whichkey.register({
 			j = { "<cmd>BufferLineNext<CR>", "Next buffer" },
 			k = { "<cmd>BufferLinePrev<CR>", "Previous buffer" },
 		},
-		c = {
-			name = "+Copilot",
-			i = { "<cmd>CopilotChatInPlace<CR>", "In-place code", mode = "x" },
-			R = { "<cmd>CopilotCharReset<CR>", "Reset chat history and clear buffer" },
-			t = { "<cmd>CopilotChatTests<CR>", "Generate tests", mode = "x" },
-			u = { "<cmd>UpdateRemotePlugins<CR>", "Update remote plugins" },
-			v = { "<cmd>CopilotChatVisual<CR>", "Open in vertical split", mode = "x" },
-		},
+		-- c = {
+		-- 	name = "+Copilot",
+		-- 	i = { "<cmd>CopilotChatInPlace<CR>", "In-place code", mode = "x" },
+		-- 	R = { "<cmd>CopilotCharReset<CR>", "Reset chat history and clear buffer" },
+		-- 	t = { "<cmd>CopilotChatTests<CR>", "Generate tests", mode = "x" },
+		-- 	u = { "<cmd>UpdateRemotePlugins<CR>", "Update remote plugins" },
+		-- 	v = { "<cmd>CopilotChatVisual<CR>", "Open in vertical split", mode = "x" },
+		-- },
 		g = {
 			name = "+Gitsigns",
 			d = { "<cmd>Gitsigns toggle_deleted<CR>", "Toggle deleted" },
