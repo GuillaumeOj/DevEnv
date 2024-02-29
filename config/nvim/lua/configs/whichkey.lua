@@ -13,6 +13,11 @@ whichkey.register({
 			f = { "<cmd>Telescope buffers<CR>", "List buffers" },
 			j = { "<cmd>BufferLineNext<CR>", "Next buffer" },
 			k = { "<cmd>BufferLinePrev<CR>", "Previous buffer" },
+			s = {
+				name = "+Split",
+				h = { "<cmd>split<CR>", "Horizontal split" },
+				v = { "<cmd>vs<CR>", "Vertical split" },
+			},
 		},
 		-- c = {
 		-- 	name = "+Copilot",
@@ -86,7 +91,7 @@ whichkey.register({
 			g = { "<cmd>Telescope live_grep<CR>", "Search words in project" },
 			h = { "<cmd>Telescope help_tags<CR>", "Browse help tags" },
 			s = { "<cmd>Telescope lsp_document_symbols<CR>", "Document symbols" },
-			S = { "<cmd>Telescope lsp_workspace_symbols<CR>", "Workspace symbols" },
+			S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", "Workspace symbols" },
 		},
 		w = { "<cmd>w!<CR>", "Save" },
 	},
