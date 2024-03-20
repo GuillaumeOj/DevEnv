@@ -6,8 +6,8 @@ whichkey.register({
 			name = "+Buffer",
 			C = {
 				name = "+Close",
-				j = { "<cmd>BufferlineCloseRight<CR>", "Close buffers to the right" },
-				k = { "<cmd>BufferLineCloseLeft<CR>", "Close buffers to the left" },
+				h = { "<cmd>BufferLineCloseLeft<CR>", "Close buffers to the left" },
+				l = { "<cmd>BufferLineCloseRight<CR>", "Close buffers to the right" },
 			},
 			c = { "<cmd>BufDel<CR>", "Close current buffer" },
 			f = { "<cmd>Telescope buffers<CR>", "List buffers" },
