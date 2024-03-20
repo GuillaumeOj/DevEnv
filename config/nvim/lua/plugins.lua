@@ -129,21 +129,36 @@ require("lazy").setup({
 		config = function()
 			require("copilot").setup({
 				suggestion = {
-					auto_trigger = true,
+					enabled = false,
+				},
+				panel = {
+					enabled = false,
 				},
 			})
 		end,
 	},
-	-- {
-	-- 	"CopilotC-Nvim/CopilotChat.nvim",
-	-- 	event = "VeryLazy",
-	-- 	build = function()
-	-- 		vim.defer_fn(function()
-	-- 			vim.cmd("UpdateRemotePlugins")
-	-- 			vim.notify("CopilotChat - Updated remote plugins. Please restart Neovim.")
-	-- 		end, 3000)
-	-- 	end,
-	-- },
+	{
+		"CopilotC-Nvim/CopilotChat.nvim",
+		branch = "canary",
+		dependencies = {
+			{ "zbirenbaum/copilot.lua" },
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope.nvim" },
+		},
+		opts = {
+			debug = true,
+			context = "buffers",
+			mappings = {
+				reset = "<C-r>",
+			},
+		},
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function()
+			require("copilot_cmp").setup()
+		end,
+	},
 	-- Plugins for completion
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",

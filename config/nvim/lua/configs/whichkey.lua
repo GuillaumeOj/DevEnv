@@ -19,14 +19,14 @@ whichkey.register({
 				v = { "<cmd>vs<CR>", "Vertical split" },
 			},
 		},
-		-- c = {
-		-- 	name = "+Copilot",
-		-- 	i = { "<cmd>CopilotChatInPlace<CR>", "In-place code", mode = "x" },
-		-- 	R = { "<cmd>CopilotCharReset<CR>", "Reset chat history and clear buffer" },
-		-- 	t = { "<cmd>CopilotChatTests<CR>", "Generate tests", mode = "x" },
-		-- 	u = { "<cmd>UpdateRemotePlugins<CR>", "Update remote plugins" },
-		-- 	v = { "<cmd>CopilotChatVisual<CR>", "Open in vertical split", mode = "x" },
-		-- },
+		c = {
+			name = "+Copilot",
+			d = { "<cmd>CopilotChatFixDiagnostic<CR>", "Fix diagnostic" },
+			e = { "<cmd>CopilotChatExplain<CR>", "Explain yanked code" },
+			R = { "<cmd>CopilotCharReset<CR>", "Reset chat history and clear buffer" },
+			t = { "<cmd>CopilotChatTests<CR>", "Generate tests", mode = "x" },
+			u = { "<cmd>UpdateRemotePlugins<CR>", "Update remote plugins" },
+		},
 		g = {
 			name = "+Gitsigns",
 			d = { "<cmd>Gitsigns toggle_deleted<CR>", "Toggle deleted" },
